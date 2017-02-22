@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.weasel.penetrate.manager.domain.User">
+
+    <resultMap id="userResult" type="User">
+        <id property="id" column="u_id"/>
+        <result property="name" column="u_name"/>
+        <result property="nickName" column="u_nick_name"/>
+        <result property="password" column="u_password"/>
+        <result property="email" column="u_email"/>
+        <result property="loginCount" column="u_login_count"/>
+        <result property="createTime" column="u_create_time"/>
+        <result property="loginTime" column="u_login_time"/>
+    </resultMap>
+
+
+    <sql id="commonSelect">
+        SELECT u.id as u_id,
+                u.name as u_name,
+                u.nick_name as u_nick_name,
+                u.password as u_password,
+                u.email as u_email,
+                u.login_count as u_login_count,
+                u.create_time as u_create_time,
+                u.login_time as u_login_time
+        FROM user u
+    </sql>
+
+    <select id="getUserByName" resultMap="userResult" parameterType="string">
+        <include refid="commonSelect"/>
+        <where>
+            u.name=#{name}
+        </where>
+    </select>
+
+
+    <select id="getUserByEmail" resultMap="userResult" parameterType="string">
+        <include refid="commonSelect"/>
+        <where>
+            u.email=#{email}
+        </where>
+    </select>
+
+    <insert id="add" parameterType="User">
+        INSERT  INTO user(name,password,email) VALUES (#{name},#{password},#{email})
+    </insert>
+
+    <select id="queryPage" resultMap="userResult">
+        <include refid="commonSelect"/>
+        <where>
+
+        </where>
+        limit 0,10
+    </select>
+
+</mapper>

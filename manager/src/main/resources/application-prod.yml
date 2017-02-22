@@ -1,0 +1,22 @@
+spring:
+   datasource:
+     name: prod
+     url: jdbc:mysql://35.165.220.128:3306/frp?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+     username: root
+     password: ENC(SrpFBcVD89eTQ2icOD0TMg==)
+     # 使用druid数据源
+     ##type: com.mchange.v2.c3p0.ComboPooledDataSource
+     driver-class-name: com.mysql.cj.jdbc.Driver
+     filters: stat
+     maxActive: 20
+     initialSize: 1
+     maxWait: 60000
+     minIdle: 1
+     timeBetweenEvictionRunsMillis: 60000
+     minEvictableIdleTimeMillis: 300000
+     validationQuery: select 'x'
+     testWhileIdle: true
+     testOnBorrow: false
+     testOnReturn: false
+     poolPreparedStatements: true
+     maxOpenPreparedStatements: 20

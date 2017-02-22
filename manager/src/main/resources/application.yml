@@ -1,0 +1,31 @@
+###jetty
+server:
+   port: 8087
+   contextPath: /penetrate-manager
+
+jasypt:
+  encryptor:
+    password: 666
+
+spring:
+   profiles:
+     active: ${runtime.env}
+   thymeleaf:
+     cache: false
+     check-template: true
+     check-template-location: true
+     content-type: text/html
+     encoding: UTF-8
+     mode: HTML5
+     prefix: classpath:/templates/
+     suffix: .html
+   http:
+     encoding:
+       charset: UTF-8
+       enabled: true
+       force: true
+
+mybatis:
+  #  type-aliases-package: com.weasel.frp.domain.device
+    mapper-locations: classpath:mybatis/mappers/*.xml
+    config-location: classpath:mybatis/mybatis-config.xml

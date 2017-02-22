@@ -1,0 +1,20 @@
+###jetty
+server:
+   port: 8086
+   contextPath: /penetrate-home
+
+spring:
+   thymeleaf:
+     cache: false
+     check-template: true
+     check-template-location: true
+     content-type: text/html
+     encoding: UTF-8
+     prefix: classpath:/templates/
+     suffix: .html
+     mode: HTML5
+   http:
+     encoding:
+       charset: UTF-8
+       enabled: true
+       force: true

@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>内网穿透</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all" /><!-- Bootstrap stylesheet -->
+    <link href="css/style.css" rel="stylesheet" type="text/css" media="all" /><!-- stylesheet -->
+    <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css" media="all" /><!-- fontawesome -->
+    <!-- meta tags -->
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="" />
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!-- //meta tags -->
+    <!--fonts-->
+    <link href="http://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet"/>
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet"/>
+    <!--//fonts-->
+    <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script><!-- Required-js -->
+    <!-- requried-jsfiles-for owl -->
+    <link href="css/owl.carousel.css" rel="stylesheet" type="text/css" media="all" />
+    <script src="js/owl.carousel.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("#owl-demo").owlCarousel({
+                items : 4,
+                lazyLoad : true,
+                autoPlay : true,
+                navigation : true,
+                navigationText :  true,
+                pagination : false,
+            });
+        });
+    </script>
+    <!-- //requried-jsfiles-for owl -->
+    <script src="js/bootstrap.min.js"></script><!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="js/jquery.superslides.js" type="text/javascript" charset="utf-8"></script><!-- banner-slider-js -->
+    <script src="js/application.js"></script><!-- banner-slider-js -->
+    <script type="text/javascript" src="js/numscroller-1.0.js"></script>
+</head>
+<body>
+<!-- header -->
+<header>
+    <div class="container">
+        <!-- nav -->
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <div class="logo">
+                        <h1><a href="index.html">内网穿透</a></h1>
+                    </div>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="index.html">首页</a></li>
+                       #* <li><a href="about.html">About</a></li>
+                        <li><a href="properties.html">Properties</a></li>*#
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">管理 <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="typography.html">登录</a></li>
+                                <li><a href="icons.html">注册</a></li>
+                            </ul>
+                        </li>
+                     #*   <li><a href="blog.html">Blog</a></li>
+                        <li><a href="contact.html">Contact</a></li>*#
+                    </ul>
+                </div>
+                <!-- /.navbar-collapse -->
+            </div>
+            <!-- /.container-fluid -->
+        </nav>
+        <script src="js/nav.js"></script><!-- nav-js -->
+        <!-- //nav -->
+    </div>
+</header>
+<!-- //header -->
+<!-- slider -->
+<div class="banner text-center">
+    <div class="loading-container">
+        <div class="pulse"></div>
+    </div>
+    <div id="slides">
+        <ul class="slides-container">
+            <li>
+                <img src="images/1.png" alt=""/>
+                <div class="container">
+                    <h3></h3>
+                    <p></p>
+                </div>
+            </li>
+            <li>
+                <img src="images/2.jpg" alt=""/>
+                <div class="container">
+                    <h3></h3>
+                    <div class="contrast">
+                        <p></p>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <img src="images/3.jpg" alt=""/>
+                <div class="container">
+                    <h3></h3>
+                    <div class="contrast">
+                        <p></p>
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <nav class="slides-navigation">
+            <a href="#" class="next">
+                <i class="fa fa-chevron-right" aria-hidden="true"></i>
+            </a>
+            <a href="#" class="prev">
+                <i class="fa fa-chevron-left" aria-hidden="true"></i>
+            </a>
+        </nav>
+    </div>
+</div>
+<!-- //slider -->
+
+<!-- main-content -->
+<div class="main-content">
+    <!-- welcome -->
+    <div class="features-w3l">
+        <div class="container">
+            <h3>使用教程</h3>
+            <pre>
+                <span class="pl-c"><span class="pl-c">#</span> frpc.ini</span>
+                <span class="pl-en">[common]</span>
+                <span class="pl-k">server_addr</span> = x.x.x.x
+                <span class="pl-k">server_port</span> = 7000
+                <span class="pl-k">auth_token</span> = 123
+                <span class="pl-en">[web]</span>
+                <span class="pl-k">type</span> = http
+                <span class="pl-k">local_port</span> = 80
+            </pre>
+        </div>
+    </div>
+    <!-- /welcome -->
+
+    <!-- Features -->
+    <div class="features-w3l">
+        <div class="container">
+            <h3>客户端下载</h3>
+            <div class="wthree_w3l_grids">
+                <div class="col-md-6 wthree_w3l_grid">
+                    <div class="col-xs-3 wthree_w3l_grid-left">
+                        <div class="wthree_w3l_grid-left1">
+                            <img src="images/windows-circle.png"/>
+                        </div>
+                    </div>
+                    <div class="col-xs-9 wthree_w3l_grid-right">
+                        <h4>windows</h4>
+                        <p>windows客户端<a href="#">下载。</a>提取码:xxxx</p>
+                    </div>
+                    <div class="clearfix"> </div>
+                </div>
+                <div class="col-md-6 wthree_w3l_grid wow fadeInRight animated" data-wow-delay=".5s">
+                    <div class="col-xs-3 wthree_w3l_grid-left">
+                        <div class="wthree_w3l_grid-left1">
+                            <img src="images/android-circle.png"/>
+                        </div>
+                    </div>
+                    <div class="col-xs-9 wthree_w3l_grid-right">
+                        <h4>android</h4>
+                        <p>android客户端<a href="#">下载。</a>提取码:xxxx</p>
+                    </div>
+                    <div class="clearfix"> </div>
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+            <div class="wthree_w3l_grids">
+                <div class="col-md-6 wthree_w3l_grid wow fadeInLeft animated" data-wow-delay=".5s">
+                    <div class="col-xs-3 wthree_w3l_grid-left">
+                        <div class="wthree_w3l_grid-left1">
+                            <img src="images/apple-circle.png"/>
+                        </div>
+                    </div>
+                    <div class="col-xs-9 wthree_w3l_grid-right">
+                        <h4>apple</h4>
+                        <p>apple客户端<a href="#">下载。</a>提取码:xxxx</p>
+                    </div>
+                    <div class="clearfix"> </div>
+                </div>
+                <div class="col-md-6 wthree_w3l_grid wow fadeInRight animated" data-wow-delay=".5s">
+                    <div class="col-xs-3 wthree_w3l_grid-left">
+                        <div class="wthree_w3l_grid-left1">
+                            <img src="images/mac_os_x-circle.png"/>
+                        </div>
+                    </div>
+                    <div class="col-xs-9 wthree_w3l_grid-right">
+                        <h4>mac</h4>
+                        <p>mac客户端<a href="#">下载。</a>提取码:xxxx</p>
+                    </div>
+                    <div class="clearfix"> </div>
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+        </div>
+    </div>
+    <!-- //Features -->
+
+    <!-- properties-list -->
+    <div class="properties" align="center">
+        <h1 style="color:#06a598;font-weight:400">如果你觉得好用，请作者喝杯咖啡吧！</h1>
+        <img src="images/wechatpay.jpg" height="450" width="450"/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <img src="images/alipay.jpg" height="450" width="450"/>
+        <!-- //slider -->
+    </div>
+    <!-- //properties-list -->
+    <!-- clients -->
+    <!--
+    <div class="w3-our-clients">
+        <div class="container">
+            <h3>our clients</h3>
+            <div id="owl-demo" class="owl-carousel text-center">
+                <div class="item">
+                    <a href="#" class="client-logo"><img src="images/parter1.png" class="img-responsive" alt="partner" /></a>
+                </div>
+                <div class="item">
+                    <a href="#" class="client-logo"><img src="images/parter2.png" class="img-responsive" alt="partner" /></a>
+                </div>
+                <div class="item">
+                    <a href="#" class="client-logo"><img src="images/parter3.png" class="img-responsive" alt="partner" /></a>
+                </div>
+                <div class="item">
+                    <a href="#" class="client-logo"><img src="images/parter4.png" class="img-responsive" alt="partner" /></a>
+                </div>
+                <div class="item">
+                    <a href="#" class="client-logo"><img src="images/parter5.png" class="img-responsive" alt="partner" /></a>
+                </div>
+                <div class="item">
+                    <a href="#" class="client-logo"><img src="images/parter6.png" class="img-responsive" alt="partner" /></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    -->
+    <!-- //clients -->
+    <!-- news letter -->
+
+    <!-- //news letter -->
+</div>
+<!-- //main-content -->
+<!-- footer -->
+<footer>
+    <!-- footer-top -->
+    <!--
+    <div class="footer-top">
+        <div class="container">
+            <div class="col-md-6 footer-top-left">
+                <h3><a href="index.html">ESTATE GROUP</a></h3>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled.</p>
+                <ul class="fb_icons2">
+                    <li><a class="fb" href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                    <li><a class="twit" href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                    <li><a class="goog" href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+                    <li><a class="pin" href="#"><i class="fa fa-pinterest-p" aria-hidden="true"></i></a></li>
+                    <li><a class="drib" href="#"><i class="fa fa-dribbble" aria-hidden="true"></i></a></li>
+                </ul>
+            </div>
+            <div class="col-md-3 footer-top-mid">
+                <h3>Our Company</h3>
+                <ul>
+                    <li><a href="index.html"><i class="fa fa-long-arrow-right" aria-hidden="true"></i>Home</a></li>
+                    <li><a href="about.html"><i class="fa fa-long-arrow-right" aria-hidden="true"></i>About</a></li>
+                    <li><a href="properties.html"><i class="fa fa-long-arrow-right" aria-hidden="true"></i>Properties</a></li>
+                    <li><a href="blog.html"><i class="fa fa-long-arrow-right" aria-hidden="true"></i>Blog</a></li>
+                    <li><a href="contact.html"><i class="fa fa-long-arrow-right" aria-hidden="true"></i>Contact</a></li>
+                </ul>
+            </div>
+            <div class="col-md-3 adress-agile">
+                <h3>Address</h3>
+                <address>
+                    <ul>
+                        <li>Parma Via Modena</li>
+                        <li>40019 Sant'Agata Bolognese</li>
+                        <li>BO, Italy</li>
+                        <li>Telephone : +1 (548) 123-456 7</li>
+                        <li>Email : <a class="mail" href="mailto:mail@example.com">info(at)estategroup.com</a></li>
+                    </ul>
+                </address>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+    -->
+    <!-- //footer-top -->
+    <div class="w3layouts-copyright">
+        <p class="footer">Copyright &copy; 2017.Company name All rights reserved.<a target="_blank" href=""></a></p>
+    </div>
+</footer>
+<!-- //footer -->
+<!-- here stars scrolling icon -->
+<script type="text/javascript">
+    $(document).ready(function() {
+        /*
+            var defaults = {
+            containerID: 'toTop', // fading element id
+            containerHoverID: 'toTopHover', // fading element hover id
+            scrollSpeed: 1200,
+            easingType: 'linear'
+            };
+        */
+
+        $().UItoTop({ easingType: 'easeOutQuart' });
+
+    });
+</script>
+<!-- start-smoth-scrolling -->
+<script type="text/javascript" src="js/move-top.js"></script>
+<script type="text/javascript" src="js/easing.js"></script>
+<script type="text/javascript">
+    jQuery(document).ready(function($) {
+        $(".scroll").click(function(event){
+            event.preventDefault();
+            $('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+        });
+    });
+</script>
+<!-- start-smoth-scrolling -->
+<!-- //here ends scrolling icon -->
+</body>
+</html>

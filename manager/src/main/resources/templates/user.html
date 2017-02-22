@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> - jqGird</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <link rel="shortcut icon" href="/penetrate-manager/images/favicon.ico"> <link href="/penetrate-manager/css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+    <link href="/penetrate-manager/css/font-awesome.css?v=4.4.0" rel="stylesheet">
+    <!-- jqgrid-->
+    <link href="/penetrate-manager/css/plugins/jqgrid/ui.jqgrid.css?0820" rel="stylesheet">
+    <link href="/penetrate-manager/css/animate.css" rel="stylesheet">
+    <link href="/penetrate-manager/css/style.css?v=4.1.0" rel="stylesheet">
+    <style>
+        /* Additional style to fix warning dialog position */
+        #alertmod_table_list_2 {
+            top: 900px !important;
+        }
+    </style>
+</head>
+<body class="gray-bg">
+    <div class="wrapper wrapper-content  animated fadeInRight">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="ibox ">
+                    <div class="ibox-content">
+                        <div class="jqGrid_wrapper">
+                            <table id="table"></table>
+                            <div id="pager"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 全局js -->
+    <script src="/penetrate-manager/js/jquery.min.js?v=2.1.4"></script>
+    <script src="/penetrate-manager/js/bootstrap.min.js?v=3.3.6"></script>
+    <!-- Peity -->
+    <script src="/penetrate-manager/js/plugins/peity/jquery.peity.min.js"></script>
+    <!-- jqGrid -->
+    <script src="/penetrate-manager/js/plugins/jqgrid/i18n/grid.locale-cn.js?0820"></script>
+    <script src="/penetrate-manager/js/plugins/jqgrid/jquery.jqGrid.min.js?0820"></script>
+    <!-- 自定义js -->
+    <script src="/penetrate-manager/js/content.js?v=1.0.0"></script>
+    <!-- Page-Level Scripts -->
+    <script>
+        $(document).ready(function () {
+            $.jgrid.defaults.styleUI = 'Bootstrap';
+            // Examle data for jqGrid
+            $.get("/penetrate-manager/admin/user/list", function(data){
+                var table_data = JSON.parse(data);
+                // Configuration for jqGrid Example 2
+                $("#table").jqGrid({
+                    data: table_data,
+                    datatype: "local",
+                    height: 450,
+                    autowidth: true,
+                    shrinkToFit: true,
+                    rowNum: 20,
+                    rowList: [10, 20, 30],
+                    colNames: ['序号', '名称', '昵称', '密码', '邮箱', '登录次数', '注册时间', '最近登录时间'],
+                    colModel: [
+                        {
+                            name: 'id',
+                            index: 'id',
+                            editable: true,
+                            width: 40,
+                            sorttype: "int",
+                            search: true
+                        },
+                        {
+                            name: 'name',
+                            index: 'name',
+                            editable: false,
+                            width: 70
+                        },
+                        {
+                            name: 'nickName',
+                            index: 'nickName',
+                            editable: false,
+                            width: 80
+                        },
+                        {
+                            name: 'password',
+                            index: 'password',
+                            editable: false,
+                            width: 80
+                        },
+                        {
+                            name: 'email',
+                            index: 'email',
+                            editable: true,
+                            width: 120
+                        },
+                        {
+                            name: 'loginCount',
+                            index: 'loginCount',
+                            editable: true,
+                            width: 50,
+                            align: "left",
+                            sorttype: "int"
+                        },
+                        {
+                            name: 'createTime',
+                            index: 'createTime',
+                            editable: true,
+                            width: 100,
+                            sorttype: "string",
+                        },
+                        {
+                            name: 'loginTime',
+                            index: 'loginTime',
+                            editable: true,
+                            width: 100,
+                            sorttype: "string",
+                        }
+                    ],
+                    pager: "#pager",
+                    viewrecords: true,
+                    caption: "用户列表",
+                    add: true,
+                    edit: true,
+                    addtext: 'Add',
+                    edittext: 'Edit',
+                    hidegrid: false
+                });
+            })
+
+            // Add selection
+            $("#table").setSelection(4, true);
+
+
+            // Setup buttons
+            $("#table").jqGrid('navGrid', '#pager', {
+                edit: true,
+                add: true,
+                del: true,
+                search: true
+            }, {
+                height: 200,
+                reloadAfterSubmit: true
+            });
+
+            // Add responsive to jqGrid
+            $(window).bind('resize', function () {
+                var width = $('.jqGrid_wrapper').width();
+                $('#table').setGridWidth(width);
+            });
+
+        });
+    </script>
+</body>
+
+</html>
