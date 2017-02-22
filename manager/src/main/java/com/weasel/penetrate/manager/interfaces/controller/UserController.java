@@ -6,9 +6,9 @@ import com.weasel.penetrate.manager.domain.User;
 import com.weasel.penetrate.manager.infrastructure.exception.UserExistException;
 import com.weasel.penetrate.manager.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
@@ -17,8 +17,8 @@ import static org.springframework.web.bind.annotation.RequestMethod.POST;
  * @author Dylan
  * @date 2017/1/22.
  */
-@RestController
-@RequestMapping(value = "/admin/user")
+@Controller
+@RequestMapping(value = "/user")
 public class UserController{
 
     @Autowired
@@ -58,6 +58,6 @@ public class UserController{
     @RequestMapping(value = "/list_view",method = GET)
     public String listView(){
 
-        return "user.vm";
+        return "user";
     }
 }

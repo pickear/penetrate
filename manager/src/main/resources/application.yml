@@ -8,17 +8,15 @@ jasypt:
     password: 666
 
 spring:
-   profiles:
-     active: ${runtime.env}
    thymeleaf:
      cache: false
      check-template: true
      check-template-location: true
      content-type: text/html
      encoding: UTF-8
-     mode: HTML5
      prefix: classpath:/templates/
      suffix: .html
+     mode: HTML5
    http:
      encoding:
        charset: UTF-8

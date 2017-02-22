@@ -50,7 +50,7 @@
         $(document).ready(function () {
             $.jgrid.defaults.styleUI = 'Bootstrap';
             // Examle data for jqGrid
-            $.get("/penetrate-manager/admin/user/list", function(data){
+            $.get("/penetrate-manager/user/list", function(data){
                 var table_data = JSON.parse(data);
                 // Configuration for jqGrid Example 2
                 $("#table").jqGrid({

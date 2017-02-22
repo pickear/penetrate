@@ -17,27 +17,20 @@ import static org.springframework.web.bind.annotation.RequestMethod.GET;
  * @date 2017/1/22.
  */
 @Controller
-@RequestMapping(value = "/admin")
-public class AdminController{
+public class HomeController {
 
-    private final static Logger log = LoggerFactory.getLogger(AdminController.class);
+    private final static Logger LOGGER = LoggerFactory.getLogger(HomeController.class);
 
-    @Autowired
-    private FrpConfigService frpConfigService;
+    @RequestMapping(value = {"/","home","index"},method = GET)
+    public String home(){
 
-    @RequestMapping(value = "/reload-config",method = GET)
-    public String reload(){
-
-
-        try {
-            frpConfigService.reloadConfig(Frp.getHome());
-            return "success";
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-        return "error";
+        return "home";
     }
+
+    @RequestMapping(value = "/welcome",method = GET)
+    public String welcome(){
+
+        return "welcome";
+    }
+
 }
