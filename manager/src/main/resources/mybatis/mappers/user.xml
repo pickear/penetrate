@@ -14,6 +14,7 @@
         <result property="loginCount" column="u_login_count"/>
         <result property="createTime" column="u_create_time"/>
         <result property="loginTime" column="u_login_time"/>
+        <collection property="roles" column="u_id" select="com.weasel.penetrate.manager.domain.Role.queryByUserId"/>
     </resultMap>
 
 

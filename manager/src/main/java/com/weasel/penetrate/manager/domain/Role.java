@@ -38,8 +38,6 @@ public class Role{
 	private String name;
 
 
-    private Map<String,Long> authTrans = new HashMap<String,Long>();
-    
     public Role(){}
 
     public Role(String name) {
@@ -68,14 +66,6 @@ public class Role{
 
 	public void setCode(String code) {
 		this.code = code;
-	}
-
-	public Map<String, Long> getAuthTrans() {
-		return authTrans;
-	}
-
-	public void setAuthTrans(Map<String, Long> authTrans) {
-		this.authTrans = authTrans;
 	}
 
 }

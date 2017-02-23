@@ -28,9 +28,8 @@ public class ShiroConfiguration {
     /** * Shiro的Web过滤器Factory 命名:shiroFilter<br /> * * @param securityManager * @return */
     @Bean(name = "shiroFilter")
     public ShiroFilterFactoryBean shiroFilterFactoryBean(SecurityManager securityManager) {
-        logger.info("注入Shiro的Web过滤器-->shiroFilter", ShiroFilterFactoryBean.class);
-        ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
 
+        ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
         //Shiro的核心安全接口,这个属性是必须的
         shiroFilterFactoryBean.setSecurityManager(securityManager);
         //要求登录时的链接(可根据项目的URL进行替换),非必须的属性,默认会自动寻找Web工程根目录下的"/login.jsp"页面
@@ -62,7 +61,6 @@ public class ShiroConfiguration {
     /** * 不指定名字的话，自动创建一个方法名第一个字母小写的bean * @Bean(name = "securityManager") * @return */
     @Bean
     public SecurityManager securityManager() {
-        logger.info("注入Shiro的Web过滤器-->securityManager", ShiroFilterFactoryBean.class);
         DefaultWebSecurityManager securityManager = new DefaultWebSecurityManager();
         securityManager.setRealm(userRealm());
         return securityManager;
@@ -93,6 +91,7 @@ public class ShiroConfiguration {
     public LifecycleBeanPostProcessor lifecycleBeanPostProcessor(){
         return new LifecycleBeanPostProcessor();
     }
+
     /** * 开启Shiro的注解(如@RequiresRoles,@RequiresPermissions),需借助SpringAOP扫描使用Shiro注解的类,并在必要时进行安全逻辑验证 * 配置以下两个bean(DefaultAdvisorAutoProxyCreator(可选)和AuthorizationAttributeSourceAdvisor)即可实现此功能 * @return */
     @Bean
     @DependsOn({"lifecycleBeanPostProcessor"})
@@ -101,6 +100,7 @@ public class ShiroConfiguration {
         advisorAutoProxyCreator.setProxyTargetClass(true);
         return advisorAutoProxyCreator;
     }
+
     @Bean
     public AuthorizationAttributeSourceAdvisor authorizationAttributeSourceAdvisor(){
         AuthorizationAttributeSourceAdvisor authorizationAttributeSourceAdvisor = new AuthorizationAttributeSourceAdvisor();
