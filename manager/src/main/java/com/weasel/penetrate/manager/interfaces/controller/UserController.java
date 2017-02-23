@@ -45,8 +45,8 @@ public class UserController{
         }
     }
 
-    @RequestMapping(value = "/list",method = GET)
     @ResponseBody
+    @RequestMapping(value = "/list",method = GET)
     public String list(){
 
         Page<User> page = service.queryPage(new Page<>());

@@ -22,7 +22,6 @@ public class User {
     private String createTime;
     private String loginTime;
     private String salt;
-
     private Set<Role> roles = Sets.newHashSet();
 
     public long getId() {

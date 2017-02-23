@@ -50,7 +50,7 @@ public class ShiroRealm extends AuthorizingRealm{
 		}
 		try {
 			if(StringUtils.isBlank(username)){
-				throw new AccountException("can not handle this login");
+				throw new AccountException("username is blank,can not handle this login");
 			}
 			User user = userRepository.getUserByName(username);
 			checkUser(user, username);
