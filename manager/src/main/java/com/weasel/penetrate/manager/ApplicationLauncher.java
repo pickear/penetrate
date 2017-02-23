@@ -21,8 +21,14 @@ public class ApplicationLauncher {
 
     public static void main(String[] args) {
 
-        String runtimeEnv = System.getProperty("runtime.env",DEFAULT_ENV);
-        System.setProperty("runtime.env",runtimeEnv);
+        String runtimeEnv = System.getProperty("spring.profiles.active");
+
+        if(StringUtils.isBlank(runtimeEnv)){
+            log.warn("找不到环境参数设置，使用默认环境[{}]，如果需要设置环境参数，在启动脚本加上如:[{}]",DEFAULT_ENV,"-Dspring.profiles.active=test");
+            runtimeEnv = DEFAULT_ENV;
+        }
+
+        System.setProperty("spring.profiles.active",runtimeEnv);
         log.info("当前运行环境是[{}]",runtimeEnv);
 
         String frpHome = System.getProperty("frp.home");
