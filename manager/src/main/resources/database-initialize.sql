@@ -98,6 +98,7 @@ CREATE TABLE `user_role` (
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 INSERT INTO user(id,name,nick_name,password,salt,email,login_count,create_time,login_time) VALUES (1,'admin','manager','ff709232640c89dbfa7e60efa2ad80cd','b3e7cdbc601dfb86f1298be0d075c0ec','pickear@gmail.com',1,'2017-02-20 12:00:00','2017-02-20 12:00:00');
+INSERT INTO user(id,name,nick_name,password,salt,email,login_count,create_time,login_time) VALUES (2,'dylan','普通用户','ff709232640c89dbfa7e60efa2ad80cd','b3e7cdbc601dfb86f1298be0d075c0ec','114231159@qq.com',1,'2017-02-20 12:00:00','2017-02-20 12:00:00');
 
 INSERT INTO `role` VALUES ('1', 'ADMIN', '管理员');
 
