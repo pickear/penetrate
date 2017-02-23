@@ -13,6 +13,7 @@
 --    See the License for the specific language governing permissions and
 --    limitations under the License.
 --
+SET FOREIGN_KEY_CHECKS=0;
 
 DROP TABLE IF EXISTS `device`;
 CREATE TABLE `device` (
@@ -27,6 +28,8 @@ CREATE TABLE `device` (
   `username` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+SET FOREIGN_KEY_CHECKS=0;
 
 DROP TABLE IF EXISTS `common`;
 CREATE TABLE `common` (
@@ -54,6 +57,8 @@ CREATE TABLE `common` (
 -- ----------------------------
 -- Table structure for `user`
 -- ----------------------------
+SET FOREIGN_KEY_CHECKS=0;
+
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '自增ID',
@@ -68,4 +73,32 @@ CREATE TABLE `user` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+SET FOREIGN_KEY_CHECKS=0;
+
+DROP TABLE IF EXISTS `role`;
+CREATE TABLE `role` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '自增ID',
+  `code` varchar(50) NOT NULL COMMENT '角色编码',
+  `name` varchar(50) NOT NULL COMMENT '角色名称',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+SET FOREIGN_KEY_CHECKS=0;
+
+DROP TABLE IF EXISTS `user_role`;
+CREATE TABLE `user_role` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL COMMENT '用户ID',
+  `role_id` int(11) NOT NULL COMMENT '角色ID',
+  PRIMARY KEY (`id`),
+  KEY `u_key` (`user_id`),
+  KEY `r_key` (`role_id`),
+  CONSTRAINT `r_key` FOREIGN KEY (`role_id`) REFERENCES `role` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION,
+  CONSTRAINT `u_key` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
 INSERT INTO user(id,name,nick_name,password,salt,email,login_count,create_time,login_time) VALUES (1,'admin','manager','ff709232640c89dbfa7e60efa2ad80cd','b3e7cdbc601dfb86f1298be0d075c0ec','pickear@gmail.com',1,'2017-02-20 12:00:00','2017-02-20 12:00:00');
+
+INSERT INTO `role` VALUES ('1', 'ADMIN', '管理员');
+
+INSERT INTO `user_role` VALUES ('1', '1', '1');
