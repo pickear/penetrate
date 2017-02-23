@@ -60,6 +60,7 @@ CREATE TABLE `user` (
   `name` varchar(20) NOT NULL COMMENT '用户名',
   `nick_name` varchar(20) NOT NULL COMMENT '用户昵称',
   `password` varchar(50) NOT NULL COMMENT '密码',
+  `salt` varchar(50) NOT NULL COMMENT '加密盐',
   `email` varchar(50) NOT NULL COMMENT '邮箱',
   `login_count` INT(10) COMMENT '登录次数',
   `create_time` varchar(20) NOT NULL COMMENT '注册时间',
@@ -67,7 +68,4 @@ CREATE TABLE `user` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-INSERT INTO user(id,name,nick_name,password,email,login_count,create_time,login_time) VALUES (1,'admin','manager','123','pickear@gmail.com',1,'2017-02-20 12:00:00','2017-02-20 12:00:00');
-
---  insert into city (name, state, country) values ('San Francisco', 'CA', 'US');
---  insert into hotel(city, name, address, zip) values (1, 'Conrad Treasury Place', 'William & George Streets', '4001')
+INSERT INTO user(id,name,nick_name,password,salt,email,login_count,create_time,login_time) VALUES (1,'admin','manager','ff709232640c89dbfa7e60efa2ad80cd','b3e7cdbc601dfb86f1298be0d075c0ec','pickear@gmail.com',1,'2017-02-20 12:00:00','2017-02-20 12:00:00');

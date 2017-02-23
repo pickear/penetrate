@@ -9,6 +9,7 @@
         <result property="name" column="u_name"/>
         <result property="nickName" column="u_nick_name"/>
         <result property="password" column="u_password"/>
+        <result property="salt" column="u_salt"/>
         <result property="email" column="u_email"/>
         <result property="loginCount" column="u_login_count"/>
         <result property="createTime" column="u_create_time"/>
@@ -21,6 +22,7 @@
                 u.name as u_name,
                 u.nick_name as u_nick_name,
                 u.password as u_password,
+                u.salt as u_salt,
                 u.email as u_email,
                 u.login_count as u_login_count,
                 u.create_time as u_create_time,

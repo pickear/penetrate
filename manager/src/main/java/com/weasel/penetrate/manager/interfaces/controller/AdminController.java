@@ -20,7 +20,7 @@ import static org.springframework.web.bind.annotation.RequestMethod.GET;
 @RequestMapping(value = "/admin")
 public class AdminController{
 
-    private final static Logger log = LoggerFactory.getLogger(AdminController.class);
+    private final static Logger logger = LoggerFactory.getLogger(AdminController.class);
 
     @Autowired
     private FrpConfigService frpConfigService;

@@ -79,7 +79,20 @@
 				<artifactId>c3p0</artifactId>
 				<version>0.9.1.2</version>
 			</dependency>
+			<!-- 使用Shiro认证 -->
+			<dependency>
+				<groupId>org.apache.shiro</groupId>
+				<artifactId>shiro-spring</artifactId>
+				<version>1.3.2</version>
+			</dependency>
+			<!-- 在Thymeleaf模板引擎中集成Shiro -->
+			<dependency>
+				<groupId>com.github.theborakompanioni</groupId>
+				<artifactId>thymeleaf-extras-shiro</artifactId>
+				<version>2.0.0</version>
+			</dependency>
 		</dependencies>
+
 	</dependencyManagement>
 
 	<build>
