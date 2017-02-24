@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit">
 
-    <title>内网穿透</title>
+    <title>xxxx</title>
 
     <meta name="keywords" content="">
     <meta name="description" content="">
@@ -35,12 +34,12 @@
                                 <span class="clear">
                                     <span class="block m-t-xs" style="font-size:20px;">
                                         <i class="fa fa-area-chart"></i>
-                                        <strong class="font-bold">内网穿透</strong>
+                                        <strong class="font-bold">xxxx</strong>
                                     </span>
                                 </span>
                             </a>
                         </div>
-                        <div class="logo-element">内网穿透
+                        <div class="logo-element">xxxx
                         </div>
                     </li>
                     <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
@@ -55,7 +54,7 @@
                     <li>
                         <a href="#">
                             <i class="fa fa fa-bar-chart-o"></i>
-                            <span class="nav-label">用户管理</span>
+                            <span class="nav-label">系统管理</span>
                             <span class="fa arrow"></span>
                         </a>
                         <ul class="nav nav-second-level">
@@ -64,9 +63,6 @@
                             </li>
                             <li>
                                 <a class="J_menuItem" href="graph_flot.html">角色列表</a>
-                            </li>
-                            <li>
-                                <a class="J_menuItem" href="graph_morris.html">权限列表</a>
                             </li>
                         </ul>
                     </li>
@@ -421,6 +417,23 @@
                                 </li>
                             </ul>
                         </li>
+                        <li class="dropdown layui-nav">
+                            <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+                                <img src="/penetrate-manager/images/0.jpg">
+                                <span th:text="${currentUser.name}"></span>
+                                <span class="layui-nav-more"></span>
+                            </a>
+                            <ul class="dropdown-menu layui-nav-child">
+                                <li>
+                                    <a href="mailbox.html">
+                                        <i class="fa fa-user-circle" aria-hidden="true"></i> 个人信息
+                                    </a>
+                                    <a href="mailbox.html">
+                                        <i class="fa fa-sign-out" aria-hidden="true"></i> 注销
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
                     </ul>
                 </nav>
             </div>
@@ -430,18 +443,15 @@
         </div>
         <!--右侧部分结束-->
     </div>
-
     <!-- 全局js -->
     <script src="/penetrate-manager/js/jquery.min.js?v=2.1.4"></script>
     <script src="/penetrate-manager/js/bootstrap.min.js?v=3.3.6"></script>
     <script src="/penetrate-manager/js/plugins/metisMenu/jquery.metisMenu.js"></script>
     <script src="/penetrate-manager/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
     <script src="/penetrate-manager/js/plugins/layer/layer.min.js"></script>
-
     <!-- 自定义js -->
     <script src="/penetrate-manager/js/hAdmin.js?v=4.1.0"></script>
     <script type="text/javascript" src="/penetrate-manager/js/index.js"></script>
-
     <!-- 第三方插件 -->
     <script src="/penetrate-manager/js/plugins/pace/pace.min.js"></script>
 </body>

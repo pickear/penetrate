@@ -54,7 +54,7 @@ public class ShiroRealm extends AuthorizingRealm{
 			}
 			User user = userRepository.getUserByName(username);
 			checkUser(user, username);
-			return new SimpleAuthenticationInfo(user.getName(), user.getPassword(), ByteSource.Util.bytes(user.getSalt()), getName());
+			return new SimpleAuthenticationInfo(user, user.getPassword(), ByteSource.Util.bytes(user.getSalt()), getName());
 		} catch (Exception e) {
 			throw translateAuthenticationException(e);
 		}
@@ -66,13 +66,13 @@ public class ShiroRealm extends AuthorizingRealm{
 	@Override
 	protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
 		
-		String username = (String)getAvailablePrincipal(principals);
+		User user = (User)getAvailablePrincipal(principals);
 		
 		if(LOG.isTraceEnabled()){
-			LOG.trace("开始授权 "+ username);
+			LOG.trace("开始授权 "+ user.getName());
 		}
 		
-		User user = userRepository.getUserByName(username);
+		//User user = userRepository.getUserByName(username);
 		
 		SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
 		Set<String> rolesAsString = user.getRolesAsString();

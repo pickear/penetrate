@@ -18,18 +18,11 @@
  */
 package com.weasel.penetrate.manager.domain;
 
-import java.util.HashMap;
-import java.util.Map;
-
 /**
  * @author Dylan
  * @time 2013-8-5
  */
 public class Role{
-    /**
-	 * 
-	 */
-	private static final long serialVersionUID = 6769720272431073142L;
 
 	private long id;
 	

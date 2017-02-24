@@ -1,6 +1,7 @@
 package com.weasel.penetrate.manager.interfaces.controller;
 
 import com.weasel.penetrate.manager.domain.User;
+import com.weasel.penetrate.manager.infrastructure.helper.SecurityHelper;
 import org.apache.catalina.servlet4preview.http.HttpServletRequest;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
@@ -8,6 +9,7 @@ import org.apache.shiro.subject.Subject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.ServletRequestUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -24,8 +26,9 @@ public class HomeController {
     private final static Logger logger = LoggerFactory.getLogger(HomeController.class);
 
     @RequestMapping(value = {"/","home","index"},method = GET)
-    public String home(){
+    public String home(Model model){
 
+        model.addAttribute("currentUser", SecurityHelper.getCurrentUser());
         return "home";
     }
 
@@ -37,8 +40,6 @@ public class HomeController {
 
     @RequestMapping(value = "/login",method = GET)
     public String login(User user, HttpServletRequest request){
-
-        //user.encodePassword();
 
         Subject currentUser = SecurityUtils.getSubject();
         if (currentUser.isAuthenticated()) {

@@ -7936,3 +7936,44 @@ body.skin-3 {
     font-size: 0;
     background-color: #131e26;
 }
+
+.layui-nav img{
+    width: 40px; height: 40px; border-radius: 100%;
+    /*position: relative;
+    top: 15px;*/
+}
+.layui-nav .layui-nav-more{
+    top:30px;
+}
+
+.layui-nav * {
+    font-size: 14px;
+}
+.layui-nav .layui-nav-more{
+    content:'';
+    width:0;height:0;
+    border-style:solid dashed dashed;
+    border-color:#c2c2c2 transparent transparent;
+    overflow:hidden;
+    cursor:pointer;
+    transition:all .2s;
+    -webkit-transition:all .2s;
+    position:absolute;
+    top:33px;
+    right:-5px;
+    border-width:6px
+}
+
+.layui-nav-child {
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 65px;
+    line-height: 36px;
+    padding: 5px 0;
+    border: 1px solid #d2d2d2;
+    background-color: #fff;
+    z-index: 100;
+    border-radius: 2px;
+    white-space: nowrap;
+}

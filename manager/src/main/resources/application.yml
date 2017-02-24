@@ -9,6 +9,7 @@ jasypt:
 
 spring:
    thymeleaf:
+     enabled: true
      cache: false
      check-template: true
      check-template-location: true

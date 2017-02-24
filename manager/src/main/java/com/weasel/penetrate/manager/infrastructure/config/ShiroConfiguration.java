@@ -1,6 +1,7 @@
-package com.weasel.penetrate.manager.infrastructure.shiro;
+package com.weasel.penetrate.manager.infrastructure.config;
 
 import at.pollux.thymeleaf.shiro.dialect.ShiroDialect;
+import com.weasel.penetrate.manager.infrastructure.shiro.ShiroRealm;
 import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
 import org.apache.shiro.spring.LifecycleBeanPostProcessor;
 import org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor;

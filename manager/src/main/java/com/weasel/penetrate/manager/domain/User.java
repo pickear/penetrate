@@ -3,6 +3,7 @@ package com.weasel.penetrate.manager.domain;
 import com.google.common.collect.Sets;
 import com.weasel.penetrate.manager.infrastructure.helper.PasswordHelper;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -10,7 +11,7 @@ import java.util.Set;
  * @author Dylan
  * @date 2017/2/6.
  */
-public class User {
+public class User implements Serializable{
 
     private long id;
     private String name;
