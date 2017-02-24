@@ -8,7 +8,7 @@ import com.google.gson.GsonBuilder;
  */
 public final class GsonHelper {
 
-    private final static Gson GSON = new GsonBuilder().create();
+    private final static Gson GSON = new GsonBuilder().serializeNulls().create();
 
 
     public static String toGson(Object obj){
