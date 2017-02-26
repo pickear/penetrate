@@ -8,6 +8,8 @@ import org.apache.commons.lang3.StringUtils;
  */
 public class Device {
 
+    private long id;
+
     /**
      * 所属用户
      */
@@ -49,6 +51,14 @@ public class Device {
         this.deviceType = deviceType;
     }
 
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
     public String getUsername() {
         return username;
     }
@@ -77,7 +87,7 @@ public class Device {
         return protocolType;
     }
 
-    public void setProtocolTypeType(ProtocolType protocolType) {
+    public void setProtocolType(ProtocolType protocolType) {
         this.protocolType = protocolType;
     }
 

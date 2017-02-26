@@ -19,5 +19,9 @@ public final class SecurityHelper {
         return null;
     }
 
+    public static boolean isAdmin(){
+        return SecurityUtils.getSubject().hasRole("ADMIN");
+    }
+
     private SecurityHelper(){}
 }

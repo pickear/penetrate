@@ -4,6 +4,7 @@ import com.weasel.penetrate.manager.domain.User;
 import com.weasel.penetrate.manager.infrastructure.helper.SecurityHelper;
 import org.apache.catalina.servlet4preview.http.HttpServletRequest;
 import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.IncorrectCredentialsException;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
 import org.slf4j.Logger;
@@ -14,7 +15,7 @@ import org.springframework.web.bind.ServletRequestUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import static org.springframework.web.bind.annotation.RequestMethod.GET;
+import static org.springframework.web.bind.annotation.RequestMethod.*;
 
 /**
  * @author Dylan
@@ -39,16 +40,28 @@ public class HomeController {
     }
 
     @RequestMapping(value = "/login",method = GET)
+    public String login(){
+
+        return "login";
+    }
+
+    @RequestMapping(value = "/login",method = POST)
     public String login(User user, HttpServletRequest request){
 
-        Subject currentUser = SecurityUtils.getSubject();
-        if (currentUser.isAuthenticated()) {
-            currentUser.logout();
-        }
+        try {
 
-        boolean rememberMe = ServletRequestUtils.getBooleanParameter(request, "rememberMe", false);
-        UsernamePasswordToken token = new UsernamePasswordToken(user.getName(), user.getPassword(), rememberMe);
-        currentUser.login(token); // 登录
+            Subject currentUser = SecurityUtils.getSubject();
+            if (currentUser.isAuthenticated()) {
+                currentUser.logout();
+            }
+
+            boolean rememberMe = ServletRequestUtils.getBooleanParameter(request, "rememberMe", false);
+            UsernamePasswordToken token = new UsernamePasswordToken(user.getName(), user.getPassword(), rememberMe);
+            currentUser.login(token); // 登录
+        }catch (IncorrectCredentialsException exception){
+            logger.error(exception.getMessage());
+            return "redirect:/login?code=1";
+        }
 
         return "redirect:/home";
     }
