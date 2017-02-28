@@ -2223,9 +2223,9 @@
 				width: 100%;
 			}
 
-		.image.round img {
+		/*.image.round img {
 			border-radius: 100%;
-		}
+		}*/
 
 		.image.left {
 			float: left;
@@ -2727,7 +2727,7 @@
 			padding: 0;
 			position: absolute;
 			top: 0;
-			font-size: 1em;
+			font-size: 3em;
 		}
 
 			#header .logo strong {
@@ -2958,6 +2958,11 @@
 			font-size: 2em;
 		}
 
+		#banner .icon img {
+			width: 50px;
+			height: 50px;
+		}
+
 		#banner p {
 			font-size: 1em;
 			color: rgba(255, 255, 255, 0.55);
@@ -3019,7 +3024,7 @@
 				}
 
 				#banner h1 {
-					font-size: 3em;
+					font-size: 2em;
 				}
 
 				#banner h3 {
@@ -3151,3 +3156,13 @@
 			}
 
 		}
+
+#three h1{
+	font-size: 2em;
+}
+
+#three .course{
+	margin-left: 20px;
+	margin-top: 0px;
+	text-align:left;
+}
