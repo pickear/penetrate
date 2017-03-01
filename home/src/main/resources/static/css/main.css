@@ -2938,7 +2938,7 @@
 		}
 
 		#banner h1 {
-			font-size: 3.5em;
+			font-size: 2.3em;
 			font-weight: 400;
 			color: #fff;
 			line-height: 1em;
@@ -3109,7 +3109,7 @@
 /* Footer */
 
 	#footer {
-		padding: 6em 0;
+		padding: 1em 0;
 		background: #6cc091;
 		color: #fff;
 		text-align: center;
@@ -3161,8 +3161,21 @@
 	font-size: 2em;
 }
 
+#three .feetip{
+	margin-top: 5em;
+}
+
 #three .course{
-	margin-left: 20px;
+	margin-left: 5em;
 	margin-top: 0px;
 	text-align:left;
+}
+
+#three .course header{
+	text-align: center;
+}
+
+.qqicon img{
+	width: 30px;
+	height: 30px;
 }
