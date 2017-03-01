@@ -1,0 +1,5 @@
+penetrate:
+   home:
+      domain: http://home.tunnel.jlw365.com
+   manager:
+      domain: http://manager.tunnel.jlw365.com

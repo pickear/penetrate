@@ -1,21 +1,20 @@
 <!DOCTYPE HTML>
-<html>
+<html xmlns:th="http://www.thymeleaf.org" >
 <head>
 <title>Home</title>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="stylesheet" href="/penetrate-home/css/main.css" />
+<link rel="stylesheet" th:href="@{/css/main.css}"/>
 </head>
 <body>
-
 <!-- Header -->
 <header id="header">
 	<div class="inner">
 		<a href="#" class="logo"><strong>FRP内网穿透</strong></a>
 		<nav id="nav">
-			<a href="#">Home</a>
-			<a href="generic.html">Course</a>
-			<a href="/penetrate-manager/login">Login</a>
+			<a th:href="@{/home}">首页</a>
+			<a th:href="@{/course}">教程</a>
+			<a th:href="${managerDomain}+'/login'">登录</a>
 		</nav>
 		<a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>
 	</div>
@@ -31,26 +30,26 @@
 		<div class="flex ">
 
 			<div>
-				<span class="icon"><img src="/penetrate-home/images/windows.png"></span>
+				<span class="icon"><img th:src="@{/images/windows.png}"></span>
 				<h3>Windows</h3>
-				<p><a href="#">x86客户端</a>&nbsp;&nbsp;<a href="#">x64客户端</a></p>
+				<p><a href="http://pan.baidu.com/s/1bMBZFC" target="_blank">386</a>&nbsp;&nbsp;<a href="http://pan.baidu.com/s/1pKGLNZl" target="_blank">amd64</a></p>
 			</div>
 
 			<div>
-				<span class="icon"><img src="/penetrate-home/images/linux.png"></span>
+				<span class="icon"><img th:src="@{/images/linux.png}"></span>
 				<h3>Linux</h3>
-				<p><a href="#">x86客户端</a>&nbsp;&nbsp;<a href="#">x64客户端</a>&nbsp;&nbsp;<a href="#">arm客户端</a>&nbsp;&nbsp;<a href="#">arm64客户端</a></p>
+				<p><a href="http://pan.baidu.com/s/1bKAgmq" target="_blank">386</a>&nbsp;&nbsp;<a href="http://pan.baidu.com/s/1dFOhXDJ" target="_blank">mipsle</a>&nbsp;&nbsp;<a href="http://pan.baidu.com/s/1miv3ypa" target="_blank">mips64le</a>&nbsp;&nbsp;<a href="http://pan.baidu.com/s/1ceSPUe" target="_blank">mips</a>&nbsp;&nbsp;<a href="http://pan.baidu.com/s/1miNTCXM" target="_blank">mips64</a>&nbsp;&nbsp;<a href="http://pan.baidu.com/s/1kVLnS8Z" target="_blank">arm</a>&nbsp;&nbsp;<a href="http://pan.baidu.com/s/1o8ptK74" target="_blank">amd64</a></p>
 			</div>
 
 			<div>
-				<span class="icon"><img src="/penetrate-home/images/mac.png"></span>
+				<span class="icon"><img th:src="@{/images/mac.png}"></span>
 				<h3>Mac</h3>
-				<p><a href="#">x86</a>&nbsp;&nbsp;<a href="#">x64</a></p>
+				<p><a href="http://pan.baidu.com/s/1i5mgiX3" target="_blank">amd64</a></p>
 			</div>
 
 		</div>
 
-		<p class="qqicon"><img src="/penetrate-home/images/qq.png">QQ交流:372831385</p>
+		<p class="qqicon"><img th:src="@{/images/qq.png}">QQ交流:372831385</p>
 		<footer>
 			<a href="#" class="button">详细教程</a>
 		</footer>
@@ -108,7 +107,7 @@
 		<div class="flex flex-2">
 			<article>
 				<div class="image round">
-					<img src="/penetrate-home/images/alipay.jpg"  width="200" height="200" alt="支付宝二维码" />
+					<img th:src="@{/images/alipay.jpg}" width="200" height="200" alt="支付宝二维码" />
 				</div>
 				<!--<header>
 					<h5>支付宝</h5>
@@ -120,7 +119,7 @@
 			</article>
 			<article>
 				<div class="image round">
-					<img src="/penetrate-home/images/wxpay.png" width="200" height="200" alt="微信二维码" />
+					<img th:src="@{/images/wxpay.png}" width="200" height="200" alt="微信二维码" />
 				</div>
 				<!--<header>
 					<h5>微信</h5>
@@ -142,10 +141,10 @@
 </footer>
 
 <!-- Scripts -->
-<script src="/penetrate-home/js/jquery.min.js"></script>
-<script src="/penetrate-home/js/skel.min.js"></script>
-<script src="/penetrate-home/js/util.js"></script>
-<script src="/penetrate-home/js/main.js"></script>
+<script th:src="@{/js/jquery.min.js}"></script>
+<script th:src="@{/js/skel.min.js}"></script>
+<script th:src="@{/js/util.js}"></script>
+<script th:src="@{/js/main.js}"></script>
 
 </body>
 </html>
