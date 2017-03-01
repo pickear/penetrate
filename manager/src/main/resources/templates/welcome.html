@@ -6,10 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--360浏览器优先以webkit内核解析-->
     <title> - 主页示例</title>
-    <link rel="shortcut icon" href="favicon.ico"> <link href="/penetrate-manager/css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
-    <link href="/penetrate-manager/css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
-    <link href="/penetrate-manager/css/animate.css" rel="stylesheet">
-    <link href="/penetrate-manager/css/style.css?v=4.1.0" rel="stylesheet">
+    <link rel="shortcut icon" href="favicon.ico">
+    <link th:href="@{/css/bootstrap.min.css?v=3.3.6}" rel="stylesheet">
+    <link th:href="@{/css/font-awesome.min.css?v=4.4.0}" rel="stylesheet">
+    <link th:href="@{/css/animate.css}" rel="stylesheet">
+    <link th:href="@{/css/style.css?v=4.1.0}" rel="stylesheet">
 </head>
 
 <body class="gray-bg">
@@ -230,11 +231,11 @@
                                                         </div>
                                                 </td>
                                                 <td class="project-people">
-                                                    <a href="projects.html"><img alt="image" class="img-circle" src="/penetrate-manager/images/a3.jpg"></a>
-                                                    <a href="projects.html"><img alt="image" class="img-circle" src="/penetrate-manager/images/a1.jpg"></a>
-                                                    <a href="projects.html"><img alt="image" class="img-circle" src="/penetrate-manager/images/a2.jpg"></a>
-                                                    <a href="projects.html"><img alt="image" class="img-circle" src="/penetrate-manager/images/a4.jpg"></a>
-                                                    <a href="projects.html"><img alt="image" class="img-circle" src="/penetrate-manager/images/a5.jpg"></a>
+                                                    <a href="projects.html"><img alt="image" class="img-circle" th:src="@{/images/a3.jpg}"></a>
+                                                    <a href="projects.html"><img alt="image" class="img-circle" th:src="@{/images/a1.jpg}"></a>
+                                                    <a href="projects.html"><img alt="image" class="img-circle" th:src="@{/images/a2.jpg}"></a>
+                                                    <a href="projects.html"><img alt="image" class="img-circle" th:src="@{/images/a4.jpg}"></a>
+                                                    <a href="projects.html"><img alt="image" class="img-circle" th:src="@{/images/a5.jpg}"></a>
                                                 </td>
                                                 <td class="project-actions">
                                                     <a href="projects.html#" class="btn btn-white btn-sm"><i class="fa fa-folder"></i> 查看 </a>
@@ -257,9 +258,9 @@
                                                     </div>
                                                 </td>
                                                 <td class="project-people">
-                                                    <a href="projects.html"><img alt="image" class="img-circle" src="/penetrate-manager/images/a7.jpg"></a>
-                                                    <a href="projects.html"><img alt="image" class="img-circle" src="/penetrate-manager/images/a6.jpg"></a>
-                                                    <a href="projects.html"><img alt="image" class="img-circle" src="/penetrate-manager/images/a3.jpg"></a>
+                                                    <a href="projects.html"><img alt="image" class="img-circle" th:src="@{/images/a7.jpg}"></a>
+                                                    <a href="projects.html"><img alt="image" class="img-circle" th:src="@{/images/a6.jpg}"></a>
+                                                    <a href="projects.html"><img alt="image" class="img-circle" th:src="@{/images/a3.jpg}"></a>
                                                 </td>
                                                 <td class="project-actions">
                                                     <a href="projects.html#" class="btn btn-white btn-sm"><i class="fa fa-folder"></i> 查看 </a>
@@ -282,8 +283,8 @@
                                                     </div>
                                                 </td>
                                                 <td class="project-people">
-                                                    <a href="projects.html"><img alt="image" class="img-circle" src="/penetrate-manager/images/a5.jpg"></a>
-                                                    <a href="projects.html"><img alt="image" class="img-circle" src="/penetrate-manager/images/a3.jpg"></a>
+                                                    <a href="projects.html"><img alt="image" class="img-circle" th:src="@{/images/a5.jpg}"></a>
+                                                    <a href="projects.html"><img alt="image" class="img-circle" th:src="@{/images/a3.jpg}"></a>
                                                 </td>
                                                 <td class="project-actions">
                                                     <a href="projects.html#" class="btn btn-white btn-sm"><i class="fa fa-folder"></i> 查看 </a>
@@ -306,10 +307,10 @@
                                                     </div>
                                                 </td>
                                                 <td class="project-people">
-                                                    <a href="projects.html"><img alt="image" class="img-circle" src="/penetrate-manager/images/a2.jpg"></a>
-                                                    <a href="projects.html"><img alt="image" class="img-circle" src="/penetrate-manager/images/a3.jpg"></a>
-                                                    <a href="projects.html"><img alt="image" class="img-circle" src="/penetrate-manager/images/a1.jpg"></a>
-                                                    <a href="projects.html"><img alt="image" class="img-circle" src="/penetrate-manager/images/a7.jpg"></a>
+                                                    <a href="projects.html"><img alt="image" class="img-circle" th:src="@{/images/a2.jpg}"></a>
+                                                    <a href="projects.html"><img alt="image" class="img-circle" th:src="@{/images/a3.jpg}"></a>
+                                                    <a href="projects.html"><img alt="image" class="img-circle" th:src="@{/images/a1.jpg}"></a>
+                                                    <a href="projects.html"><img alt="image" class="img-circle" th:src="@{/images/a7.jpg}"></a>
                                                 </td>
                                                 <td class="project-actions">
                                                     <a href="projects.html#" class="btn btn-white btn-sm"><i class="fa fa-folder"></i> 查看 </a>
@@ -332,7 +333,7 @@
                                                     </div>
                                                 </td>
                                                 <td class="project-people">
-                                                    <a href="projects.html"><img alt="image" class="img-circle" src="/penetrate-manager/images/a4.jpg"></a>
+                                                    <a href="projects.html"><img alt="image" class="img-circle" th:src="@{/images/a4.jpg}"></a>
                                                 </td>
                                                 <td class="project-actions">
                                                     <a href="projects.html#" class="btn btn-white btn-sm"><i class="fa fa-folder"></i> 查看 </a>
@@ -355,10 +356,10 @@
                                                     </div>
                                                 </td>
                                                 <td class="project-people">
-                                                    <a href="projects.html"><img alt="image" class="img-circle" src="/penetrate-manager/images/a1.jpg"></a>
-                                                    <a href="projects.html"><img alt="image" class="img-circle" src="/penetrate-manager/images/a2.jpg"></a>
-                                                    <a href="projects.html"><img alt="image" class="img-circle" src="/penetrate-manager/images/a4.jpg"></a>
-                                                    <a href="projects.html"><img alt="image" class="img-circle" src="/penetrate-manager/images/a5.jpg"></a>
+                                                    <a href="projects.html"><img alt="image" class="img-circle" th:src="@{/images/a1.jpg}"></a>
+                                                    <a href="projects.html"><img alt="image" class="img-circle" th:src="@{/images/a2.jpg}"></a>
+                                                    <a href="projects.html"><img alt="image" class="img-circle" th:src="@{/images/a4.jpg}"></a>
+                                                    <a href="projects.html"><img alt="image" class="img-circle" th:src="@{/images/a5.jpg}"></a>
                                                 </td>
                                                 <td class="project-actions">
                                                     <a href="projects.html#" class="btn btn-white btn-sm"><i class="fa fa-folder"></i> 查看 </a>
@@ -381,9 +382,9 @@
                                                     </div>
                                                 </td>
                                                 <td class="project-people">
-                                                    <a href="projects.html"><img alt="image" class="img-circle" src="/penetrate-manager/images/a7.jpg"></a>
-                                                    <a href="projects.html"><img alt="image" class="img-circle" src="/penetrate-manager/images/a6.jpg"></a>
-                                                    <a href="projects.html"><img alt="image" class="img-circle" src="/penetrate-manager/images/a3.jpg"></a>
+                                                    <a href="projects.html"><img alt="image" class="img-circle" th:src="@{/images/a7.jpg}"></a>
+                                                    <a href="projects.html"><img alt="image" class="img-circle" th:src="@{/images/a6.jpg}"></a>
+                                                    <a href="projects.html"><img alt="image" class="img-circle" th:src="@{/images/a3.jpg}"></a>
                                                 </td>
                                                 <td class="project-actions">
                                                     <a href="projects.html#" class="btn btn-white btn-sm"><i class="fa fa-folder"></i> 查看 </a>
@@ -597,16 +598,16 @@
         </div>
     </div>
     <!-- 全局js -->
-    <script src="/penetrate-manager/js/jquery.min.js?v=2.1.4"></script>
-    <script src="/penetrate-manager/js/bootstrap.min.js?v=3.3.6"></script>
-    <script src="/penetrate-manager/js/plugins/layer/layer.min.js"></script>
+    <script th:src="@{/js/jquery.min.js?v=2.1.4}"></script>
+    <script th:src="@{/js/bootstrap.min.js?v=3.3.6}"></script>
+    <script th:src="@{/js/plugins/layer/layer.min.js}"></script>
     <!-- Flot -->
-    <script src="/penetrate-manager/js/plugins/flot/jquery.flot.js"></script>
-    <script src="/penetrate-manager/js/plugins/flot/jquery.flot.tooltip.min.js"></script>
-    <script src="/penetrate-manager/js/plugins/flot/jquery.flot.resize.js"></script>
-    <script src="/penetrate-manager/js/plugins/flot/jquery.flot.pie.js"></script>
+    <script th:src="@{/js/plugins/flot/jquery.flot.js}"></script>
+    <script th:src="@{/js/plugins/flot/jquery.flot.tooltip.min.js}"></script>
+    <script th:src="@{/js/plugins/flot/jquery.flot.resize.js}"></script>
+    <script th:src="@{/js/plugins/flot/jquery.flot.pie.js}"></script>
     <!-- 自定义js -->
-    <script src="/penetrate-manager/js/content.js"></script>
+    <script th:src="@{/js/content.js}"></script>
     <!--flotdemo-->
     <script type="text/javascript">
         $(function() {

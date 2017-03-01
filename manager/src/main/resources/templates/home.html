@@ -10,10 +10,11 @@
     <!--[if lt IE 9]>
     <meta http-equiv="refresh" content="0;ie.html" />
     <![endif]-->
-    <link rel="shortcut icon" href="favicon.ico"> <link href="/penetrate-manager/css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
-    <link href="/penetrate-manager/css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
-    <link href="/penetrate-manager/css/animate.css" rel="stylesheet">
-    <link href="/penetrate-manager/css/style.css?v=4.1.0" rel="stylesheet">
+    <link rel="shortcut icon" th:href="favicon.ico">
+    <link th:href="@{/css/bootstrap.min.css?v=3.3.6}" rel="stylesheet">
+    <link th:href="@{/css/font-awesome.min.css?v=4.4.0}" rel="stylesheet">
+    <link th:href="@{/css/animate.css}" rel="stylesheet">
+    <link th:href="@{/css/style.css?v=4.1.0}" rel="stylesheet">
 </head>
 <body class="fixed-sidebar full-height-layout gray-bg" style="overflow:hidden">
     <div id="wrapper">
@@ -25,7 +26,7 @@
                 <ul class="nav" id="side-menu">
                     <li class="nav-header">
                         <div class="dropdown profile-element">
-                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            <a data-toggle="dropdown" class="dropdown-toggle" th:href="@{/}">
                                 <span class="clear">
                                     <span class="block m-t-xs" style="font-size:20px;">
                                         <i class="fa fa-area-chart"></i>
@@ -41,23 +42,23 @@
                         <span class="ng-scope">系统管理</span>
                     </li>
                     <li>
-                        <a class="J_menuItem" href="/penetrate-manager/welcome">
+                        <a class="J_menuItem" th:href="@{/welcome}">
                             <i class="fa fa-home"></i>
                             <span class="nav-label">主页</span>
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a th:href="@{/}">
                             <i class="fa fa fa-bar-chart-o"></i>
                             <span class="nav-label">系统管理</span>
                             <span class="fa arrow"></span>
                         </a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a class="J_menuItem" href="/penetrate-manager/user/list_view">用户列表</a>
+                                <a class="J_menuItem" th:href="@{/user/list_view}">用户列表</a>
                             </li>
                             <li>
-                                <a class="J_menuItem" href="graph_flot.html">角色列表</a>
+                                <a class="J_menuItem" th:href="graph_flot.html">角色列表</a>
                             </li>
                         </ul>
                     </li>
@@ -66,11 +67,11 @@
                         <span class="ng-scope">用户资源</span>
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-desktop"></i> <span class="nav-label">用户资源</span><span class="fa arrow"></span></a>
+                        <a th:href="@{/}"><i class="fa fa-desktop"></i> <span class="nav-label">用户资源</span><span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
-                            <li><a class="J_menuItem" href="/penetrate-manager/device/list_view">设备列表</a>
+                            <li><a class="J_menuItem" th:href="@{/device/list_view}">设备列表</a>
                             </li>
-                            <li><a class="J_menuItem" href="profile.html">个人资料</a>
+                            <li><a class="J_menuItem" th:href="profile.html">个人资料</a>
                             </li>
                         </ul>
                     </li>
@@ -79,90 +80,90 @@
                         <span class="ng-scope">分类</span>
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-flask"></i> <span class="nav-label">UI元素</span><span class="fa arrow"></span></a>
+                        <a th:href="@{/}"><i class="fa fa-flask"></i> <span class="nav-label">UI元素</span><span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
-                            <li><a class="J_menuItem" href="typography.html">排版</a>
+                            <li><a class="J_menuItem" th:href="typography.html">排版</a>
                             </li>
                             <li>
-                                <a href="#">字体图标 <span class="fa arrow"></span></a>
+                                <a th:href="@{/}">字体图标 <span class="fa arrow"></span></a>
                                 <ul class="nav nav-third-level">
                                     <li>
-                                        <a class="J_menuItem" href="fontawesome.html">Font Awesome</a>
+                                        <a class="J_menuItem" th:href="fontawesome.html">Font Awesome</a>
                                     </li>
                                     <li>
-                                        <a class="J_menuItem" href="glyphicons.html">Glyphicon</a>
+                                        <a class="J_menuItem" th:href="glyphicons.html">Glyphicon</a>
                                     </li>
                                     <li>
-                                        <a class="J_menuItem" href="iconfont.html">阿里巴巴矢量图标库</a>
+                                        <a class="J_menuItem" th:href="iconfont.html">阿里巴巴矢量图标库</a>
                                     </li>
                                 </ul>
                             </li>
                             <li>
-                                <a href="#">拖动排序 <span class="fa arrow"></span></a>
+                                <a th:href="@{/}">拖动排序 <span class="fa arrow"></span></a>
                                 <ul class="nav nav-third-level">
-                                    <li><a class="J_menuItem" href="draggable_panels.html">拖动面板</a>
+                                    <li><a class="J_menuItem" th:href="draggable_panels.html">拖动面板</a>
                                     </li>
-                                    <li><a class="J_menuItem" href="agile_board.html">任务清单</a>
+                                    <li><a class="J_menuItem" th:href="agile_board.html">任务清单</a>
                                     </li>
                                 </ul>
                             </li>
-                            <li><a class="J_menuItem" href="buttons.html">按钮</a>
+                            <li><a class="J_menuItem" th:href="buttons.html">按钮</a>
                             </li>
-                            <li><a class="J_menuItem" href="tabs_panels.html">选项卡 &amp; 面板</a>
+                            <li><a class="J_menuItem" th:href="tabs_panels.html">选项卡 &amp; 面板</a>
                             </li>
-                            <li><a class="J_menuItem" href="notifications.html">通知 &amp; 提示</a>
+                            <li><a class="J_menuItem" th:href="notifications.html">通知 &amp; 提示</a>
                             </li>
-                            <li><a class="J_menuItem" href="badges_labels.html">徽章，标签，进度条</a>
-                            </li>
-                            <li>
-                                <a class="J_menuItem" href="grid_options.html">栅格</a>
-                            </li>
-                            <li><a class="J_menuItem" href="plyr.html">视频、音频</a>
+                            <li><a class="J_menuItem" th:href="badges_labels.html">徽章，标签，进度条</a>
                             </li>
                             <li>
-                                <a href="#">弹框插件 <span class="fa arrow"></span></a>
+                                <a class="J_menuItem" th:href="grid_options.html">栅格</a>
+                            </li>
+                            <li><a class="J_menuItem" th:href="plyr.html">视频、音频</a>
+                            </li>
+                            <li>
+                                <a th:href="@{/}">弹框插件 <span class="fa arrow"></span></a>
                                 <ul class="nav nav-third-level">
-                                    <li><a class="J_menuItem" href="layer.html">Web弹层组件layer</a>
+                                    <li><a class="J_menuItem" th:href="layer.html">Web弹层组件layer</a>
                                     </li>
-                                    <li><a class="J_menuItem" href="modal_window.html">模态窗口</a>
+                                    <li><a class="J_menuItem" th:href="modal_window.html">模态窗口</a>
                                     </li>
-                                    <li><a class="J_menuItem" href="sweetalert.html">SweetAlert</a>
+                                    <li><a class="J_menuItem" th:href="sweetalert.html">SweetAlert</a>
                                     </li>
                                 </ul>
                             </li>
                             <li>
-                                <a href="#">树形视图 <span class="fa arrow"></span></a>
+                                <a th:href="@{/}">树形视图 <span class="fa arrow"></span></a>
                                 <ul class="nav nav-third-level">
-                                    <li><a class="J_menuItem" href="jstree.html">jsTree</a>
+                                    <li><a class="J_menuItem" th:href="jstree.html">jsTree</a>
                                     </li>
-                                    <li><a class="J_menuItem" href="tree_view.html">Bootstrap Tree View</a>
+                                    <li><a class="J_menuItem" th:href="tree_view.html">Bootstrap Tree View</a>
                                     </li>
-                                    <li><a class="J_menuItem" href="nestable_list.html">nestable</a>
+                                    <li><a class="J_menuItem" th:href="nestable_list.html">nestable</a>
                                     </li>
                                 </ul>
                             </li>
-                            <li><a class="J_menuItem" href="toastr_notifications.html">Toastr通知</a>
+                            <li><a class="J_menuItem" th:href="toastr_notifications.html">Toastr通知</a>
                             </li>
-                            <li><a class="J_menuItem" href="diff.html">文本对比</a>
+                            <li><a class="J_menuItem" th:href="diff.html">文本对比</a>
                             </li>
-                            <li><a class="J_menuItem" href="spinners.html">加载动画</a>
+                            <li><a class="J_menuItem" th:href="spinners.html">加载动画</a>
                             </li>
-                            <li><a class="J_menuItem" href="widgets.html">小部件</a>
+                            <li><a class="J_menuItem" th:href="widgets.html">小部件</a>
                             </li>
                         </ul>
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-table"></i> <span class="nav-label">表格</span><span class="fa arrow"></span></a>
+                        <a th:href="@{/}"><i class="fa fa-table"></i> <span class="nav-label">表格</span><span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
-                            <li><a class="J_menuItem" href="table_basic.html">基本表格</a>
+                            <li><a class="J_menuItem" th:href="table_basic.html">基本表格</a>
                             </li>
-                            <li><a class="J_menuItem" href="table_data_tables.html">DataTables</a>
+                            <li><a class="J_menuItem" th:href="table_data_tables.html">DataTables</a>
                             </li>
-                            <li><a class="J_menuItem" href="table_jqgrid.html">jqGrid</a>
+                            <li><a class="J_menuItem" th:href="table_jqgrid.html">jqGrid</a>
                             </li>
-                            <li><a class="J_menuItem" href="table_foo_table.html">Foo Tables</a>
+                            <li><a class="J_menuItem" th:href="table_foo_table.html">Foo Tables</a>
                             </li>
-                            <li><a class="J_menuItem" href="table_bootstrap.html">Bootstrap Table
+                            <li><a class="J_menuItem" th:href="table_bootstrap.html">Bootstrap Table
                                 <span class="label label-danger pull-right">推荐</span></a>
                             </li>
                         </ul>
@@ -172,23 +173,23 @@
                         <span class="ng-scope">分类</span>
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-picture-o"></i> <span class="nav-label">相册</span><span class="fa arrow"></span></a>
+                        <a th:href="@{/}"><i class="fa fa-picture-o"></i> <span class="nav-label">相册</span><span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
-                            <li><a class="J_menuItem" href="basic_gallery.html">基本图库</a>
+                            <li><a class="J_menuItem" th:href="basic_gallery.html">基本图库</a>
                             </li>
-                            <li><a class="J_menuItem" href="carousel.html">图片切换</a>
+                            <li><a class="J_menuItem" th:href="carousel.html">图片切换</a>
                             </li>
-                            <li><a class="J_menuItem" href="blueimp.html">Blueimp相册</a>
+                            <li><a class="J_menuItem" th:href="blueimp.html">Blueimp相册</a>
                             </li>
                         </ul>
                     </li>
                     <li>
-                        <a class="J_menuItem" href="css_animation.html"><i class="fa fa-magic"></i> <span class="nav-label">CSS动画</span></a>
+                        <a class="J_menuItem" th:href="css_animation.html"><i class="fa fa-magic"></i> <span class="nav-label">CSS动画</span></a>
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-cutlery"></i> <span class="nav-label">工具 </span><span class="fa arrow"></span></a>
+                        <a th:href="@{/}"><i class="fa fa-cutlery"></i> <span class="nav-label">工具 </span><span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
-                            <li><a class="J_menuItem" href="form_builder.html">表单构建器</a>
+                            <li><a class="J_menuItem" th:href="form_builder.html">表单构建器</a>
                             </li>
                         </ul>
                     </li>
@@ -201,7 +202,7 @@
         <div id="page-wrapper" class="gray-bg dashbard-1">
             <div class="row border-bottom">
                 <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
-                    <div class="navbar-header"><a class="navbar-minimalize minimalize-styl-2 btn btn-info " href="#"><i class="fa fa-bars"></i> </a>
+                    <div class="navbar-header"><a class="navbar-minimalize minimalize-styl-2 btn btn-info " th:href="@{/}"><i class="fa fa-bars"></i> </a>
                         <form role="search" class="navbar-form-custom" method="post" action="search_results.html">
                             <div class="form-group">
                                 <input type="text" placeholder="请输入您需要查找的内容 …" class="form-control" name="top-search" id="top-search">
@@ -210,14 +211,14 @@
                     </div>
                     <ul class="nav navbar-top-links navbar-right">
                         <li class="dropdown">
-                            <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+                            <a class="dropdown-toggle count-info" data-toggle="dropdown" th:href="@{/}">
                                 <i class="fa fa-envelope"></i> <span class="label label-warning">16</span>
                             </a>
                             <ul class="dropdown-menu dropdown-messages">
                                 <li class="m-t-xs">
                                     <div class="dropdown-messages-box">
-                                        <a href="profile.html" class="pull-left">
-                                            <img alt="image" class="img-circle" src="/penetrate-manager/images/a7.jpg">
+                                        <a th:href="profile.html" class="pull-left">
+                                            <img alt="image" class="img-circle" th:src="@{/images/a7.jpg}">
                                         </a>
                                         <div class="media-body">
                                             <small class="pull-right">46小时前</small>
@@ -230,8 +231,8 @@
                                 <li class="divider"></li>
                                 <li>
                                     <div class="dropdown-messages-box">
-                                        <a href="profile.html" class="pull-left">
-                                            <img alt="image" class="img-circle" src="/penetrate-manager/images/a4.jpg">
+                                        <a th:href="profile.html" class="pull-left">
+                                            <img alt="image" class="img-circle" th:src="@{/images/a4.jpg}">
                                         </a>
                                         <div class="media-body ">
                                             <small class="pull-right text-navy">25小时前</small>
@@ -244,7 +245,7 @@
                                 <li class="divider"></li>
                                 <li>
                                     <div class="text-center link-block">
-                                        <a class="J_menuItem" href="mailbox.html">
+                                        <a class="J_menuItem" th:href="mailbox.html">
                                             <i class="fa fa-envelope"></i> <strong> 查看所有消息</strong>
                                         </a>
                                     </div>
@@ -252,12 +253,12 @@
                             </ul>
                         </li>
                         <li class="dropdown">
-                            <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+                            <a class="dropdown-toggle count-info" data-toggle="dropdown" th:href="@{/}">
                                 <i class="fa fa-bell"></i> <span class="label label-primary">8</span>
                             </a>
                             <ul class="dropdown-menu dropdown-alerts">
                                 <li>
-                                    <a href="mailbox.html">
+                                    <a th:href="mailbox.html">
                                         <div>
                                             <i class="fa fa-envelope fa-fw"></i> 您有16条未读消息
                                             <span class="pull-right text-muted small">4分钟前</span>
@@ -266,7 +267,7 @@
                                 </li>
                                 <li class="divider"></li>
                                 <li>
-                                    <a href="profile.html">
+                                    <a th:href="profile.html">
                                         <div>
                                             <i class="fa fa-qq fa-fw"></i> 3条新回复
                                             <span class="pull-right text-muted small">12分钟钱</span>
@@ -276,7 +277,7 @@
                                 <li class="divider"></li>
                                 <li>
                                     <div class="text-center link-block">
-                                        <a class="J_menuItem" href="notifications.html">
+                                        <a class="J_menuItem" th:href="notifications.html">
                                             <strong>查看所有 </strong>
                                             <i class="fa fa-angle-right"></i>
                                         </a>
@@ -285,17 +286,17 @@
                             </ul>
                         </li>
                         <li class="dropdown layui-nav">
-                            <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
-                                <img src="/penetrate-manager/images/0.jpg">
+                            <a class="dropdown-toggle count-info" data-toggle="dropdown" th:href="@{/}">
+                                <img th:src="@{/images/0.jpg}">
                                 <span th:text="${currentUser.name}"></span>
                                 <span class="layui-nav-more"></span>
                             </a>
                             <ul class="dropdown-menu layui-nav-child">
                                 <li>
-                                    <a href="mailbox.html">
+                                    <a th:href="mailbox.html">
                                         <i class="fa fa-user-circle" aria-hidden="true"></i> 个人信息
                                     </a>
-                                    <a href="/penetrate-manager/logout">
+                                    <a th:href="@{/logout}">
                                         <i class="fa fa-sign-out" aria-hidden="true"></i> 注销
                                     </a>
                                 </li>
@@ -305,22 +306,22 @@
                 </nav>
             </div>
             <div class="row J_mainContent" id="content-main">
-                <iframe id="J_iframe" width="100%" height="100%" src="/penetrate-manager/welcome" frameborder="0" data-id="index_v1.html" seamless></iframe>
+                <iframe id="J_iframe" width="100%" height="100%" th:src="@{/welcome}" frameborder="0" data-id="index_v1.html" seamless></iframe>
             </div>
         </div>
         <!--右侧部分结束-->
     </div>
     <!-- 全局js -->
-    <script src="/penetrate-manager/js/jquery.min.js?v=2.1.4"></script>
-    <script src="/penetrate-manager/js/bootstrap.min.js?v=3.3.6"></script>
-    <script src="/penetrate-manager/js/plugins/metisMenu/jquery.metisMenu.js"></script>
-    <script src="/penetrate-manager/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
-    <script src="/penetrate-manager/js/plugins/layer/layer.min.js"></script>
+    <script th:src="@{/js/jquery.min.js?v=2.1.4}"></script>
+    <script th:src="@{/js/bootstrap.min.js?v=3.3.6}"></script>
+    <script th:src="@{/js/plugins/metisMenu/jquery.metisMenu.js}"></script>
+    <script th:src="@{/js/plugins/slimscroll/jquery.slimscroll.min.js}"></script>
+    <script th:src="@{/js/plugins/layer/layer.min.js}"></script>
     <!-- 自定义js -->
-    <script src="/penetrate-manager/js/hAdmin.js?v=4.1.0"></script>
-    <script type="text/javascript" src="/penetrate-manager/js/index.js"></script>
+    <script th:src="@{/js/hAdmin.js?v=4.1.0}"></script>
+    <script type="text/javascript" th:src="@{/js/index.js}"></script>
     <!-- 第三方插件 -->
-    <script src="/penetrate-manager/js/plugins/pace/pace.min.js"></script>
+    <script th:src="@{/js/plugins/pace/pace.min.js}"></script>
 </body>
 
 </html>

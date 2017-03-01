@@ -6,12 +6,13 @@
     <title> - jqGird</title>
     <meta name="keywords" content="">
     <meta name="description" content="">
-    <link rel="shortcut icon" href="/penetrate-manager/images/favicon.ico"> <link href="/penetrate-manager/css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
-    <link href="/penetrate-manager/css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+    <link rel="shortcut icon" th:href="@{/images/favicon.ico}">
+    <link th:href="@{/css/bootstrap.min.css?v=3.3.6}" rel="stylesheet">
+    <link th:href="@{/css/font-awesome.min.css?v=4.4.0}" rel="stylesheet">
     <!-- jqgrid-->
-    <link href="/penetrate-manager/css/plugins/jqgrid/ui.jqgrid.css?0820" rel="stylesheet">
-    <link href="/penetrate-manager/css/animate.css" rel="stylesheet">
-    <link href="/penetrate-manager/css/style.css?v=4.1.0" rel="stylesheet">
+    <link th:href="@{/css/plugins/jqgrid/ui.jqgrid.css?0820}" rel="stylesheet">
+    <link th:href="@{/css/animate.css}" rel="stylesheet">
+    <link th:href="@{/css/style.css?v=4.1.0}" rel="stylesheet">
     <style>
         /* Additional style to fix warning dialog position */
         #alertmod_table_list_2 {
@@ -36,15 +37,14 @@
     </div>
 
     <!-- 全局js -->
-    <script src="/penetrate-manager/js/jquery.min.js?v=2.1.4"></script>
-    <script src="/penetrate-manager/js/bootstrap.min.js?v=3.3.6"></script>
+    <script th:src="@{/js/jquery.min.js?v=2.1.4}"></script>
+    <script th:src="@{/js/bootstrap.min.js?v=3.3.6}"></script>
     <!-- Peity -->
-    <script src="/penetrate-manager/js/plugins/peity/jquery.peity.min.js"></script>
-    <!-- jqGrid -->
-    <script src="/penetrate-manager/js/plugins/jqgrid/i18n/grid.locale-cn.js?0820"></script>
-    <script src="/penetrate-manager/js/plugins/jqgrid/jquery.jqGrid.min.js?0820"></script>
+    <script th:src="@{/js/plugins/peity/jquery.peity.min.js}"></script>
+    <script th:src="@{/js/plugins/jqgrid/i18n/grid.locale-cn.js?0820}"></script>
+    <script th:src="@{/js/plugins/jqgrid/jquery.jqGrid.min.js?0820}"></script>
     <!-- 自定义js -->
-    <script src="/penetrate-manager/js/content.js?v=1.0.0"></script>
+    <script th:src="@{/js/content.js?v=1.0.0}"></script>
     <!-- Page-Level Scripts -->
     <script>
         $(document).ready(function () {
