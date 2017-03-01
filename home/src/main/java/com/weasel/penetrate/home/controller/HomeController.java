@@ -25,8 +25,15 @@ public class HomeController{
 
         model.addAttribute("homeDomain",homeDomain);
         model.addAttribute("managerDomain",managerDomain);
-        model.addAttribute("user","dylan");
-
         return "home";
+    }
+
+    @RequestMapping(value = {"/course"},method = GET)
+    public String course(Model model){
+
+        model.addAttribute("homeDomain",homeDomain);
+        model.addAttribute("managerDomain",managerDomain);
+
+        return "course";
     }
 }
