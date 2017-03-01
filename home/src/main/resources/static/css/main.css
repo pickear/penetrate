@@ -3167,12 +3167,18 @@
 
 #three .course{
 	margin-left: 5em;
+	margin-right: 5em;
 	margin-top: 0px;
 	text-align:left;
+	border: 1px dotted #785;
 }
 
 #three .course header{
 	text-align: center;
+}
+
+#three .course pre{
+	margin-left: -150px;
 }
 
 .qqicon img{

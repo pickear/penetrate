@@ -13,9 +13,9 @@
 	<div class="inner">
 		<a href="#" class="logo"><strong>FRP内网穿透</strong></a>
 		<nav id="nav">
-			<a href="home.html">Home</a>
-			<a href="generic.html">Generic</a>
-			<a href="elements.html">Elements</a>
+			<a href="#">Home</a>
+			<a href="generic.html">Course</a>
+			<a href="/penetrate-manager/login">Login</a>
 		</nav>
 		<a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>
 	</div>
@@ -25,7 +25,7 @@
 <section id="banner">
 	<div class="inner">
 		<header>
-			<h1>欢迎使用FRP内网穿透服务</h1>
+			<h1>欢迎使用FRP内网穿透服务(待开放中...)</h1>
 		</header>
 
 		<div class="flex ">
@@ -50,7 +50,7 @@
 
 		</div>
 
-		<p class="qqicon"><img src="/penetrate-home/images/qq.png">QQ交流:114231159</p>
+		<p class="qqicon"><img src="/penetrate-home/images/qq.png">QQ交流:372831385</p>
 		<footer>
 			<a href="#" class="button">详细教程</a>
 		</footer>
@@ -66,56 +66,42 @@
 				<h3>简单教程</h3>
 			</header>
 		</article>
-		<p>
-			<strong>1、下载frp压缩包</strong><br/>
-			下载地址：http://www.diannaobos.com/frp/<br/>
+		<pre>
+			<strong>1、下载frp压缩包</strong>
+			<a href="#banner">下载地址</a><br/>
 			<strong>2、提取frpc.exe和frpc.ini这两个文件</strong><br/>
-				<strong>3、修改配置文件</strong><br/>
-			使用Notepad编辑器打开frpc.ini<br/>
-			清空里面的内容<br/>
-			复制下面的代码到文件里：<br/>
-			[common]<br/>
-			server_addr = frp.lu8.win<br/>
-			server_port = 7000<br/>
-			log_file = ./frpc.log<br/>
-			log_level = info<br/>
-			log_max_days = 3<br/>
-			privilege_token = frp888<br/>
+			<strong>3、修改配置文件</strong><br/>
+			打开frpc.ini
+			复制下面的代码到文件里：
+			[common]
+			server_addr = tunnel.jlw365.com
+			server_port = 7000
+			log_file = ./frpc.log
+			log_level = info
+			log_max_days = 3
+			privilege_token = 123456789
 
-			[HTTP_mode]<br/>
-			#注意修改上方[]内的内容，不要与其他隧道名称重复<br/>
-			#privilege_mode特权模式<br/>
-			privilege_mode = true<br/>
-			type = http<br/>
-			#local_ip本地服务IP<br/>
-			local_ip = 127.0.0.1<br/>
-			#local_port本地服务端口<br/>
-			local_port = 80<br/>
-			#custom_domains将自己的域名CNAME解析至frp.lu8.win，绑定多个域名可以用,分开，如果你没有自己的域名，使用我们的自动开通域名，格式:你起的名称.frp.lu8.win<br/>
-			custom_domains = youname.com,www.youname.com<br/>
-			#pool_count = 100<br/>
+			[HTTP]
+			privilege_mode = true
+			type = http
+			local_ip = 127.0.0.1
+			local_port = 80
+			custom_domains = youname.com,www.youname.com
 
-			[TCP_mode]<br/>
-			#注意修改上方[]内的内容，不要与其他隧道名称重复<br/>
-			privilege_mode = true<br/>
-			type = tcp<br/>
-			#remote_port外部端口，可映射TCP、UDP端口范围为：9000-65535<br/>
-			remote_port = 9000<br/>
-			#local_ip本地服务IP<br/>
-			local_ip = 127.0.0.1<br/>
-			#local_port本地服务端口<br/>
-			local_port = 22<br/>
-			use_gzip = true use_encrypti<br/>
-			#pool_count = 2<br/>
-			点击保存<br/>
-			<strong>4、启动frp</strong><br/>
-			在Ctrl+R键启动CMD用命令行操作<br/>
-			CD到在所在目录<br/>
-			输入 frpc.exe -c frpc.ini<br/>
-			这时如果没有提示就说明成功了<br/>
-			注意：关闭黑色窗口就等于关闭frp<br/>
-			如果你看完本教程还有不明白的地方欢迎加入frp交流QQ群:261807771
-		</p>
+			[TCP]
+			privilege_mode = true
+			type = tcp
+			remote_port = 9000
+			local_ip = 127.0.0.1
+			local_port = 22
+			use_gzip = true
+			use_encrypti = true
+			<strong>4、启动frp</strong>
+			在ctrl+r键启动cmd用命令行操作
+			cd到在所在目录
+			输入 frpc.exe -c frpc.ini
+			注意：不可能关闭cmd命令窗口
+		</pre>
 	</div>
 	<p class="feetip"><h1>本服务免费提供服务，不收取任何费用！</h1>如果您觉得好用，而手头宽裕，就请作者喝杯咖啡吧~</p>
 	<div class="inner">
@@ -124,9 +110,9 @@
 				<div class="image round">
 					<img src="/penetrate-home/images/alipay.jpg"  width="200" height="200" alt="支付宝二维码" />
 				</div>
-				<header>
+				<!--<header>
 					<h5>支付宝</h5>
-				</header>
+				</header>-->
 				<!--<p>Morbi in sem quis dui placerat ornare. Pellentesquenisi<br />euismod in, pharetra a, ultricies in diam sed arcu. Cras<br />consequat  egestas augue vulputate.</p>
 				<footer>
 					<a href="#" class="button">Learn More</a>
@@ -136,9 +122,9 @@
 				<div class="image round">
 					<img src="/penetrate-home/images/wxpay.png" width="200" height="200" alt="微信二维码" />
 				</div>
-				<header>
+				<!--<header>
 					<h5>微信</h5>
-				</header>
+				</header>-->
 				<!--<p>Pellentesque fermentum dolor. Aliquam quam lectus<br />facilisis auctor, ultrices ut, elementum vulputate, nunc<br /> blandit ellenste egestagus commodo.</p>
 				<footer>
 					<a href="#" class="button">Learn More</a>
