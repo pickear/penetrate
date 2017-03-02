@@ -97,6 +97,8 @@ CREATE TABLE `user_role` (
   CONSTRAINT `u_key` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
+INSERT INTO `common` VALUES ('1', '0.0.0.0', '5000', '5001', '5002', '5003', 'admin', '5805703', './logs/frps.log', 'info', '10', '0', '5805703', '5099-8000', '30', '900', 'tunnel.jlw365.com');
+
 INSERT INTO user(id,name,nick_name,password,salt,email,login_count,create_time,login_time) VALUES (1,'admin','manager','ff709232640c89dbfa7e60efa2ad80cd','b3e7cdbc601dfb86f1298be0d075c0ec','pickear@gmail.com',1,'2017-02-20 12:00:00','2017-02-20 12:00:00');
 INSERT INTO user(id,name,nick_name,password,salt,email,login_count,create_time,login_time) VALUES (2,'dylan','普通用户','ff709232640c89dbfa7e60efa2ad80cd','b3e7cdbc601dfb86f1298be0d075c0ec','114231159@qq.com',1,'2017-02-20 12:00:00','2017-02-20 12:00:00');
 
