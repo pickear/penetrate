@@ -1,7 +1,7 @@
 ###jetty
 server:
-   port: 8086
-   contextPath: /penetrate-home
+   port: 8001
+   contextPath: /
 
 spring:
    thymeleaf:

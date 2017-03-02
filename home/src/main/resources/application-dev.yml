@@ -1,5 +1,5 @@
 penetrate:
    home:
-      domain: http://127.0.0.1:8086/penetrate-home
+      domain: http://127.0.0.1:8001
    manager:
-      domain: http://127.0.0.1:8087/penetrate-manager
+      domain: http://127.0.0.1:8002
