@@ -19,44 +19,35 @@
 		<a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>
 	</div>
 </header>
-
 <!-- Banner -->
 <section id="banner">
 	<div class="inner">
 		<header>
 			<h1>欢迎使用FRP内网穿透服务(待开放中...)</h1>
 		</header>
-
 		<div class="flex ">
-
 			<div>
 				<span class="icon"><img th:src="@{/images/windows.png}"></span>
 				<h3>Windows</h3>
 				<p>下载：<a href="http://pan.baidu.com/s/1bMBZFC" target="_blank">386</a>&nbsp;&nbsp;<a href="http://pan.baidu.com/s/1pKGLNZl" target="_blank">amd64</a></p>
 			</div>
-
 			<div>
 				<span class="icon"><img th:src="@{/images/linux.png}"></span>
 				<h3>Linux</h3>
 				<p>下载：<a href="http://pan.baidu.com/s/1bKAgmq" target="_blank">386</a>&nbsp;&nbsp;<a href="http://pan.baidu.com/s/1dFOhXDJ" target="_blank">mipsle</a>&nbsp;&nbsp;<a href="http://pan.baidu.com/s/1miv3ypa" target="_blank">mips64le</a>&nbsp;&nbsp;<a href="http://pan.baidu.com/s/1ceSPUe" target="_blank">mips</a>&nbsp;&nbsp;<a href="http://pan.baidu.com/s/1miNTCXM" target="_blank">mips64</a>&nbsp;&nbsp;<a href="http://pan.baidu.com/s/1kVLnS8Z" target="_blank">arm</a>&nbsp;&nbsp;<a href="http://pan.baidu.com/s/1o8ptK74" target="_blank">amd64</a></p>
 			</div>
-
 			<div>
 				<span class="icon"><img th:src="@{/images/mac.png}"></span>
 				<h3>Mac</h3>
 				<p>下载：<a href="http://pan.baidu.com/s/1i5mgiX3" target="_blank">amd64</a></p>
 			</div>
-
 		</div>
-
 		<p class="qqicon"><img th:src="@{/images/qq.png}">QQ交流:372831385</p>
 		<footer>
-			<a href="#" class="button">详细教程</a>
+			<a th:href="@{/course}" href="#" class="button">详细教程</a>
 		</footer>
 	</div>
 </section>
-
-
 <!-- Three -->
 <section id="three" class="wrapper align-center">
 	<div class="course">
@@ -132,19 +123,12 @@
 		</div>
 	</div>
 </section>
-
 <!-- Footer -->
-<footer id="footer">
-	<div class="inner">
-		<div class="copyright">Copyright &copy; 2017.Company name All rights reserved.<a target="_blank" href="#"></a></div>
-	</div>
-</footer>
-
+<footer id="footer" th:replace="footer::footer_html"></footer>
 <!-- Scripts -->
 <script th:src="@{/js/jquery.min.js}"></script>
 <script th:src="@{/js/skel.min.js}"></script>
 <script th:src="@{/js/util.js}"></script>
 <script th:src="@{/js/main.js}"></script>
-
 </body>
 </html>
