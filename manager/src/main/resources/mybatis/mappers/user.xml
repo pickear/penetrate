@@ -12,6 +12,8 @@
         <result property="salt" column="u_salt"/>
         <result property="email" column="u_email"/>
         <result property="loginCount" column="u_login_count"/>
+        <result property="device" column="u_device"/>
+        <result property="totalDevice" column="u_total_device"/>
         <result property="createTime" column="u_create_time"/>
         <result property="loginTime" column="u_login_time"/>
         <collection property="roles" column="u_id" select="com.weasel.penetrate.manager.domain.Role.queryByUserId"/>
@@ -25,6 +27,8 @@
                 u.password as u_password,
                 u.salt as u_salt,
                 u.email as u_email,
+                u.device as u_device,
+                u.total_device as u_total_device,
                 u.login_count as u_login_count,
                 u.create_time as u_create_time,
                 u.login_time as u_login_time

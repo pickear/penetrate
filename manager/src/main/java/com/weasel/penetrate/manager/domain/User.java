@@ -18,6 +18,8 @@ public class User implements Serializable{
     private String nickName;
     private String password;
     private String email;
+    private int device;
+    private int totalDevice=3;
     private int loginCount;
     private boolean locked;
     private String createTime;

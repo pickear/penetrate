@@ -4,4 +4,37 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.weasel.penetrate.manager.domain.device.Device">
 
+    <resultMap id="deviceResult" type="Device">
+        <id property="id" column="d_id"/>
+        <result property="number" column="d_number"/>
+        <result property="username" column="d_username"/>
+        <result property="deviceType" column="d_device_type"/>
+        <result property="protocolType" column="d_protocol_type"/>
+        <result property="authToken" column="d_auth_token"/>
+        <result property="bindAddr" column="d_bind_addr"/>
+        <result property="listenPort" column="d_listen_port"/>
+        <result property="customDomains" column="d_customDomains"/>
+    </resultMap>
+
+    <sql id="commonSelect">
+        SELECT d.id as d_id,
+                d.number as d_number,
+                d.username as d_username,
+                d.device_type as d_device_type,
+                d.protocol_type as d_protocol_type,
+                d.auth_token as d_auth_token,
+                d.bind_addr as d_bind_addr,
+                d.listen_port as d_listen_port,
+                d.custom_domains as d_custom_domains
+        FROM device d
+    </sql>
+
+    <select id="query" resultMap="deviceResult" parameterType="Device">
+        <include refid="commonSelect"/>
+        <where>
+            <if test="username != null and username != ''">
+                d.username = #{username}
+            </if>
+        </where>
+    </select>
 </mapper>

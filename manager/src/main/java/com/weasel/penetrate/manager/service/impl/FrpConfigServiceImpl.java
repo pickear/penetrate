@@ -43,15 +43,15 @@ public class FrpConfigServiceImpl implements FrpConfigService {
         config.setCommon(new Common());
 
         IniWriter.create()
-                .load(config)
-                .store(new File(Frp.getHome()+"\\frps.ini"));
+                 .load(config)
+                 .store(new File(Frp.getHome()+File.separatorChar+"frps.ini"));
 
         String reloadCommand;
 
         if(SystemHelper.isWindows()){
-            reloadCommand = Frp.getHome()+"/frps.exe -c "+Frp.getHome()+"/frps.ini --reload";
+            reloadCommand = Frp.getHome()+File.separatorChar+"frps.exe -c "+Frp.getHome()+File.separatorChar+"frps.ini --reload";
         }else {
-            reloadCommand = Frp.getHome()+"/frps -c "+Frp.getHome()+"/frps.ini --reload";
+            reloadCommand = Frp.getHome()+File.separatorChar+"frps -c "+Frp.getHome()+File.separatorChar+"frps.ini --reload";
         }
 
         log.info("重新加载配置文件，执行以下命令[{}]",reloadCommand);

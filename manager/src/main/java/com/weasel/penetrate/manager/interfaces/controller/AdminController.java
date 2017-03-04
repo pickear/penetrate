@@ -1,12 +1,14 @@
 package com.weasel.penetrate.manager.interfaces.controller;
 
 import com.weasel.penetrate.manager.infrastructure.Frp;
+import com.weasel.penetrate.manager.interfaces.vo.ResponseMessage;
 import com.weasel.penetrate.manager.service.FrpConfigService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.io.IOException;
 
@@ -25,19 +27,18 @@ public class AdminController{
     @Autowired
     private FrpConfigService frpConfigService;
 
-    @RequestMapping(value = "/reload-config",method = GET)
-    public String reload(){
-
+    @ResponseBody
+    @RequestMapping(value = "/reload_config",method = GET)
+    public ResponseMessage reload(){
 
         try {
             frpConfigService.reloadConfig(Frp.getHome());
-            return "success";
+            return ResponseMessage.success();
         } catch (IOException e) {
             e.printStackTrace();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
-        return "error";
+        return ResponseMessage.error().setMessage("加载frp配置文件失败");
     }
 }

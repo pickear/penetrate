@@ -19,13 +19,13 @@ DROP TABLE IF EXISTS `device`;
 CREATE TABLE `device` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `number` varchar(255) DEFAULT NULL,
+  `username` varchar(255) DEFAULT NULL,
   `device_type` varchar(255) DEFAULT NULL,
   `protocol_type` varchar(255) DEFAULT NULL,
   `auth_token` varchar(255) DEFAULT NULL,
   `bind_addr` varchar(255) DEFAULT NULL,
   `listen_port` varchar(255) DEFAULT NULL,
   `custom_domains` varchar(255) DEFAULT NULL,
-  `username` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -68,6 +68,8 @@ CREATE TABLE `user` (
   `salt` varchar(50) NOT NULL COMMENT '加密盐',
   `email` varchar(50) NOT NULL COMMENT '邮箱',
   `login_count` INT(10) COMMENT '登录次数',
+  `device` INT(5) COMMENT '设备数',
+  `total_device` INT(5) COMMENT '最多设备数',
   `create_time` varchar(20) NOT NULL COMMENT '注册时间',
   `login_time` varchar(20) COMMENT '最近一次登录时间',
   PRIMARY KEY (`id`)
@@ -98,9 +100,11 @@ CREATE TABLE `user_role` (
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 INSERT INTO `common` VALUES ('1', '0.0.0.0', '5000', '5001', '5002', '5003', 'admin', '5805703', './logs/frps.log', 'info', '10', '1', '', '5099-8000', '30', '900', 'tunnel.jlw365.com');
+INSERT INTO `device`(id,number,username,device_type,protocol_type,auth_token,bind_addr,listen_port,custom_domains) VALUES ('1', '1234', 'dylan', 'SSH', 'TCP', '5805703', '0.0.0.0', '22', '');
+INSERT INTO `device`(id,number,username,device_type,protocol_type,auth_token,bind_addr,listen_port,custom_domains) VALUES ('2', '1235', 'dylan', 'WEB', 'HTTP', '5805703', '0.0.0.0', '8002', 'device.tunnel.jlw365.com');
 
-INSERT INTO user(id,name,nick_name,password,salt,email,login_count,create_time,login_time) VALUES (1,'admin','manager','ff709232640c89dbfa7e60efa2ad80cd','b3e7cdbc601dfb86f1298be0d075c0ec','pickear@gmail.com',1,'2017-02-20 12:00:00','2017-02-20 12:00:00');
-INSERT INTO user(id,name,nick_name,password,salt,email,login_count,create_time,login_time) VALUES (2,'dylan','普通用户','ff709232640c89dbfa7e60efa2ad80cd','b3e7cdbc601dfb86f1298be0d075c0ec','114231159@qq.com',1,'2017-02-20 12:00:00','2017-02-20 12:00:00');
+INSERT INTO user(id,name,nick_name,password,salt,email,device,total_device,login_count,create_time,login_time) VALUES (1,'admin','manager','ff709232640c89dbfa7e60efa2ad80cd','b3e7cdbc601dfb86f1298be0d075c0ec','pickear@gmail.com',0,100,1,'2017-02-20 12:00:00','2017-02-20 12:00:00');
+INSERT INTO user(id,name,nick_name,password,salt,email,device,total_device,login_count,create_time,login_time) VALUES (2,'dylan','普通用户','ff709232640c89dbfa7e60efa2ad80cd','b3e7cdbc601dfb86f1298be0d075c0ec','114231159@qq.com',0,100,1,'2017-02-20 12:00:00','2017-02-20 12:00:00');
 
 INSERT INTO `role` VALUES ('1', 'ADMIN', '管理员');
 
