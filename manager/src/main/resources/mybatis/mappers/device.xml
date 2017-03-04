@@ -13,7 +13,7 @@
         <result property="authToken" column="d_auth_token"/>
         <result property="bindAddr" column="d_bind_addr"/>
         <result property="listenPort" column="d_listen_port"/>
-        <result property="customDomains" column="d_customDomains"/>
+        <result property="customDomains" column="d_custom_domains"/>
     </resultMap>
 
     <sql id="commonSelect">

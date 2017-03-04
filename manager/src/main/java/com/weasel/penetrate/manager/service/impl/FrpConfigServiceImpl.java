@@ -6,6 +6,7 @@ import com.weasel.penetrate.manager.domain.IniConfig;
 import com.weasel.penetrate.manager.domain.device.Device;
 import com.weasel.penetrate.manager.infrastructure.Frp;
 import com.weasel.penetrate.manager.infrastructure.ini.IniWriter;
+import com.weasel.penetrate.manager.service.CommonService;
 import com.weasel.penetrate.manager.service.DeviceService;
 import com.weasel.penetrate.manager.service.FrpConfigService;
 import org.slf4j.Logger;
@@ -31,6 +32,9 @@ public class FrpConfigServiceImpl implements FrpConfigService {
     @Autowired
     private DeviceService deviceService;
 
+    @Autowired
+    private CommonService commonService;
+
 
     @Override
     public int reloadConfig(String frpHome) throws IOException, InterruptedException {
@@ -39,8 +43,9 @@ public class FrpConfigServiceImpl implements FrpConfigService {
 
         IniConfig config = new IniConfig();
         List<Device> devices = deviceService.query(new Device());
+        Common common = commonService.get();
         config.setDevices(new HashSet<>(devices));
-        config.setCommon(new Common());
+        config.setCommon(common);
 
         IniWriter.create()
                  .load(config)

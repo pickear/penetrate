@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.weasel.penetrate.manager.domain.Common">
+
+    <resultMap id="CommonResult" type="Common">
+        <id property="id" column="c_id"/>
+        <result property="bindAddr" column="c_bind_addr"/>
+        <result property="bindPort" column="c_bind_port"/>
+        <result property="vhostHttpPort" column="c_vhost_http_port"/>
+        <result property="vhostHttpsPort" column="c_vhost_https_port"/>
+        <result property="dashboardPort" column="c_dashboard_port"/>
+        <result property="dashboardUser" column="c_dashboard_user"/>
+        <result property="dashboardPwd" column="c_dashboard_pwd"/>
+        <result property="logFile" column="c_log_file"/>
+        <result property="logLevel" column="c_log_level"/>
+        <result property="logMaxDays" column="c_log_max_days"/>
+        <result property="privilegeMode" column="c_privilege_mode"/>
+        <result property="privilegeToken" column="c_privilege_token"/>
+        <result property="privilegeAllowPorts" column="c_privilege_allow_ports"/>
+        <result property="maxPoolCount" column="c_max_pool_count"/>
+        <result property="authenticationTimeout" column="c_authentication_timeout"/>
+        <result property="subdomainHost" column="c_subdomain_host"/>
+    </resultMap>
+
+    <sql id="commonSelect">
+        SELECT c.id as c_bind_addr,
+                c.bind_port as c_bind_port,
+                c.vhost_http_port as c_vhost_http_port,
+                c.vhost_https_port as c_vhost_https_port,
+                c.dashboard_port as c_dashboard_port,
+                c.dashboard_user as c_dashboard_user,
+                c.dashboard_pwd as c_dashboard_pwd,
+                c.log_file as c_log_file,
+                c.log_level as c_log_level,
+                c.log_max_days as c_log_max_days,
+                c.privilege_mode as c_privilege_mode,
+                c.privilege_token as c_privilege_token,
+                c.privilege_allow_ports as c_privilege_allow_ports,
+                c.max_pool_count as c_max_pool_count,
+                c.authentication_timeout as c_authentication_timeout,
+                c.subdomain_host as c_subdomain_host
+        FROM common c
+    </sql>
+
+    <select id="get" resultMap="CommonResult" parameterType="Common">
+        <include refid="commonSelect"/>
+       limit 0,1
+    </select>
+</mapper>
