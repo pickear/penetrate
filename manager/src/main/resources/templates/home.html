@@ -296,6 +296,9 @@
                                     <a th:href="mailbox.html">
                                         <i class="fa fa-user-circle" aria-hidden="true"></i> 个人信息
                                     </a>
+                                    <a id="reload-config" shiro:hasRole="ADMIN">
+                                        <i class="fa fa-sign-out" aria-hidden="true"></i> 重新加载frps.ini
+                                    </a>
                                     <a th:href="@{/logout}">
                                         <i class="fa fa-sign-out" aria-hidden="true"></i> 注销
                                     </a>
@@ -322,6 +325,16 @@
     <script type="text/javascript" th:src="@{/js/index.js}"></script>
     <!-- 第三方插件 -->
     <script th:src="@{/js/plugins/pace/pace.min.js}"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+           $("#reload-config").click(function () {
+               $.get("/admin/reload_config", function(data){
+                  // var result = JSON.parse(data);
+                   alert(data.message);
+               });
+           }) ;
+        });
+    </script>
 </body>
 
 </html>
