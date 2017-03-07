@@ -63,10 +63,10 @@ DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '自增ID',
   `name` varchar(20) NOT NULL COMMENT '用户名',
-  `nick_name` varchar(20) NOT NULL COMMENT '用户昵称',
+  `nick_name` varchar(20) COMMENT '用户昵称',
   `password` varchar(50) NOT NULL COMMENT '密码',
   `salt` varchar(50) NOT NULL COMMENT '加密盐',
-  `email` varchar(50) NOT NULL COMMENT '邮箱',
+  `email` varchar(50) COMMENT '邮箱',
   `login_count` INT(10) COMMENT '登录次数',
   `device` INT(5) COMMENT '设备数',
   `total_device` INT(5) COMMENT '最多设备数',
@@ -103,8 +103,8 @@ INSERT INTO `common` VALUES ('1', '0.0.0.0', '5000', '5001', '5002', '5003', 'ad
 INSERT INTO `device`(id,number,username,device_type,protocol_type,auth_token,bind_addr,listen_port,custom_domains) VALUES ('1', '1234', 'dylan', 'SSH', 'TCP', '5805703', '0.0.0.0', '22', '');
 INSERT INTO `device`(id,number,username,device_type,protocol_type,auth_token,bind_addr,listen_port,custom_domains) VALUES ('2', '1235', 'dylan', 'WEB', 'HTTP', '5805703', '0.0.0.0', '8002', 'device.tunnel.jlw365.com');
 
-INSERT INTO user(id,name,nick_name,password,salt,email,device,total_device,login_count,create_time,login_time) VALUES (1,'admin','manager','ff709232640c89dbfa7e60efa2ad80cd','b3e7cdbc601dfb86f1298be0d075c0ec','pickear@gmail.com',0,100,1,'2017-02-20 12:00:00','2017-02-20 12:00:00');
-INSERT INTO user(id,name,nick_name,password,salt,email,device,total_device,login_count,create_time,login_time) VALUES (2,'dylan','普通用户','ff709232640c89dbfa7e60efa2ad80cd','b3e7cdbc601dfb86f1298be0d075c0ec','114231159@qq.com',0,100,1,'2017-02-20 12:00:00','2017-02-20 12:00:00');
+INSERT INTO user(id,name,nick_name,password,salt,email,device,total_device,login_count,create_time,login_time) VALUES (1,'admin','manager','ff709232640c89dbfa7e60efa2ad80cd','b3e7cdbc601dfb86f1298be0d075c0ec','pickear@gmail.com',0,100,0,'2017-02-20 12:00:00','2017-02-20 12:00:00');
+INSERT INTO user(id,name,nick_name,password,salt,email,device,total_device,login_count,create_time,login_time) VALUES (2,'dylan','普通用户','ff709232640c89dbfa7e60efa2ad80cd','b3e7cdbc601dfb86f1298be0d075c0ec','114231159@qq.com',0,100,0,'2017-02-20 12:00:00','2017-02-20 12:00:00');
 
 INSERT INTO `role` VALUES ('1', 'ADMIN', '管理员');
 

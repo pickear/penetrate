@@ -30,4 +30,18 @@ public interface UserRepository {
      * @return
      */
     Page<User> queryPage(Page page);
+
+    /**
+     *
+     * @param user
+     * @return
+     */
+    int update(User user);
+
+    /**
+     *
+     * @param user
+     * @return
+     */
+    int insert(User user);
 }

@@ -30,9 +30,18 @@ public class UserRepositoryImpl extends MybatisDaoSupport implements UserReposit
     public Page<User> queryPage(Page page) {
 
         List<User> users = getSqlSession().selectList(namespace().concat(".queryPage"),page);
-
         page.setResult(users);
         return page;
+    }
+
+    @Override
+    public int update(User user) {
+        return getSqlSession().update(namespace().concat(".update"),user);
+    }
+
+    @Override
+    public int insert(User user) {
+        return getSqlSession().insert(namespace().concat(".insert"),user);
     }
 
     @Override

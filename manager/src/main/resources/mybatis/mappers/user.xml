@@ -50,9 +50,50 @@
         </where>
     </select>
 
-    <insert id="add" parameterType="User">
-        INSERT  INTO user(name,password,email) VALUES (#{name},#{password},#{email})
+    <insert id="insert" parameterType="User">
+
+        INSERT  INTO user(name,nick_name,password,salt,email,device,total_device,login_count,create_time,login_time)
+        VALUES (#{name},#{nickName},#{password},#{salt},#{email},#{device},#{totalDevice},#{loginCount},#{createTime},#{loginTime})
+        <selectKey resultType="long" keyProperty="id">
+            SELECT LAST_INSERT_ID() AS ID
+        </selectKey>
     </insert>
+
+    <update id="update" parameterType="User">
+        UPDATE user
+        <set>
+            <if test="nickName != null and nickName != ''">
+                nick_name=#{nickName},
+            </if>
+            <if test="password != null and password != ''">
+                password = #{password},
+            </if>
+            <if test="salt != null and salt != ''">
+                salt = #{salt},
+            </if>
+            <if test="email != null and email != ''">
+                email = #{email},
+            </if>
+            <if test="device > 0">
+                device = #{device},
+            </if>
+            <if test="totalDevice > 0">
+                total_device = #{totalDevice},
+            </if>
+            <if test="loginCount > 0">
+                login_count = #{loginCount},
+            </if>
+            <if test="createTime != null and createTime != ''">
+                create_time = #{createTime},
+            </if>
+            <if test="loginTime != null and loginTime != ''">
+                login_time = #{loginTime}
+            </if>
+        </set>
+        <where>
+            id=#{id}
+        </where>
+    </update>
 
     <select id="queryPage" resultMap="userResult">
         <include refid="commonSelect"/>

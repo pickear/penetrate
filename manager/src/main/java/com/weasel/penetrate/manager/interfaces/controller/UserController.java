@@ -25,26 +25,6 @@ public class UserController{
     private UserService service;
 
 
-    @RequestMapping(value = "/regitster",method = GET)
-    public String register(){
-
-        return "";
-    }
-
-    @RequestMapping(value = "/regitster",method = POST)
-    public String register(User user){
-
-        try {
-            if(service.notExist(user)){
-                int result = service.save(user);
-            }
-            return "";
-        } catch (UserExistException e) {
-            e.printStackTrace();
-            return "";
-        }
-    }
-
     @ResponseBody
     @RequestMapping(value = "/list",method = GET)
     public String list(){

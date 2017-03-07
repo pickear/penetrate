@@ -13,7 +13,7 @@ import java.util.Set;
  */
 public class User implements Serializable{
 
-    private long id;
+    private Long id;
     private String name;
     private String nickName;
     private String password;
@@ -27,11 +27,11 @@ public class User implements Serializable{
     private String salt;
     private Set<Role> roles = Sets.newHashSet();
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -107,6 +107,22 @@ public class User implements Serializable{
         this.salt = salt;
     }
 
+    public int getDevice() {
+        return device;
+    }
+
+    public void setDevice(int device) {
+        this.device = device;
+    }
+
+    public int getTotalDevice() {
+        return totalDevice;
+    }
+
+    public void setTotalDevice(int totalDevice) {
+        this.totalDevice = totalDevice;
+    }
+
     public Set<Role> getRoles() {
         return roles;
     }
@@ -127,6 +143,10 @@ public class User implements Serializable{
         return roles;
     }
 
+    public User createSalt(){
+        setSalt(PasswordHelper.createSalt());
+        return this;
+    }
     public User encodePassword(){
         setPassword(PasswordHelper.encrypt(getPassword(),getSalt()));
         return this;

@@ -1,5 +1,6 @@
 package com.weasel.penetrate.manager.service.impl;
 
+import com.google.common.base.Preconditions;
 import com.weasel.penetrate.manager.domain.Page;
 import com.weasel.penetrate.manager.domain.User;
 import com.weasel.penetrate.manager.infrastructure.exception.UserExistException;
@@ -20,7 +21,12 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public int save(User user) {
-        return 0;
+
+        Preconditions.checkNotNull(user,"user can not be null");
+        if(null != user.getId()){
+            return repository.update(user);
+        }
+        return repository.insert(user);
     }
 
     @Override
