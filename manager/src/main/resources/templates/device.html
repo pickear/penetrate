@@ -20,8 +20,8 @@
         }
     </style>
 </head>
+<span th:replace="common::common_html"></span>
 <body class="gray-bg">
-<a id="domain" th:href="@{/}"/>
     <div class="wrapper wrapper-content  animated fadeInRight">
         <div class="row">
             <div class="col-sm-12">
@@ -51,8 +51,8 @@
         $(document).ready(function () {
             $.jgrid.defaults.styleUI = 'Bootstrap';
             // Examle data for jqGrid
-            var domain = $("#domain").attr("href");
-            $.get(domain+"device/list", function(data){
+            var ctx = $("#ctx").val();
+            $.get(ctx+"/device/list", function(data){
                 var table_data = JSON.parse(data);
                 // Configuration for jqGrid Example 2
                 $("#table").jqGrid({

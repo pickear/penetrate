@@ -20,8 +20,8 @@
         }
     </style>
 </head>
+<span th:replace="common::common_html"></span>
 <body class="gray-bg">
-    <a id="domain" th:href="@{/}"/>
     <div class="wrapper wrapper-content  animated fadeInRight">
         <div class="row">
             <div class="col-sm-12">
@@ -36,7 +36,6 @@
             </div>
         </div>
     </div>
-
     <!-- 全局js -->
     <script th:src="@{/js/jquery.min.js(v=2.1.4)}"></script>
     <script th:src="@{/js/bootstrap.min.js(v=3.3.6)}"></script>
@@ -52,8 +51,8 @@
         $(document).ready(function () {
             $.jgrid.defaults.styleUI = 'Bootstrap';
             // Examle data for jqGrid
-            var domain = $("#domain").attr("href");
-            $.get(domain+"user/list", function(data){
+            var ctx = $("#ctx").val();
+            $.get(ctx+"/user/list", function(data){
                 var table_data = JSON.parse(data);
                 // Configuration for jqGrid Example 2
                 $("#table").jqGrid({
@@ -156,5 +155,4 @@
         });
     </script>
 </body>
-
 </html>

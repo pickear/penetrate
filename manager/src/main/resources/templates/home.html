@@ -39,7 +39,7 @@
                         </div>
                     </li>
                     <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
-                        <span class="ng-scope">系统管理</span>
+                        <span class="ng-scope">FRP</span>
                     </li>
                     <li>
                         <a class="J_menuItem" th:href="@{/welcome}">
@@ -47,7 +47,7 @@
                             <span class="nav-label">主页</span>
                         </a>
                     </li>
-                    <li>
+                    <li shiro:hasRole="ADMIN">
                         <a th:href="@{/}">
                             <i class="fa fa fa-bar-chart-o"></i>
                             <span class="nav-label">系统管理</span>

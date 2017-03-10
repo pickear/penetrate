@@ -1,0 +1,5 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<span th:fragment="common_html">
+<input id="ctx" type="hidden" th:value="${#request.getContextPath()}"/>
+</span>
