@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body class="gray-bg">
+<a id="domain" th:href="@{/}"/>
+<span th:fragment="common_html"><input id="ctx" type="hidden" th:value="${#request.getContextPath()}"/></span>
+</body>
+
+</html>
