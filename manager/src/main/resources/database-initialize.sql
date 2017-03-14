@@ -100,11 +100,11 @@ CREATE TABLE `user_role` (
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 INSERT INTO `common` VALUES ('1', '0.0.0.0', '5000', '5001', '5002', '5003', 'admin', '5805703', './logs/frps.log', 'info', '10', '1', '', '5099-8000', '30', '900', 'tunnel.jlw365.com');
-INSERT INTO `device`(id,number,username,device_type,protocol_type,auth_token,bind_addr,listen_port,custom_domains) VALUES ('1', '1234', 'dylan', 'SSH', 'TCP', '5805703', '0.0.0.0', '22', '');
-INSERT INTO `device`(id,number,username,device_type,protocol_type,auth_token,bind_addr,listen_port,custom_domains) VALUES ('2', '1235', 'dylan', 'WEB', 'HTTP', '5805703', '0.0.0.0', '8002', 'device.tunnel.jlw365.com');
+--INSERT INTO `device`(id,number,username,device_type,protocol_type,auth_token,bind_addr,listen_port,custom_domains) VALUES ('1', '1234', 'dylan', 'SSH', 'TCP', '5805703', '0.0.0.0', '22', '');
+--INSERT INTO `device`(id,number,username,device_type,protocol_type,auth_token,bind_addr,listen_port,custom_domains) VALUES ('2', '1235', 'dylan', 'WEB', 'HTTP', '5805703', '0.0.0.0', '8002', 'device.tunnel.jlw365.com');
 
 INSERT INTO user(id,name,nick_name,password,salt,email,device,total_device,login_count,create_time,login_time) VALUES (1,'admin','manager','ff709232640c89dbfa7e60efa2ad80cd','b3e7cdbc601dfb86f1298be0d075c0ec','pickear@gmail.com',0,100,0,'2017-02-20 12:00:00','2017-02-20 12:00:00');
-INSERT INTO user(id,name,nick_name,password,salt,email,device,total_device,login_count,create_time,login_time) VALUES (2,'dylan','普通用户','ff709232640c89dbfa7e60efa2ad80cd','b3e7cdbc601dfb86f1298be0d075c0ec','114231159@qq.com',0,100,0,'2017-02-20 12:00:00','2017-02-20 12:00:00');
+INSERT INTO user(id,name,nick_name,password,salt,email,device,total_device,login_count,create_time,login_time) VALUES (2,'dylan','普通用户','ff709232640c89dbfa7e60efa2ad80cd','b3e7cdbc601dfb86f1298be0d075c0ec','114231159@qq.com',0,3,0,'2017-02-20 12:00:00','2017-02-20 12:00:00');
 
 INSERT INTO `role` VALUES ('1', 'ADMIN', '管理员');
 

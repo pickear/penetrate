@@ -22,12 +22,13 @@ public class DeviceRepositoryImpl extends MybatisDaoSupport implements DeviceRep
 
     @Override
     public Device add(Device device) {
-        return null;
+        getSqlSession().insert(namespace().concat(".insert"),device);
+        return device;
     }
 
     @Override
     public int update(Device device) {
-        return 0;
+        return getSqlSession().update(namespace().concat(".update"),device);
     }
 
     @Override

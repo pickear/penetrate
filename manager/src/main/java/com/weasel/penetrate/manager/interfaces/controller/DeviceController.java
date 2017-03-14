@@ -6,6 +6,9 @@ import com.weasel.penetrate.manager.domain.device.Device;
 import com.weasel.penetrate.manager.infrastructure.helper.SecurityHelper;
 import com.weasel.penetrate.manager.interfaces.vo.ResponseMessage;
 import com.weasel.penetrate.manager.service.DeviceService;
+import com.weasel.penetrate.manager.service.UserService;
+import org.apache.commons.lang3.RandomUtils;
+import org.apache.commons.lang3.math.NumberUtils;
 import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -26,6 +29,9 @@ public class DeviceController{
 
     @Autowired
     private DeviceService service;
+
+    @Autowired
+    private UserService userService;
 
     @RequestMapping(value = {"/list_view"},method = GET)
     public String listView(){
@@ -51,7 +57,16 @@ public class DeviceController{
     @RequestMapping(value = {"/save"})
     public ResponseMessage save(Device device){
 
-        return ResponseMessage.success();
+        User user = SecurityHelper.getCurrentUser();
+        if(user.getDevice() < user.getTotalDevice()){
+            device.setUsername(user.getName());
+            device.setNumber(String.valueOf(RandomUtils.nextLong()));
+            service.save(device);
+            user.setDevice(user.getDevice()+1);
+            userService.save(user);
+            return ResponseMessage.success();
+        }
+        return ResponseMessage.error();
     }
 
 }

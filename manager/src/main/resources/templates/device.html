@@ -55,7 +55,7 @@
             $("#table").jqGrid({
                 url: ctx+"/device/list",
                 datatype: "json",
-                height: 450,
+                height: 400,
                 autowidth: true,
                 shrinkToFit: true,
                 rowNum: 20,
@@ -143,20 +143,6 @@
                 loadComplete: function (a) {
                 },
                 loadError: function (e) {
-                },
-                afterSaveCell: function (a, c, d, e, f) {        //单元格成功保存后触发
-
-                },
-                onclickSubmit: function(params){
-                    alert(params);
-                },
-                serializeEditData: function(data){
-                    alert(data);
-                    return $.param($.extend({}, data, {id:'-1'}));
-                },
-                beforeSubmit : function(postdata, formid) {
-                    alert(postdata);
-                    return[success,message];
                 }
             });
 

@@ -1,5 +1,6 @@
 package com.weasel.penetrate.manager.infrastructure.listener;
 
+import com.weasel.penetrate.common.helper.EnvironmentHelper;
 import com.weasel.penetrate.manager.infrastructure.Frp;
 import com.weasel.penetrate.manager.service.FrpConfigService;
 import org.slf4j.Logger;
@@ -20,7 +21,7 @@ public class ApplicationStartOverListener implements ApplicationListener<Context
     public void onApplicationEvent(ContextRefreshedEvent event) {
 
         //防止重复执行。
-        if(event.getApplicationContext().getParent() == null){
+        if(event.getApplicationContext().getParent() == null && EnvironmentHelper.isProd()){
             FrpConfigService frpConfigService = event.getApplicationContext().getBean(FrpConfigService.class);
             try {
                 frpConfigService.reloadConfig(Frp.getHome());

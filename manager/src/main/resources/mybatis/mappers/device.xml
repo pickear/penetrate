@@ -37,4 +37,45 @@
             </if>
         </where>
     </select>
+
+    <insert id="insert" parameterType="device" >
+        INSERT INTO device(number,username,device_type,protocol_type,auth_token,bind_addr,listen_port,custom_domains)
+        VALUE (#{number},#{username},#{deviceType},#{protocolType},#{authToken},#{bindAddr},#{listenPort},#{customDomains})
+        <selectKey resultType="long" keyProperty="id">
+            SELECT LAST_INSERT_ID() AS ID
+        </selectKey>
+    </insert>
+
+    <update id="update" parameterType="device">
+        UPDATE device
+        <set>
+            <if test="number != null and number !=''">
+                number = #{number}
+            </if>
+            <if test="username != null and username != ''">
+                username = #{username}
+            </if>
+            <if test="deviceType != null">
+                device_type = #{deviceType}
+            </if>
+            <if test="protocolType != null">
+                protocol_type = #{protocolType}
+            </if>
+            <if test="authToken != null and authToken != ''">
+                auth_token = #{authToken}
+            </if>
+            <if test="bindAddr != null  and bindAddr != ''">
+                bind_addr = #{bindAddr}
+            </if>
+            <if test="listenPort != null and listenPort != ''">
+                listen_port = #{listenPort}
+            </if>
+            <if test="customDomains != null and customDomains != ''">
+                custom_domains = #{customDomains}
+            </if>
+        </set>
+        <where>
+            id = #{id}
+        </where>
+    </update>
 </mapper>

@@ -12,5 +12,17 @@ import java.util.List;
 public interface DeviceService {
 
 
+    /**
+     *
+     * @param device
+     * @return
+     */
      List<Device> query(Device device);
+
+    /**
+     *
+     * @param device
+     * @return
+     */
+    Device save(Device device);
 }

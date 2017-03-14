@@ -23,4 +23,14 @@ public class DeviceServiceImpl implements DeviceService {
 
         return repository.query(device);
     }
+
+    @Override
+    public Device save(Device device) {
+        if (device.getId() != -1){
+            repository.update(device);
+            return device;
+        }
+        device = repository.add(device);
+        return device;
+    }
 }
