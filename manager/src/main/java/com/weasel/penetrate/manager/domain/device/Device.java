@@ -1,13 +1,17 @@
 package com.weasel.penetrate.manager.domain.device;
 
+import com.weasel.penetrate.manager.infrastructure.annotation.JQGridId;
 import org.apache.commons.lang3.StringUtils;
+
+import java.io.Serializable;
 
 /**
  * @author Dylan
  * @date 2017/1/22.
  */
-public class Device {
+public class Device  implements Serializable {
 
+    @JQGridId
     private long id;
 
     /**
