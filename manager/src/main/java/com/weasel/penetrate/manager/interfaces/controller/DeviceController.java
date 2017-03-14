@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.weasel.penetrate.manager.domain.User;
 import com.weasel.penetrate.manager.domain.device.Device;
 import com.weasel.penetrate.manager.infrastructure.helper.SecurityHelper;
+import com.weasel.penetrate.manager.interfaces.vo.ResponseMessage;
 import com.weasel.penetrate.manager.service.DeviceService;
 import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,4 +46,12 @@ public class DeviceController{
 
         return new Gson().toJson(devices);
     }
+
+    @ResponseBody
+    @RequestMapping(value = {"/save"})
+    public ResponseMessage save(Device device){
+
+        return ResponseMessage.success();
+    }
+
 }

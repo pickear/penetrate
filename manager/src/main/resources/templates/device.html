@@ -20,9 +20,9 @@
         }
     </style>
 </head>
-<span th:replace="common::common_html"></span>
 <body class="gray-bg">
-    <div class="wrapper wrapper-content  animated fadeInRight">
+<span th:replace="common::common_html"></span>
+<div class="wrapper wrapper-content  animated fadeInRight">
         <div class="row">
             <div class="col-sm-12">
                 <div class="ibox ">
@@ -52,93 +52,113 @@
             $.jgrid.defaults.styleUI = 'Bootstrap';
             // Examle data for jqGrid
             var ctx = $("#ctx").val();
-            $.get(ctx+"/device/list", function(data){
-                var table_data = JSON.parse(data);
-                // Configuration for jqGrid Example 2
-                $("#table").jqGrid({
-                    data: table_data,
-                    datatype: "local",
-                    height: 450,
-                    autowidth: true,
-                    shrinkToFit: true,
-                    rowNum: 20,
-                    rowList: [10, 20, 30],
-                    colNames: ['序号','设备号', '类型', '协议', '令牌', '绑定地址', '映射端口', '域名','所属用户'],
-                    colModel: [
-                        {
-                            name: 'id',
-                            index: 'id',
-                            editable: false,
-                            width: 40,
-                            sorttype: "int",
-                            search: true
-                        },
-                        {
-                            name: 'number',
-                            index: 'number',
-                            editable: false,
-                            sorttype: "string",
-                            width: 100
-                        },
-                        {
-                            name: 'deviceType',
-                            index: 'deviceType',
-                            sorttype: "string",
-                            editable: false,
-                            width: 50
-                        },
-                        {
-                            name: 'protocolType',
-                            index: 'protocolType',
-                            editable: false,
-                            width: 50
-                        },
-                        {
-                            name: 'authToken',
-                            index: 'authToken',
-                            editable: false,
-                            width: 100
-                        },
-                        {
-                            name: 'bindAddr',
-                            index: 'bindAddr',
-                            editable: true,
-                            width: 150,
-                            align: "left",
-                            sorttype: "string"
-                        },
-                        {
-                            name: 'listenPort',
-                            index: 'listenPort',
-                            editable: true,
-                            width: 60,
-                            sorttype: "string",
-                        },
-                        {
-                            name: 'customDomains',
-                            index: 'customDomains',
-                            editable: true,
-                            width: 150,
-                            sorttype: "string",
-                        },
-                        {
-                            name: 'username',
-                            index: 'username',
-                            editable: false,
-                            width: 80,
-                            sorttype: "string",
-                        }
-                    ],
-                    pager: "#pager",
-                    viewrecords: true,
-                    caption: "设备列表",
-                    add: true,
-                    edit: true,
-                    addtext: 'Add',
-                    edittext: 'Edit',
-                    hidegrid: false
-                });
-            })
+            $("#table").jqGrid({
+                url: ctx+"/device/list",
+                datatype: "json",
+                height: 450,
+                autowidth: true,
+                shrinkToFit: true,
+                rowNum: 20,
+                pager: "#pager",
+                viewrecords: true,
+                caption: "设备列表",
+                editurl: ctx+"/device/save",
+                addtext: 'Add',
+                edittext: 'Edit',
+                hidegrid: false,
+                rowList: [10, 20, 30],
+                clearAfterAdd: true,
+                closeAfterAdd: true,
+                cellsubmit:"clientArray",
+                colNames: ['序号','设备号', '类型', '协议', '令牌', '绑定地址', '映射端口', '域名','所属用户'],
+                colModel: [
+                    {
+                        name: 'id',
+                        index: 'id',
+                        editable: false,
+                        width: 40,
+                        sorttype: "string"
+                    },
+                    {
+                        name: 'number',
+                        index: 'number',
+                        editable: false,
+                        sorttype: "string",
+                        width: 100
+                    },
+                    {
+                        name: 'deviceType',
+                        index: 'deviceType',
+                        sorttype: "string",
+                        editable: true,
+                        width: 50
+                    },
+                    {
+                        name: 'protocolType',
+                        index: 'protocolType',
+                        editable: true,
+                        width: 50
+                    },
+                    {
+                        name: 'authToken',
+                        index: 'authToken',
+                        editable: true,
+                        width: 100
+                    },
+                    {
+                        name: 'bindAddr',
+                        index: 'bindAddr',
+                        editable: true,
+                        width: 150,
+                        align: "left",
+                        sorttype: "string"
+                    },
+                    {
+                        name: 'listenPort',
+                        index: 'listenPort',
+                        editable: true,
+                        width: 60,
+                        sorttype: "string",
+                    },
+                    {
+                        name: 'customDomains',
+                        index: 'customDomains',
+                        editable: true,
+                        width: 150,
+                        sorttype: "string",
+                    },
+                    {
+                        name: 'username',
+                        index: 'username',
+                        editable: false,
+                        width: 80,
+                        sorttype: "string",
+                    }
+                ],
+                gridComplete: function () {
+                    var rowNum = parseInt($(this).getGridParam("records"), 10);
+                },
+                onSelectRow: function (acctId) {
+                },
+                loadComplete: function (a) {
+                },
+                loadError: function (e) {
+                },
+                afterSaveCell: function (a, c, d, e, f) {        //单元格成功保存后触发
+
+                },
+                onclickSubmit: function(params){
+                    alert(params);
+                },
+                serializeEditData: function(data){
+                    alert(data);
+                    return $.param($.extend({}, data, {id:'-1'}));
+                },
+                beforeSubmit : function(postdata, formid) {
+                    alert(postdata);
+                    return[success,message];
+                }
+            });
 
             // Add selection
             $("#table").setSelection(4, true);

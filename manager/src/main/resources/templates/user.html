@@ -20,9 +20,9 @@
         }
     </style>
 </head>
-<span th:replace="common::common_html"></span>
 <body class="gray-bg">
-    <div class="wrapper wrapper-content  animated fadeInRight">
+<span th:replace="common::common_html"></span>
+<div class="wrapper wrapper-content  animated fadeInRight">
         <div class="row">
             <div class="col-sm-12">
                 <div class="ibox ">
@@ -50,86 +50,81 @@
     <script>
         $(document).ready(function () {
             $.jgrid.defaults.styleUI = 'Bootstrap';
-            // Examle data for jqGrid
             var ctx = $("#ctx").val();
-            $.get(ctx+"/user/list", function(data){
-                var table_data = JSON.parse(data);
-                // Configuration for jqGrid Example 2
-                $("#table").jqGrid({
-                    data: table_data,
-                    datatype: "local",
-                    height: 450,
-                    autowidth: true,
-                    shrinkToFit: true,
-                    rowNum: 20,
-                    rowList: [10, 20, 30],
-                    colNames: ['序号', '名称', '昵称', '密码', '邮箱', '登录次数', '注册时间', '最近登录时间'],
-                    colModel: [
-                        {
-                            name: 'id',
-                            index: 'id',
-                            editable: true,
-                            width: 40,
-                            sorttype: "int",
-                            search: true
-                        },
-                        {
-                            name: 'name',
-                            index: 'name',
-                            editable: false,
-                            width: 70
-                        },
-                        {
-                            name: 'nickName',
-                            index: 'nickName',
-                            editable: false,
-                            width: 80
-                        },
-                        {
-                            name: 'password',
-                            index: 'password',
-                            editable: false,
-                            width: 80
-                        },
-                        {
-                            name: 'email',
-                            index: 'email',
-                            editable: true,
-                            width: 120
-                        },
-                        {
-                            name: 'loginCount',
-                            index: 'loginCount',
-                            editable: true,
-                            width: 50,
-                            align: "left",
-                            sorttype: "int"
-                        },
-                        {
-                            name: 'createTime',
-                            index: 'createTime',
-                            editable: true,
-                            width: 100,
-                            sorttype: "string",
-                        },
-                        {
-                            name: 'loginTime',
-                            index: 'loginTime',
-                            editable: true,
-                            width: 100,
-                            sorttype: "string",
-                        }
-                    ],
-                    pager: "#pager",
-                    viewrecords: true,
-                    caption: "用户列表",
-                    add: true,
-                    edit: true,
-                    addtext: 'Add',
-                    edittext: 'Edit',
-                    hidegrid: false
-                });
-            })
+            $("#table").jqGrid({
+                url: ctx+"/user/list",
+                datatype: "json",
+                height: 450,
+                autowidth: true,
+                shrinkToFit: true,
+                rowNum: 20,
+                rowList: [10, 20, 30],
+                colNames: ['序号', '名称', '昵称', '密码', '邮箱', '登录次数', '注册时间', '最近登录时间'],
+                colModel: [
+                    {
+                        name: 'id',
+                        index: 'id',
+                        editable: true,
+                        width: 40,
+                        sorttype: "int",
+                        search: true
+                    },
+                    {
+                        name: 'name',
+                        index: 'name',
+                        editable: false,
+                        width: 70
+                    },
+                    {
+                        name: 'nickName',
+                        index: 'nickName',
+                        editable: false,
+                        width: 80
+                    },
+                    {
+                        name: 'password',
+                        index: 'password',
+                        editable: false,
+                        width: 80
+                    },
+                    {
+                        name: 'email',
+                        index: 'email',
+                        editable: true,
+                        width: 120
+                    },
+                    {
+                        name: 'loginCount',
+                        index: 'loginCount',
+                        editable: true,
+                        width: 50,
+                        align: "left",
+                        sorttype: "int"
+                    },
+                    {
+                        name: 'createTime',
+                        index: 'createTime',
+                        editable: true,
+                        width: 100,
+                        sorttype: "string",
+                    },
+                    {
+                        name: 'loginTime',
+                        index: 'loginTime',
+                        editable: true,
+                        width: 100,
+                        sorttype: "string",
+                    }
+                ],
+                pager: "#pager",
+                viewrecords: true,
+                caption: "用户列表",
+                add: true,
+                edit: true,
+                addtext: 'Add',
+                edittext: 'Edit',
+                hidegrid: false
+            });
 
             // Add selection
             $("#table").setSelection(4, true);

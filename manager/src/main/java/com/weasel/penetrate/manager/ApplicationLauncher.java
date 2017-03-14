@@ -2,6 +2,7 @@ package com.weasel.penetrate.manager;
 
 import com.weasel.penetrate.common.helper.SystemHelper;
 import com.weasel.penetrate.manager.infrastructure.Frp;
+import com.weasel.penetrate.manager.infrastructure.listener.ApplicationStartOverListener;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -43,6 +44,9 @@ public class ApplicationLauncher {
 
         log.info("当前操作系统[{}]", SystemHelper.getOSname());
 
-        SpringApplication.run(ApplicationLauncher.class,args);
+        SpringApplication application = new SpringApplication(ApplicationLauncher.class);
+        application.addListeners(new ApplicationStartOverListener());
+        application.run(args);
     }
+
 }
