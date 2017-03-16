@@ -2,6 +2,10 @@
 server:
    port: 8002
    contextPath: /
+   ssl:
+     key-store: classpath:www-kisme-org.jks
+     key-password: 214046548750690
+     key-store-password: 214046548750690
 
 jasypt:
   encryptor:
