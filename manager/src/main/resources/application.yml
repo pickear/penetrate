@@ -4,8 +4,8 @@ server:
    contextPath: /
    ssl:
      key-store: classpath:www-kisme-org.jks
-     key-password: 214046548750690
-     key-store-password: 214046548750690
+     key-password: ENC(+r7LBLwX7duNyPs4wSgkhTOHbyaWD8Ii)
+     key-store-password: ENC(+r7LBLwX7duNyPs4wSgkhTOHbyaWD8Ii)
 
 jasypt:
   encryptor:
