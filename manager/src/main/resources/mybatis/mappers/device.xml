@@ -50,25 +50,25 @@
         UPDATE device
         <set>
             <if test="number != null and number !=''">
-                number = #{number}
+                number = #{number},
             </if>
             <if test="username != null and username != ''">
-                username = #{username}
+                username = #{username},
             </if>
             <if test="deviceType != null">
-                device_type = #{deviceType}
+                device_type = #{deviceType},
             </if>
             <if test="protocolType != null">
-                protocol_type = #{protocolType}
+                protocol_type = #{protocolType},
             </if>
             <if test="authToken != null and authToken != ''">
-                auth_token = #{authToken}
+                auth_token = #{authToken},
             </if>
             <if test="bindAddr != null  and bindAddr != ''">
-                bind_addr = #{bindAddr}
+                bind_addr = #{bindAddr},
             </if>
             <if test="listenPort != null and listenPort != ''">
-                listen_port = #{listenPort}
+                listen_port = #{listenPort},
             </if>
             <if test="customDomains != null and customDomains != ''">
                 custom_domains = #{customDomains}

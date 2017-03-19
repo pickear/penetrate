@@ -4,6 +4,8 @@ import com.google.gson.Gson;
 import com.weasel.penetrate.manager.domain.User;
 import com.weasel.penetrate.manager.domain.device.Device;
 import com.weasel.penetrate.manager.infrastructure.helper.SecurityHelper;
+import com.weasel.penetrate.manager.infrastructure.task.ReloadFrpConfigQueue;
+import com.weasel.penetrate.manager.infrastructure.task.ReloadFrpConfigScheduled;
 import com.weasel.penetrate.manager.interfaces.vo.ResponseMessage;
 import com.weasel.penetrate.manager.service.DeviceService;
 import com.weasel.penetrate.manager.service.UserService;
@@ -64,6 +66,8 @@ public class DeviceController{
             service.save(device);
             user.setDevice(user.getDevice()+1);
             userService.save(user);
+
+            ReloadFrpConfigScheduled.submitTask(new ReloadFrpConfigQueue.ReloadFrpConfigTask());
             return ResponseMessage.success();
         }
         return ResponseMessage.error();
