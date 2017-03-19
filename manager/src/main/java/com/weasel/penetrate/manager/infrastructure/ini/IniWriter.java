@@ -42,11 +42,11 @@ public class IniWriter extends IniHandler{
         write("common","subdomain_host",common.getSubdomainHost());
         Set<Device> devices = config.getDevices();
         devices.forEach(device -> {
-            write(device.getDeviceType().getValue()+"_"+device.getNumber(),"type",device.getProtocolType().getValue());
-            write(device.getDeviceType().getValue()+"_"+device.getNumber(),"auth_token",device.getAuthToken());
-            write(device.getDeviceType().getValue()+"_"+device.getNumber(),"bind_addr",device.getBindAddr());
-            write(device.getDeviceType().getValue()+"_"+device.getNumber(),"listen_port",device.getListenPort());
-            write(device.getDeviceType().getValue()+"_"+device.getNumber(),"custom_domains",device.getCustomDomains());
+            write(device.getNumber(),"type",device.getProtocolType().getValue());
+            write(device.getNumber(),"auth_token",device.getAuthToken());
+            write(device.getNumber(),"bind_addr",device.getBindAddr());
+            write(device.getNumber(),"listen_port",device.getListenPort());
+            write(device.getNumber(),"custom_domains",device.getCustomDomains());
         });
 
         return this;

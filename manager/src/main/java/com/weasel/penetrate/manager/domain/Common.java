@@ -59,7 +59,7 @@ public class Common {
      * if subdomain_host is not empty, you can set subdomain when type is http or https in frpc's configure file
      * when subdomain is test, the host used by routing is test.frps.com
      */
-    private String subdomainHost = "tunnel.jlw365.com";
+    private String subdomainHost = "tunnel.kisme.org";
 
     public String getBindAddr() {
         return bindAddr;

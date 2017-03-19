@@ -39,7 +39,7 @@ public class Device  implements Serializable {
     /**
      * 绑定的地址
      */
-    protected String bindAddr;
+    protected String bindAddr = "0.0.0.0";
     /**
      * 监听的端口
      */

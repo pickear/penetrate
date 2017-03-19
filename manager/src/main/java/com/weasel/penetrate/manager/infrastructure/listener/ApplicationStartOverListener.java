@@ -20,8 +20,10 @@ public class ApplicationStartOverListener implements ApplicationListener<Context
     @Override
     public void onApplicationEvent(ContextRefreshedEvent event) {
 
+        logger.info("系统启动完毕......");
+
         //防止重复执行。
-        if(event.getApplicationContext().getParent() == null && EnvironmentHelper.isProd()){
+        if(event.getApplicationContext().getParent() == null){
             FrpConfigService frpConfigService = event.getApplicationContext().getBean(FrpConfigService.class);
             try {
                 frpConfigService.reloadConfig(Frp.getHome());

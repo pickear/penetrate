@@ -29,9 +29,9 @@ public class ReloadFrpConfigScheduled {
                 @Override
                 public void run() {
                     try {
-                        log.info("重新加载FRP配置文件...");
                         ReloadFrpConfigQueue.ReloadFrpConfigTask _task = queue.get();
                         if(null != _task){
+                            log.info("重新加载FRP配置文件...");
                             FrpConfigService frpConfigService = SpringBeanHolder.getBean(FrpConfigService.class);
                             frpConfigService.reloadConfig(Frp.getHome());
                         }
@@ -41,7 +41,7 @@ public class ReloadFrpConfigScheduled {
                         e.printStackTrace();
                     }
                 }
-            }, 0, 1, TimeUnit.MINUTES);
+            }, 0, 5, TimeUnit.MINUTES);
             started = true;
         }
     }

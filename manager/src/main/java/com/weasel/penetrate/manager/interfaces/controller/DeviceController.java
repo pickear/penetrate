@@ -62,7 +62,7 @@ public class DeviceController{
         User user = SecurityHelper.getCurrentUser();
         if(user.getDevice() < user.getTotalDevice()){
             device.setUsername(user.getName());
-            device.setNumber(String.valueOf(RandomUtils.nextLong()));
+            device.setNumber(String.valueOf(RandomUtils.nextInt()));
             service.save(device);
             user.setDevice(user.getDevice()+1);
             userService.save(user);
