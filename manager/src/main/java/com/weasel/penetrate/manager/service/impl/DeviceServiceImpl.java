@@ -29,15 +29,15 @@ public class DeviceServiceImpl implements DeviceService {
     @Override
     public Device save(Device device) throws DevicePortBindedException, DeviceSubDomainUsedException {
 
+        if (device.getId() != -1){
+            repository.update(device);
+            return device;
+        }
         if(portBinded(device)){
             throw new DevicePortBindedException("端口["+device.getListenPort()+"]已被占用!");
         }
         if(subDomainUsed(device)){
             throw new DeviceSubDomainUsedException("子域["+device.getSubdomain()+"]已被使用");
-        }
-        if (device.getId() != -1){
-            repository.update(device);
-            return device;
         }
         device = repository.add(device);
         return device;
