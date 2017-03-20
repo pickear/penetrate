@@ -1,6 +1,6 @@
 ###jetty
 server:
-   port: 8001
+   port: 7998
    contextPath: /
 
 spring:
