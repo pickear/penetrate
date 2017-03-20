@@ -25,7 +25,8 @@
     </resultMap>
 
     <sql id="commonSelect">
-        SELECT c.bind_addr as c_bind_addr,
+        SELECT  c.id as c_id,
+                c.bind_addr as c_bind_addr,
                 c.bind_port as c_bind_port,
                 c.vhost_http_port as c_vhost_http_port,
                 c.vhost_https_port as c_vhost_https_port,
