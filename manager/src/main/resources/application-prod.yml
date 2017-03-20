@@ -1,6 +1,11 @@
+server:
+   ssl:
+     key-store: classpath:www-kisme-org.jks
+     key-password: ENC(+r7LBLwX7duNyPs4wSgkhTOHbyaWD8Ii)
+     key-store-password: ENC(+r7LBLwX7duNyPs4wSgkhTOHbyaWD8Ii)
 spring:
    datasource:
-   ##  schema: classpath:database-initialize.sql
+     schema: classpath:database-initialize.sql
      name: prod
      url: jdbc:mysql://35.165.220.128:3306/frp?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
      username: root

@@ -2,7 +2,7 @@ spring:
    datasource:
      schema: classpath:database-initialize.sql
      name: dev
-     url: jdbc:mysql://192.168.1.3:3306/frp?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+     url: jdbc:mysql://127.0.0.1:3306/frp?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
      username: root
      password: ENC(SrpFBcVD89eTQ2icOD0TMg==)
      # 使用druid数据源

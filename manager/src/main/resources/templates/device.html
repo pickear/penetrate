@@ -70,7 +70,7 @@
                 clearAfterAdd: true,
                 closeAfterAdd: true,
                 cellsubmit:"clientArray",
-                colNames: ['序号','设备号', '类型', '协议', '令牌', '绑定地址', '映射端口', '域名','所属用户'],
+                colNames: ['序号','设备号', '类型', '协议', '令牌', '绑定地址', '映射端口', '子域','所属用户'],
                 colModel: [
                     {
                         name: 'id',
@@ -121,8 +121,8 @@
                         sorttype: "string",
                     },
                     {
-                        name: 'customDomains',
-                        index: 'customDomains',
+                        name: 'subdomain',
+                        index: 'subdomain',
                         editable: true,
                         width: 150,
                         sorttype: "string",

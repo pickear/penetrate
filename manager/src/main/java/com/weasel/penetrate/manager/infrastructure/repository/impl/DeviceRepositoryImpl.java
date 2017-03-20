@@ -44,6 +44,16 @@ public class DeviceRepositoryImpl extends MybatisDaoSupport implements DeviceRep
     }
 
     @Override
+    public int countByPort(String listenPort) {
+        return getSqlSession().selectOne(namespace().concat(".countByPort"),listenPort);
+    }
+
+    @Override
+    public int countBySubDomain(String subdomain) {
+        return getSqlSession().selectOne(namespace().concat(".countBySubDomain"),subdomain);
+    }
+
+    @Override
     protected String namespace() {
         return Device.class.getName();
     }

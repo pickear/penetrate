@@ -11,16 +11,16 @@ public class Common {
      * in square brackets, as in "[::1]:80", "[ipv6-host]:http" or "[ipv6-host%zone]:80"
      */
     private String bindAddr = "0.0.0.0";
-    private String bindPort = "7000";
+    private String bindPort = "5000";
     /**
      * if you want to support virtual host, you must set the http port for listening (optional)
      */
-    private String vhostHttpPort = "80";
-    private String vhostHttpsPort = "443";
+    private String vhostHttpPort = "5001";
+    private String vhostHttpsPort = "5002";
     /**
      * if you want to configure or reload frps by dashboard, dashboard_port must be set
      */
-    private String dashboardPort = "7500";
+    private String dashboardPort = "5003";
     /**
      * dashboard user and pwd for basic auth protect, if not set, both default value is admin
      */
@@ -31,7 +31,7 @@ public class Common {
      * assets_dir = ./static
      * console or real logFile path like ./frps.log
      */
-    private String logFile = "./frps.log";
+    private String logFile = "./logs/frps.log";
     /**
      * debug, info, warn, error
      */
@@ -41,20 +41,20 @@ public class Common {
      * if you enable privilege mode, frpc can create a proxy without pre-configure in frps when privilege_token is correct
      */
     private boolean privilegeMode = false;
-    private String privilegeToken = "123";
+    private String privilegeToken = "kisme";
     /**
      * only allow frpc to bind ports you list, if you set nothing, there won't be any limit
      */
-    private String privilegeAllowPorts = "2000-3000,3001,3003,4000-50000";
+    private String privilegeAllowPorts = "8000-9999";
     /**
      * pool_count in each proxy will change to max_pool_count if they exceed the maximum value
      */
-    private int maxPoolCount = 100;
+    private int maxPoolCount = 50;
     /**
      * authentication_timeout means the timeout interval (seconds) when the frpc connects frps
      * if authentication_timeout is zero, the time is not verified, default is 900s
      */
-    private int authenticationTimeout = 900;
+    private int authenticationTimeout = 10;
     /**
      * if subdomain_host is not empty, you can set subdomain when type is http or https in frpc's configure file
      * when subdomain is test, the host used by routing is test.frps.com

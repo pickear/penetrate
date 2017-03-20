@@ -2,6 +2,8 @@ package com.weasel.penetrate.manager.service;
 
 
 import com.weasel.penetrate.manager.domain.device.Device;
+import com.weasel.penetrate.manager.infrastructure.exception.DevicePortBindedException;
+import com.weasel.penetrate.manager.infrastructure.exception.DeviceSubDomainUsedException;
 
 import java.util.List;
 
@@ -24,5 +26,5 @@ public interface DeviceService {
      * @param device
      * @return
      */
-    Device save(Device device);
+    Device save(Device device) throws DevicePortBindedException, DeviceSubDomainUsedException;
 }

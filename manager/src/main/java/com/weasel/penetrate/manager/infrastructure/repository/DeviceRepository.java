@@ -38,4 +38,17 @@ public interface DeviceRepository {
      * @return
      */
     int delete(Device device);
+
+    /**
+     *
+     * @param listenPort
+     * @return
+     */
+    int countByPort(String listenPort);
+
+    /**
+     * @param subdomain
+     * @return
+     */
+    int countBySubDomain(String subdomain);
 }
