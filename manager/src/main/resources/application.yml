@@ -1,7 +1,11 @@
 ###jetty
 server:
-   port: 8002
+   port: 7999
    contextPath: /
+##   ssl:
+##     key-store: classpath:www-kisme-org.jks
+##     key-password: ENC(+r7LBLwX7duNyPs4wSgkhTOHbyaWD8Ii)
+##     key-store-password: ENC(+r7LBLwX7duNyPs4wSgkhTOHbyaWD8Ii)
 
 jasypt:
   encryptor:
