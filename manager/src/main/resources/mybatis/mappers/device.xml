@@ -13,7 +13,7 @@
         <result property="authToken" column="d_auth_token"/>
         <result property="bindAddr" column="d_bind_addr"/>
         <result property="listenPort" column="d_listen_port"/>
-        <result property="subdomain" column="d_subdomain"/>
+        <result property="customDomains" column="d_custom_domains"/>
     </resultMap>
 
     <sql id="commonSelect">
@@ -25,7 +25,7 @@
                 d.auth_token as d_auth_token,
                 d.bind_addr as d_bind_addr,
                 d.listen_port as d_listen_port,
-                d.subdomain as d_subdomain
+                d.custom_domains as d_custom_domains
         FROM device d
     </sql>
 
@@ -39,8 +39,8 @@
     </select>
 
     <insert id="insert" parameterType="device" >
-        INSERT INTO device(number,username,device_type,protocol_type,auth_token,bind_addr,listen_port,subdomain)
-        VALUE (#{number},#{username},#{deviceType},#{protocolType},#{authToken},#{bindAddr},#{listenPort},#{subdomain})
+        INSERT INTO device(number,username,device_type,protocol_type,auth_token,bind_addr,listen_port,custom_domains)
+        VALUE (#{number},#{username},#{deviceType},#{protocolType},#{authToken},#{bindAddr},#{listenPort},#{customDomains})
         <selectKey resultType="long" keyProperty="id">
             SELECT LAST_INSERT_ID() AS ID
         </selectKey>
@@ -70,8 +70,8 @@
             <if test="listenPort != null and listenPort != ''">
                 listen_port = #{listenPort},
             </if>
-            <if test="subdomain != null and subdomain != ''">
-                subdomain = #{subdomain}
+            <if test="customDomains != null and customDomains != ''">
+                custom_domains = #{customDomains}
             </if>
         </set>
         <where>
@@ -84,6 +84,10 @@
     </select>
 
     <select id="countBySubDomain" resultType="int">
-        SELECT COUNT(1) from device where subdomain = #{subdomain}
+        SELECT COUNT(1) from device where custom_domains = #{customDomains}
     </select>
+
+    <delete id="deleteById" parameterType="int" >
+        DELETE FROM device WHEN id=#{id}
+    </delete>
 </mapper>

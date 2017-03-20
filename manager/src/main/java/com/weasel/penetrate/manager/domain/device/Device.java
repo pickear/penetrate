@@ -45,7 +45,7 @@ public class Device  implements Serializable {
      */
     protected String listenPort;
 
-    private String subdomain;
+    private String customDomains;
 
     public Device() {
     }
@@ -119,12 +119,12 @@ public class Device  implements Serializable {
         this.listenPort = listenPort;
     }
 
-    public String getSubdomain() {
-        return subdomain;
+    public String getCustomDomains() {
+        return customDomains;
     }
 
-    public void setSubdomain(String subdomain) {
-        this.subdomain = subdomain;
+    public void setCustomDomains(String customDomains) {
+        this.customDomains = customDomains;
     }
 
     public String name(){

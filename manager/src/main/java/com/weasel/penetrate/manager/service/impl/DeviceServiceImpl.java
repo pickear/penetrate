@@ -37,7 +37,7 @@ public class DeviceServiceImpl implements DeviceService {
             throw new DevicePortBindedException("端口["+device.getListenPort()+"]已被占用!");
         }
         if(subDomainUsed(device)){
-            throw new DeviceSubDomainUsedException("子域["+device.getSubdomain()+"]已被使用");
+            throw new DeviceSubDomainUsedException("子域["+device.getCustomDomains()+"]已被使用");
         }
         device = repository.add(device);
         return device;
@@ -48,6 +48,6 @@ public class DeviceServiceImpl implements DeviceService {
     }
 
     private boolean subDomainUsed(Device device){
-        return repository.countBySubDomain(device.getSubdomain()) > 0;
+        return repository.countBySubDomain(device.getCustomDomains()) > 0;
     }
 }

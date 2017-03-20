@@ -28,7 +28,9 @@ public class DeviceRepositoryImpl extends MybatisDaoSupport implements DeviceRep
 
     @Override
     public int update(Device device) {
-        return getSqlSession().update(namespace().concat(".update"),device);
+        int result = delete(device);
+        add(device);
+        return result;
     }
 
     @Override
@@ -40,7 +42,7 @@ public class DeviceRepositoryImpl extends MybatisDaoSupport implements DeviceRep
 
     @Override
     public int delete(Device device) {
-        return 0;
+        return getSqlSession().delete(namespace().concat(".deleteById"),device.getId());
     }
 
     @Override
