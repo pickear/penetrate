@@ -2,4 +2,4 @@ penetrate:
    home:
       domain: http://home.tunnel.kisme.org
    manager:
-      domain: http://manager.tunnel.kisme.org
+      domain: https://manager.tunnel.kisme.org

@@ -53,39 +53,53 @@
 	<div class="course">
 		<article>
 			<header>
-				<h3>简单教程</h3>
+				<h3>windows简单教程</h3>
 			</header>
 		</article>
 		<pre>
 			<strong>1、下载frp压缩包</strong>
 			<a href="#banner">下载地址</a><br/>
 			<strong>2、提取frpc.exe和frpc.ini这两个文件</strong><br/>
+			<strong>3、登录管理后台</strong><br/>
+			访问https://manager.tunnel.kisme.org/login，
+			登录管理后台(如果没有帐号请注册)，在"用户资源"->"设备管理"下,
+			新增一个设备。类型选择有:SSH,WEB,DNS,协议选择有:HTTP,HTTPS,TCP,UDP(注意大小写)
+			例如添加一个对ssh的映射:
+			类型:SSH
+			协议:TCP
+			令牌:123
+			端口:8001
+			添加一个对http的映射:
+			类型:WEB
+			协议:HTTP
+			令牌:123
+			端口:8002
+			如果非http,https，域名不用填。如果是http或者https，域名可以填写xxx,如myweb
+			添加成功后，系统全自动生成一个设备号。如:1259875643,0598759845，请记得这个设备号，下面需要用到。
+			<font size="3" color="red">
+			注意:由于资源有限，暂每个用户只能添加3个设备。端口只能在8001-9999间，如果添加不成功，请换一个端口。每个设备的令牌请设置成一样
+			</font>
+			<br/>
 			<strong>3、修改配置文件</strong><br/>
 			打开frpc.ini
 			复制下面的代码到文件里：
 			[common]
-			server_addr = tunnel.jlw365.com
-			server_port = 7000
+			server_addr = tunnel.kisme.org
+			server_port = 5000
 			log_file = ./frpc.log
-			log_level = info
-			log_max_days = 3
-			privilege_token = 123456789
+			auth_token = 123   ##此处为添加设备的时候设置的令牌值
 
-			[HTTP]
-			privilege_mode = true
+			[0598759845]
 			type = http
 			local_ip = 127.0.0.1
 			local_port = 80
-			custom_domains = youname.com,www.youname.com
+			subdomain = myweb  ##此处为设备中填写的域名
 
-			[TCP]
-			privilege_mode = true
+			[1259875643]
 			type = tcp
-			remote_port = 9000
+			remote_port = 8001
 			local_ip = 127.0.0.1
 			local_port = 22
-			use_gzip = true
-			use_encrypti = true
 			<strong>4、启动frp</strong>
 			在ctrl+r键启动cmd用命令行操作
 			cd到在所在目录

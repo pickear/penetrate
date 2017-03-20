@@ -1,4 +1,4 @@
-package com.weasel.penetrate.home;
+package com.weasel.penetrate.manager;
 
 import com.weasel.penetrate.common.helper.SystemHelper;
 import org.slf4j.Logger;
