@@ -99,7 +99,7 @@ CREATE TABLE `user_role` (
   CONSTRAINT `u_key` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
-INSERT INTO `common` VALUES ('1', '0.0.0.0', '5000', '5001', '5002', '5003', 'admin', '5805703', './logs/frps.log', 'info', '10', '1', '', '5099-8000', '30', '900', 'tunnel.jlw365.com');
+INSERT INTO `common` VALUES ('1', '0.0.0.0', '5000', '5001', '5002', '5003', 'admin', 'kisme', './logs/frps.log', 'info', '2', '0', '', '8000-9999', '30', '10', 'tunnel.kisme.org');
 --INSERT INTO `device`(id,number,username,device_type,protocol_type,auth_token,bind_addr,listen_port,subdomain) VALUES ('1', '1234', 'dylan', 'SSH', 'TCP', '5805703', '0.0.0.0', '22', '');
 --INSERT INTO `device`(id,number,username,device_type,protocol_type,auth_token,bind_addr,listen_port,subdomain) VALUES ('2', '1235', 'dylan', 'WEB', 'HTTP', '5805703', '0.0.0.0', '8002', 'device');
 
