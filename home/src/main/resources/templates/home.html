@@ -78,15 +78,12 @@
 			然后在自己的域名管理将www.xxx.com域名解析到www.kisme.org:5001下，如果是https，请解析到www.kisme.org:5002下。
 			如果http或者https中域名不填写，系统会默认生成一个域名，该域名会自动解析，用户直接访问就可以。
 			添加成功后，系统全自动生成一个设备号。如:1259875643,0598759845，请记得这个设备号，下面需要用到。
-			<font size="3" color="red">
-			注意:由于资源有限，暂每个用户只能添加3个设备。端口只能在8001-9999间，如果添加不成功，请换一个端口。每个设备的令牌请设置成一样
-			</font>
-			<br/>
+
 			<strong>3、修改配置文件</strong><br/>
 			打开frpc.ini
 			复制下面的代码到文件里：
 			[common]
-			server_addr = tunnel.kisme.org
+			server_addr = 35.165.220.128
 			server_port = 5000
 			log_file = ./frpc.log
 			auth_token = 123   ##此处为添加设备的时候设置的令牌值
@@ -94,17 +91,23 @@
 			[0598759845]
 			type = http
 			local_ip = 127.0.0.1
-			local_port = 80
+			local_port = 8080  ##本地需要映射到外网的端口
 
 			[1259875643]
 			type = tcp
 			local_ip = 127.0.0.1
-			local_port = 22
+			local_port = 22  ##本地需要映射到外网的端口
 			<strong>4、启动frp</strong>
 			在ctrl+r键启动cmd用命令行操作
 			cd到在所在目录
 			输入 frpc.exe -c frpc.ini
 			注意：不可能关闭cmd命令窗口
+			<strong>5、访问</strong>
+			ssh映射:地址35.165.220.128，端口8001
+			http映射:http://www.xxx.com:5001  ##注意这里不是8002
+			<font size="3" color="red">
+			注意:由于资源有限，暂每个用户只能添加3个设备。端口只能在8001-9999间，如果添加不成功，请换一个端口。每个设备的令牌请设置成一样
+			</font>
 		</pre>
 	</div>
 	<p class="feetip"><h1>本服务免费提供，不收取任何费用！</h1><h4>温馨提示:请遵守国家法律,禁止用于任何非法或犯罪目的,本站不承担法律责任!</h4>如果您觉得好用，手头宽裕，可以请作者喝杯咖啡~</p>
