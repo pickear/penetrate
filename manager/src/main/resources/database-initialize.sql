@@ -20,7 +20,6 @@ CREATE TABLE `device` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `number` varchar(255) DEFAULT NULL,
   `username` varchar(255) DEFAULT NULL,
-  `device_type` varchar(255) DEFAULT NULL,
   `protocol_type` varchar(255) DEFAULT NULL,
   `auth_token` varchar(255) DEFAULT NULL,
   `bind_addr` varchar(255) DEFAULT NULL,
@@ -98,8 +97,8 @@ CREATE TABLE `user_role` (
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 INSERT INTO `common` VALUES ('0.0.0.0', '5000', '5001', '5002', '5003', 'admin', 'kisme', './logs/frps.log', 'info', '2', '0', '', '8000-9999', '30', '100', '');
---INSERT INTO `device`(id,number,username,device_type,protocol_type,auth_token,bind_addr,listen_port,custom_domains) VALUES ('1', '1234', 'dylan', 'SSH', 'TCP', '5805703', '0.0.0.0', '22', '');
---INSERT INTO `device`(id,number,username,device_type,protocol_type,auth_token,bind_addr,listen_port,custom_domains) VALUES ('2', '1235', 'dylan', 'WEB', 'HTTP', '5805703', '0.0.0.0', '8002', 'device.tunnel.kisme.org');
+--INSERT INTO `device`(id,number,username,protocol_type,auth_token,bind_addr,listen_port,custom_domains) VALUES ('1', '1234', 'dylan', 'TCP', '5805703', '0.0.0.0', '22', '');
+--INSERT INTO `device`(id,number,username,protocol_type,auth_token,bind_addr,listen_port,custom_domains) VALUES ('2', '1235', 'dylan', 'HTTP', '5805703', '0.0.0.0', '8002', 'device.tunnel.kisme.org');
 
 INSERT INTO user(id,name,nick_name,password,salt,email,device,total_device,login_count,create_time,login_time) VALUES (1,'admin','manager','ff709232640c89dbfa7e60efa2ad80cd','b3e7cdbc601dfb86f1298be0d075c0ec','pickear@gmail.com',0,100,0,'2017-02-20 12:00:00','2017-02-20 12:00:00');
 INSERT INTO user(id,name,nick_name,password,salt,email,device,total_device,login_count,create_time,login_time) VALUES (2,'dylan','普通用户','ff709232640c89dbfa7e60efa2ad80cd','b3e7cdbc601dfb86f1298be0d075c0ec','114231159@qq.com',0,3,0,'2017-02-20 12:00:00','2017-02-20 12:00:00');

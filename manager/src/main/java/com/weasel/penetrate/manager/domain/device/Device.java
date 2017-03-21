@@ -25,10 +25,6 @@ public class Device  implements Serializable {
     private String number;
 
     /**
-     * 类型
-     */
-    private DeviceType deviceType;
-    /**
      * 协议类型
      */
     protected ProtocolType protocolType;
@@ -50,9 +46,8 @@ public class Device  implements Serializable {
     public Device() {
     }
 
-    public Device( DeviceType deviceType,ProtocolType protocolType) {
+    public Device(ProtocolType protocolType) {
         this.protocolType = protocolType;
-        this.deviceType = deviceType;
     }
 
     public long getId() {
@@ -77,14 +72,6 @@ public class Device  implements Serializable {
 
     public void setNumber(String number) {
         this.number = number;
-    }
-
-    public DeviceType getDeviceType() {
-        return deviceType;
-    }
-
-    public void setDeviceType(DeviceType deviceType) {
-        this.deviceType = deviceType;
     }
 
     public ProtocolType getProtocolType() {
@@ -131,39 +118,19 @@ public class Device  implements Serializable {
         return StringUtils.lowerCase(this.getClass().getSimpleName());
     }
 
-    public static Device ssh(){
-        return new Device(DeviceType.SSH, ProtocolType.TCP);
+    public static Device tcp(){
+        return new Device( ProtocolType.TCP);
     }
 
-    public static Device dns(){
-        return new Device(DeviceType.DNS, ProtocolType.UDP);
+    public static Device udp(){
+        return new Device(ProtocolType.UDP);
     }
 
     public static Device http(){
-        return new Device(DeviceType.WEB, ProtocolType.HTTP);
+        return new Device(ProtocolType.HTTP);
     }
     public static Device https(){
-        return new Device(DeviceType.WEB, ProtocolType.HTTPS);
-    }
-
-    public static enum DeviceType{
-        SSH("ssh"),DNS("dns"),WEB("web");
-        private String value;
-
-        DeviceType() {
-        }
-
-        DeviceType(String value) {
-            this.value = value;
-        }
-
-        public String getValue() {
-            return value;
-        }
-
-        public void setValue(String value) {
-            this.value = value;
-        }
+        return new Device(ProtocolType.HTTPS);
     }
 
     public static enum ProtocolType {
