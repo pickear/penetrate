@@ -87,7 +87,7 @@
         SELECT COUNT(1) from device where custom_domains = #{customDomains}
     </select>
 
-    <delete id="deleteById" parameterType="int" >
-        DELETE FROM device WHEN id=#{id}
+    <delete id="deleteById">
+        DELETE FROM device WHERE id=#{id}
     </delete>
 </mapper>
