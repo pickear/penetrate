@@ -2,6 +2,7 @@ package com.weasel.penetrate.manager.service.impl;
 
 import com.weasel.penetrate.manager.domain.device.Device;
 import com.weasel.penetrate.manager.infrastructure.exception.DevicePortBindedException;
+import com.weasel.penetrate.manager.infrastructure.exception.DevicePortUsedUpException;
 import com.weasel.penetrate.manager.infrastructure.exception.DeviceSubDomainUsedException;
 import com.weasel.penetrate.manager.infrastructure.repository.DeviceRepository;
 import com.weasel.penetrate.manager.service.DeviceService;
@@ -16,6 +17,8 @@ import java.util.List;
  */
 @Service
 public class DeviceServiceImpl implements DeviceService {
+
+    private static int maxDistributedPort = 0;
 
     @Autowired
     private DeviceRepository repository;
@@ -41,6 +44,20 @@ public class DeviceServiceImpl implements DeviceService {
         }
         device = repository.add(device);
         return device;
+    }
+
+    @Override
+    public int distributePort() throws DevicePortUsedUpException {
+        synchronized (this){
+            if(maxDistributedPort == 0){
+                maxDistributedPort = getMaxDistributedPort();
+            }
+            return ++maxDistributedPort;
+        }
+    }
+
+    private int getMaxDistributedPort() throws DevicePortUsedUpException {
+        return repository.getMaxDistributedPort();
     }
 
     private boolean portBinded(Device device){

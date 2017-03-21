@@ -47,23 +47,11 @@
     <update id="update" parameterType="device">
         UPDATE device
         <set>
-            <if test="number != null and number !=''">
-                number = #{number},
-            </if>
-            <if test="username != null and username != ''">
-                username = #{username},
-            </if>
             <if test="protocolType != null">
                 protocol_type = #{protocolType},
             </if>
             <if test="authToken != null and authToken != ''">
                 auth_token = #{authToken},
-            </if>
-            <if test="bindAddr != null  and bindAddr != ''">
-                bind_addr = #{bindAddr},
-            </if>
-            <if test="listenPort != null and listenPort != ''">
-                listen_port = #{listenPort},
             </if>
             <if test="customDomains != null and customDomains != ''">
                 custom_domains = #{customDomains}
@@ -75,14 +63,20 @@
     </update>
     
     <select id="countByPort" resultType="int">
-        SELECT COUNT(1) from device where listen_port = #{listenPort}
+        SELECT COUNT(1) FROM device where listen_port = #{listenPort}
     </select>
 
     <select id="countBySubDomain" resultType="int">
-        SELECT COUNT(1) from device where custom_domains = #{customDomains}
+        SELECT COUNT(1) FROM device where custom_domains = #{customDomains}
     </select>
 
     <delete id="deleteById">
         DELETE FROM device WHERE id=#{id}
     </delete>
+
+    <select id="getMaxDistributedPort" resultType="int">
+        SELECT listen_port FROM device
+        ORDER BY listen_port DESC
+        limit 0,1
+    </select>
 </mapper>

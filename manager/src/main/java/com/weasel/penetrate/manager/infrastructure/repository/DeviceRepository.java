@@ -2,6 +2,7 @@ package com.weasel.penetrate.manager.infrastructure.repository;
 
 
 import com.weasel.penetrate.manager.domain.device.Device;
+import com.weasel.penetrate.manager.infrastructure.exception.DevicePortUsedUpException;
 
 import java.util.List;
 
@@ -51,4 +52,11 @@ public interface DeviceRepository {
      * @return
      */
     int countBySubDomain(String subdomain);
+
+    /**
+     *
+     * @return
+     */
+    int getMaxDistributedPort() throws DevicePortUsedUpException;
+
 }

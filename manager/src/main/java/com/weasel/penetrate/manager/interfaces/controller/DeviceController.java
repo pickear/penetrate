@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.weasel.penetrate.manager.domain.User;
 import com.weasel.penetrate.manager.domain.device.Device;
 import com.weasel.penetrate.manager.infrastructure.exception.DevicePortBindedException;
+import com.weasel.penetrate.manager.infrastructure.exception.DevicePortUsedUpException;
 import com.weasel.penetrate.manager.infrastructure.exception.DeviceSubDomainUsedException;
 import com.weasel.penetrate.manager.infrastructure.helper.SecurityHelper;
 import com.weasel.penetrate.manager.infrastructure.task.ReloadFrpConfigQueue;
@@ -70,22 +71,21 @@ public class DeviceController{
     @RequestMapping(value = {"/save"})
     public ResponseMessage save(Device device){
 
-        if(Integer.valueOf(device.getListenPort()) < 8000 || Integer.valueOf(device.getListenPort()) > 9999){
-            logger.error("端口[{}]不在[{}]-[{}]范围",device.getListenPort(),portStart,portEnd);
-            return ResponseMessage.error();
-        }
         User user = SecurityHelper.getCurrentUser();
         if(user.getDevice() < user.getTotalDevice()){
-            String number = String.valueOf(RandomUtils.nextInt());
-            device.setUsername(user.getName());
-            device.setNumber(number);
-            if(StringUtils.isBlank(device.getCustomDomains())
-                    &&(StringUtils.equalsIgnoreCase("http",device.getProtocolType().getValue())
-                    || StringUtils.equalsIgnoreCase("https",device.getProtocolType().getValue()))){
-
-                device.setCustomDomains(device.getNumber()+"."+customDomainSuffix);
-            }
             try {
+                int port = service.distributePort();
+                device.setListenPort(String.valueOf(port));
+                String number = String.valueOf(RandomUtils.nextInt());
+                device.setUsername(user.getName());
+                device.setNumber(number);
+                if(StringUtils.isBlank(device.getCustomDomains())
+                        &&(StringUtils.equalsIgnoreCase("http",device.getProtocolType().getValue())
+                        || StringUtils.equalsIgnoreCase("https",device.getProtocolType().getValue()))){
+
+                    device.setCustomDomains(device.getNumber()+"."+customDomainSuffix);
+                }
+
                 service.save(device);
                 user.setDevice(user.getDevice()+1);
                 userService.save(user);
@@ -93,8 +93,9 @@ public class DeviceController{
                 return ResponseMessage.success();
             } catch (DevicePortBindedException e) {
                 logger.error(e.getMessage());
-                e.printStackTrace();
             } catch (DeviceSubDomainUsedException e) {
+                logger.error(e.getMessage());
+            } catch (DevicePortUsedUpException e) {
                 logger.error(e.getMessage());
             }
             return ResponseMessage.error();

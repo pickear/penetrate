@@ -1,16 +1,13 @@
 package com.weasel.penetrate.manager.infrastructure.config;
 
 import at.pollux.thymeleaf.shiro.dialect.ShiroDialect;
-import com.weasel.penetrate.common.helper.EnvironmentHelper;
-import com.weasel.penetrate.common.helper.SystemHelper;
-import com.weasel.penetrate.manager.infrastructure.helper.SecurityHelper;
 import com.weasel.penetrate.manager.infrastructure.shiro.ShiroRealm;
 import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
+import org.apache.shiro.mgt.SecurityManager;
 import org.apache.shiro.spring.LifecycleBeanPostProcessor;
 import org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
-import org.apache.shiro.mgt.SecurityManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator;
