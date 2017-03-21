@@ -20,29 +20,27 @@ public class ReloadFrpConfigScheduled {
 
     private final static ReloadFrpConfigQueue<ReloadFrpConfigQueue.ReloadFrpConfigTask> queue = new ReloadFrpConfigQueue<>();
     private final static ScheduledExecutorService service = Executors.newSingleThreadScheduledExecutor();
-    private static boolean started = false;
 
+    static {
+        service.scheduleWithFixedDelay(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    ReloadFrpConfigQueue.ReloadFrpConfigTask _task = queue.get();
+                    if(null != _task){
+                        log.info("重新加载FRP配置文件任务执行...");
+                        FrpConfigService frpConfigService = SpringBeanHolder.getBean(FrpConfigService.class);
+                        frpConfigService.reloadConfig(Frp.getHome());
+                    }
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, 0, 5, TimeUnit.MINUTES);
+    }
     public synchronized static void submitTask(ReloadFrpConfigQueue.ReloadFrpConfigTask task){
         queue.addIfEmpty(task);
-        if(!started){
-            service.scheduleWithFixedDelay(new Runnable() {
-                @Override
-                public void run() {
-                    try {
-                        ReloadFrpConfigQueue.ReloadFrpConfigTask _task = queue.get();
-                        if(null != _task){
-                            log.info("重新加载FRP配置文件...");
-                            FrpConfigService frpConfigService = SpringBeanHolder.getBean(FrpConfigService.class);
-                            frpConfigService.reloadConfig(Frp.getHome());
-                        }
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }, 0, 5, TimeUnit.MINUTES);
-            started = true;
-        }
     }
 }

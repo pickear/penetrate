@@ -74,7 +74,9 @@
 			协议:HTTP
 			令牌:123
 			端口:8002
-			如果非http,https，域名不用填。如果是http或者https，域名可以填写xxx,如myweb
+			如果非http,https，域名不用填。如果是http或者https，域名可以填写自己的域名,如www.xxx.com，
+			然后在自己的域名管理将www.xxx.com域名解析到www.kisme.org:5001下，如果是https，请解析到www.kisme.org:5002下。
+			如果http或者https中域名不填写，系统会默认生成一个域名，该域名会自动解析，用户直接访问就可以。
 			添加成功后，系统全自动生成一个设备号。如:1259875643,0598759845，请记得这个设备号，下面需要用到。
 			<font size="3" color="red">
 			注意:由于资源有限，暂每个用户只能添加3个设备。端口只能在8001-9999间，如果添加不成功，请换一个端口。每个设备的令牌请设置成一样
@@ -93,11 +95,9 @@
 			type = http
 			local_ip = 127.0.0.1
 			local_port = 80
-			subdomain = myweb  ##此处为设备中填写的域名
 
 			[1259875643]
 			type = tcp
-			remote_port = 8001
 			local_ip = 127.0.0.1
 			local_port = 22
 			<strong>4、启动frp</strong>

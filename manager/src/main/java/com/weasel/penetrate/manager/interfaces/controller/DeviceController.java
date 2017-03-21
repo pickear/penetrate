@@ -12,6 +12,7 @@ import com.weasel.penetrate.manager.interfaces.vo.ResponseMessage;
 import com.weasel.penetrate.manager.service.DeviceService;
 import com.weasel.penetrate.manager.service.UserService;
 import org.apache.commons.lang3.RandomUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.math.NumberUtils;
 import org.apache.shiro.SecurityUtils;
 import org.slf4j.Logger;
@@ -34,6 +35,7 @@ import static org.springframework.web.bind.annotation.RequestMethod.GET;
 public class DeviceController{
 
     private final static Logger logger = LoggerFactory.getLogger(DeviceController.class);
+    private final static String customDomainSuffix = "tunnel.kisme.org";
 
     private int portStart = 8000;
     private int portEnd = 9999;
@@ -74,8 +76,15 @@ public class DeviceController{
         }
         User user = SecurityHelper.getCurrentUser();
         if(user.getDevice() < user.getTotalDevice()){
+            String number = String.valueOf(RandomUtils.nextInt());
             device.setUsername(user.getName());
-            device.setNumber(String.valueOf(RandomUtils.nextInt()));
+            device.setNumber(number);
+            if(StringUtils.isBlank(device.getCustomDomains())
+                    &&(StringUtils.equalsIgnoreCase("http",device.getProtocolType().getValue())
+                    || StringUtils.equalsIgnoreCase("https",device.getProtocolType().getValue()))){
+
+                device.setCustomDomains(device.getNumber()+"."+customDomainSuffix);
+            }
             try {
                 service.save(device);
                 user.setDevice(user.getDevice()+1);

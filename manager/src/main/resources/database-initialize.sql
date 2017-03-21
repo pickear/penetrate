@@ -33,7 +33,6 @@ SET FOREIGN_KEY_CHECKS=0;
 
 DROP TABLE IF EXISTS `common`;
 CREATE TABLE `common` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
   `bind_addr` varchar(255) DEFAULT NULL,
   `bind_port` varchar(255) DEFAULT NULL,
   `vhost_http_port` varchar(255) DEFAULT NULL,
@@ -49,8 +48,7 @@ CREATE TABLE `common` (
   `privilege_allow_ports` varchar(255) DEFAULT NULL,
   `max_pool_count` int(11) DEFAULT NULL,
   `authentication_timeout` int(11) DEFAULT NULL,
-  `subdomain_host` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  `subdomain_host` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
@@ -99,7 +97,7 @@ CREATE TABLE `user_role` (
   CONSTRAINT `u_key` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
-INSERT INTO `common` VALUES ('1', '0.0.0.0', '5000', '5001', '5002', '5003', 'admin', 'kisme', './logs/frps.log', 'info', '2', '0', '', '8000-9999', '30', '10', 'tunnel.kisme.org');
+INSERT INTO `common` VALUES ('0.0.0.0', '5000', '5001', '5002', '5003', 'admin', 'kisme', './logs/frps.log', 'info', '2', '0', '', '8000-9999', '30', '100', '');
 --INSERT INTO `device`(id,number,username,device_type,protocol_type,auth_token,bind_addr,listen_port,custom_domains) VALUES ('1', '1234', 'dylan', 'SSH', 'TCP', '5805703', '0.0.0.0', '22', '');
 --INSERT INTO `device`(id,number,username,device_type,protocol_type,auth_token,bind_addr,listen_port,custom_domains) VALUES ('2', '1235', 'dylan', 'WEB', 'HTTP', '5805703', '0.0.0.0', '8002', 'device.tunnel.kisme.org');
 

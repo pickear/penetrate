@@ -5,7 +5,6 @@
 <mapper namespace="com.weasel.penetrate.manager.domain.Common">
 
     <resultMap id="CommonResult" type="Common">
-        <id property="id" column="c_id"/>
         <result property="bindAddr" column="c_bind_addr"/>
         <result property="bindPort" column="c_bind_port"/>
         <result property="vhostHttpPort" column="c_vhost_http_port"/>
@@ -25,8 +24,7 @@
     </resultMap>
 
     <sql id="commonSelect">
-        SELECT  c.id as c_id,
-                c.bind_addr as c_bind_addr,
+        SELECT c.bind_addr as c_bind_addr,
                 c.bind_port as c_bind_port,
                 c.vhost_http_port as c_vhost_http_port,
                 c.vhost_https_port as c_vhost_https_port,
