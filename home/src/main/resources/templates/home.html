@@ -63,20 +63,20 @@
 			<strong>3、登录管理后台</strong><br/>
 			访问https://manager.tunnel.kisme.org/login，
 			登录管理后台(如果没有帐号请注册)，在"用户资源"->"设备管理"下,
-			新增一个设备。类型选择有:SSH,WEB,DNS,协议选择有:HTTP,HTTPS,TCP,UDP(注意大小写)
+			新增一个设备。协议选择有:HTTP,HTTPS,TCP,UDP(注意大小写)
 			例如添加一个对ssh的映射:
-			类型:SSH
 			协议:TCP
 			令牌:123
-			端口:8001
 			添加一个对http的映射:
-			类型:WEB
 			协议:HTTP
 			令牌:123
-			端口:8002
-			如果非http,https，域名不用填。如果是http或者https，域名可以填写自己的域名,如www.xxx.com，
+
+			说明:
+			1 如果非http,https，域名不用填。如果是http或者https，域名可以填写自己的域名,如www.xxx.com，
 			然后在自己的域名管理将www.xxx.com域名解析到www.kisme.org:5001下，如果是https，请解析到www.kisme.org:5002下。
-			如果http或者https中域名不填写，系统会默认生成一个域名，该域名会自动解析，用户直接访问就可以。
+			2 如果http或者https中域名不填写，系统会默认生成一个域名，该域名会自动解析，用户直接访问。如分配123.tunnel.kisme.org
+			即访问123.tunnel.kisme.org:5001
+
 			添加成功后，系统全自动生成一个设备号。如:1259875643,0598759845，请记得这个设备号，下面需要用到。
 
 			<strong>3、修改配置文件</strong><br/>
@@ -106,7 +106,7 @@
 			ssh映射:地址35.165.220.128，端口8001
 			http映射:http://www.xxx.com:5001  ##注意这里不是8002
 			<font size="3" color="red">
-			注意:由于资源有限，暂每个用户只能添加3个设备。端口只能在8001-9999间，如果添加不成功，请换一个端口。每个设备的令牌请设置成一样
+			注意:由于资源有限，暂每个用户只能添加3个设备。建议每个设备的令牌设置成一样。
 			</font>
 		</pre>
 	</div>
