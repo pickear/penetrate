@@ -1,0 +1,529 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" >
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>frp</title>
+<link th:href="@{/css/frp/bootstrap.min.css}" rel="stylesheet">
+<link th:href="@{/css/frp/iconfont.css}" rel="stylesheet">
+<script th:src="@{/js/frp/jquery.min.js}"></script>
+<script th:src="@{/js/frp/bootstrap.min.js}"></script>
+</head>
+<body>
+<div class="container" style="margin-top: 80px">
+	<div class="row">
+		<div class="col-md-7">
+			<div class="panel panel-default">
+				<div ng-app="myTable" class="panel-body ng-scope">
+					<table class="table table-bordered ng-scope" ng-app="myTable" ng-controller="myCtrl">
+						<thead>
+						<tr>
+							<th class="tab_info" ng-click="col=&#39;name&#39;;desc=!desc">Server<i class="iconfont pull-right"></i></th>
+							<th class="tab_info" ng-click="col=&#39;type&#39;;desc=!desc">Type<i class="iconfont pull-right"></i></th>
+							<th class="tab_info" ng-click="col=&#39;listen_port&#39;;desc=!desc">Port<i class="iconfont pull-right"></i></th>
+							<th class="tab_info" ng-click="col=&#39;status&#39;;desc=!desc">Status<i class="iconfont pull-right"></i></th>
+							<th class="tab_info" ng-click="col=&#39;current_conns&#39;;desc=!desc">CurCon<i class="iconfont pull-right"></i></th>
+							<th class="tab_info" ng-click="col=&#39;daily[daily.length-1].flow_out&#39;;desc=!desc">FlowOut<i class="iconfont pull-right"></i></th>
+							<th class="tab_info" ng-click="col=&#39;daily[daily.length-1].flow_in&#39;;desc=!desc">FlowIn<i class="iconfont pull-right"></i></th>
+							<th class="tab_info" ng-click="col=&#39;daily[daily.length-1].total_accept_conns&#39;;desc=!desc">TotalAcceptConns<i class="iconfont pull-right"></i></th>
+						</tr>
+						</thead>
+						<tbody id="tab_body">
+						<!-- ngRepeat: x in proxies|orderBy:col:desc --><tr ng-repeat="x in proxies|orderBy:col:desc" class="ng-scope">
+							<td>
+								<button class="btn btn-xs btn-block btn-success center-block" onclick="changeit(this)"><span ng-bind="x.name" class="ng-binding">1139513447</span></button>
+							</td>
+							<td><span ng-bind="x.type" class="ng-binding">tcp</span></td>
+							<td><span ng-bind="x.listen_port" class="ng-binding">8001</span></td>
+							<td><span ng-bind="x.status" class="ng-binding">closed</span></td>
+							<td><span ng-bind="x.current_conns" class="ng-binding">0</span></td>
+							<td><span ng-bind="x.daily[x.daily.length-1].flow_out" class="ng-binding">0</span></td>
+							<td><span ng-bind="x.daily[x.daily.length-1].flow_in" class="ng-binding">0</span></td>
+							<td><span ng-bind="x.daily[x.daily.length-1].total_accept_conns" class="ng-binding">0</span></td>
+						</tr><!-- end ngRepeat: x in proxies|orderBy:col:desc --><tr ng-repeat="x in proxies|orderBy:col:desc" class="ng-scope">
+							<td>
+								<button class="btn btn-xs btn-block btn-success center-block" onclick="changeit(this)"><span ng-bind="x.name" class="ng-binding">129276123</span></button>
+							</td>
+							<td><span ng-bind="x.type" class="ng-binding">http</span></td>
+							<td><span ng-bind="x.listen_port" class="ng-binding">5001</span></td>
+							<td><span ng-bind="x.status" class="ng-binding">closed</span></td>
+							<td><span ng-bind="x.current_conns" class="ng-binding">0</span></td>
+							<td><span ng-bind="x.daily[x.daily.length-1].flow_out" class="ng-binding">0</span></td>
+							<td><span ng-bind="x.daily[x.daily.length-1].flow_in" class="ng-binding">0</span></td>
+							<td><span ng-bind="x.daily[x.daily.length-1].total_accept_conns" class="ng-binding">0</span></td>
+						</tr><!-- end ngRepeat: x in proxies|orderBy:col:desc --><tr ng-repeat="x in proxies|orderBy:col:desc" class="ng-scope">
+							<td>
+								<button class="btn btn-xs btn-block btn-success center-block" onclick="changeit(this)"><span ng-bind="x.name" class="ng-binding">129276124</span></button>
+							</td>
+							<td><span ng-bind="x.type" class="ng-binding">http</span></td>
+							<td><span ng-bind="x.listen_port" class="ng-binding">5001</span></td>
+							<td><span ng-bind="x.status" class="ng-binding">closed</span></td>
+							<td><span ng-bind="x.current_conns" class="ng-binding">0</span></td>
+							<td><span ng-bind="x.daily[x.daily.length-1].flow_out" class="ng-binding">0</span></td>
+							<td><span ng-bind="x.daily[x.daily.length-1].flow_in" class="ng-binding">0</span></td>
+							<td><span ng-bind="x.daily[x.daily.length-1].total_accept_conns" class="ng-binding">0</span></td>
+						</tr><!-- end ngRepeat: x in proxies|orderBy:col:desc --><tr ng-repeat="x in proxies|orderBy:col:desc" class="ng-scope">
+							<td>
+								<button class="btn btn-xs btn-block btn-success center-block" onclick="changeit(this)"><span ng-bind="x.name" class="ng-binding">129276125</span></button>
+							</td>
+							<td><span ng-bind="x.type" class="ng-binding">tcp</span></td>
+							<td><span ng-bind="x.listen_port" class="ng-binding">8003</span></td>
+							<td><span ng-bind="x.status" class="ng-binding">closed</span></td>
+							<td><span ng-bind="x.current_conns" class="ng-binding">0</span></td>
+							<td><span ng-bind="x.daily[x.daily.length-1].flow_out" class="ng-binding">0</span></td>
+							<td><span ng-bind="x.daily[x.daily.length-1].flow_in" class="ng-binding">0</span></td>
+							<td><span ng-bind="x.daily[x.daily.length-1].total_accept_conns" class="ng-binding">0</span></td>
+						</tr><!-- end ngRepeat: x in proxies|orderBy:col:desc --><tr ng-repeat="x in proxies|orderBy:col:desc" class="ng-scope">
+							<td>
+								<button class="btn btn-xs btn-block btn-success center-block" onclick="changeit(this)"><span ng-bind="x.name" class="ng-binding">1297402936</span></button>
+							</td>
+							<td><span ng-bind="x.type" class="ng-binding">tcp</span></td>
+							<td><span ng-bind="x.listen_port" class="ng-binding">8003</span></td>
+							<td><span ng-bind="x.status" class="ng-binding">closed</span></td>
+							<td><span ng-bind="x.current_conns" class="ng-binding">0</span></td>
+							<td><span ng-bind="x.daily[x.daily.length-1].flow_out" class="ng-binding">0</span></td>
+							<td><span ng-bind="x.daily[x.daily.length-1].flow_in" class="ng-binding">0</span></td>
+							<td><span ng-bind="x.daily[x.daily.length-1].total_accept_conns" class="ng-binding">0</span></td>
+						</tr><!-- end ngRepeat: x in proxies|orderBy:col:desc --><tr ng-repeat="x in proxies|orderBy:col:desc" class="ng-scope">
+							<td>
+								<button class="btn btn-xs btn-block btn-success center-block" onclick="changeit(this)"><span ng-bind="x.name" class="ng-binding">155510333</span></button>
+							</td>
+							<td><span ng-bind="x.type" class="ng-binding">http</span></td>
+							<td><span ng-bind="x.listen_port" class="ng-binding">5001</span></td>
+							<td><span ng-bind="x.status" class="ng-binding">closed</span></td>
+							<td><span ng-bind="x.current_conns" class="ng-binding">0</span></td>
+							<td><span ng-bind="x.daily[x.daily.length-1].flow_out" class="ng-binding">0</span></td>
+							<td><span ng-bind="x.daily[x.daily.length-1].flow_in" class="ng-binding">0</span></td>
+							<td><span ng-bind="x.daily[x.daily.length-1].total_accept_conns" class="ng-binding">0</span></td>
+						</tr><!-- end ngRepeat: x in proxies|orderBy:col:desc --><tr ng-repeat="x in proxies|orderBy:col:desc" class="ng-scope">
+							<td>
+								<button class="btn btn-xs btn-block btn-success center-block" onclick="changeit(this)"><span ng-bind="x.name" class="ng-binding">286084803</span></button>
+							</td>
+							<td><span ng-bind="x.type" class="ng-binding">http</span></td>
+							<td><span ng-bind="x.listen_port" class="ng-binding">5001</span></td>
+							<td><span ng-bind="x.status" class="ng-binding">closed</span></td>
+							<td><span ng-bind="x.current_conns" class="ng-binding">0</span></td>
+							<td><span ng-bind="x.daily[x.daily.length-1].flow_out" class="ng-binding">2032961</span></td>
+							<td><span ng-bind="x.daily[x.daily.length-1].flow_in" class="ng-binding">17111</span></td>
+							<td><span ng-bind="x.daily[x.daily.length-1].total_accept_conns" class="ng-binding">21</span></td>
+						</tr><!-- end ngRepeat: x in proxies|orderBy:col:desc --><tr ng-repeat="x in proxies|orderBy:col:desc" class="ng-scope">
+							<td>
+								<button class="btn btn-xs btn-block btn-success center-block" onclick="changeit(this)"><span ng-bind="x.name" class="ng-binding">857809597</span></button>
+							</td>
+							<td><span ng-bind="x.type" class="ng-binding">tcp</span></td>
+							<td><span ng-bind="x.listen_port" class="ng-binding">8009</span></td>
+							<td><span ng-bind="x.status" class="ng-binding">idle</span></td>
+							<td><span ng-bind="x.current_conns" class="ng-binding">0</span></td>
+							<td><span ng-bind="x.daily[x.daily.length-1].flow_out" class="ng-binding">0</span></td>
+							<td><span ng-bind="x.daily[x.daily.length-1].flow_in" class="ng-binding">0</span></td>
+							<td><span ng-bind="x.daily[x.daily.length-1].total_accept_conns" class="ng-binding">0</span></td>
+						</tr><!-- end ngRepeat: x in proxies|orderBy:col:desc -->
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-5">
+			<div id="view1" style="height: 300pt; -webkit-tap-highlight-color: transparent; -webkit-user-select: none; position: relative; background: transparent;" _echarts_instance_="ec_1490261410440">
+				<div style="position: relative; overflow: hidden; width: 458px; height: 400px; cursor: default;">
+					<canvas width="458" height="400" data-zr-dom-id="zr_0" style="position: absolute; left: 0px; top: 0px; width: 458px; height: 400px; -webkit-user-select: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></canvas>
+				</div>
+				<div style="position: absolute; display: none; border: 0px solid rgb(51, 51, 51); white-space: nowrap; z-index: 9999999; transition: left 0.4s cubic-bezier(0.23, 1, 0.32, 1), top 0.4s cubic-bezier(0.23, 1, 0.32, 1); border-radius: 4px; color: rgb(255, 255, 255); font-style: normal; font-variant: normal; font-weight: normal; font-stretch: normal; font-size: 14px; font-family: &#39;Microsoft YaHei&#39;; line-height: 21px; padding: 5px; left: 186.514px; top: 205px; background-color: rgba(50, 50, 50, 0.701961);">
+					20170321<br>
+					<span style="display:inline-block;margin-right:5px;border-radius:10px;width:9px;height:9px;background-color:#c23531"></span>
+					flow_in : 27,429<br>
+					<span style="display:inline-block;margin-right:5px;border-radius:10px;width:9px;height:9px;background-color:#2f4554"></span>
+					flow_out : 88,108
+				</div>
+			</div>
+			<div id="view2" style="height: 300pt; -webkit-tap-highlight-color: transparent; -webkit-user-select: none; position: relative; background: transparent;" _echarts_instance_="ec_1490261410441">
+				<div style="position: relative; overflow: hidden; width: 458px; height: 400px; cursor: default;">
+					<canvas width="458" height="400" data-zr-dom-id="zr_0" style="position: absolute; left: 0px; top: 0px; width: 458px; height: 400px; -webkit-user-select: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></canvas>
+				</div>
+				<div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script th:src="@{/js/frp/angular.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/frp/echarts.min.js}"></script>
+<script>
+	var alldata = new Array();
+	var index = null;
+
+	alldata["1139513447"] = {
+		name: "1139513447",
+		type: "tcp",
+		bind_addr: "0.0.0.0",
+		listen_port: "8001",
+		current_conns:  0  ,
+		domains: [  ],
+		locations: [  ],
+		stat: "closed",
+		use_encryption: "false",
+		use_gzip: "false",
+		privilege_mode: "false",
+		times: [],
+		ins: [],
+		outs: [],
+		conns: [],
+	};
+
+	alldata["129276123"] = {
+		name: "129276123",
+		type: "http",
+		bind_addr: "",
+		listen_port: "5001",
+		current_conns:  0  ,
+		domains: [  "frp.tunnel.kisme.org",  ],
+		locations: [  "",  ],
+		stat: "closed",
+		use_encryption: "false",
+		use_gzip: "false",
+		privilege_mode: "false",
+		times: [],
+		ins: [],
+		outs: [],
+		conns: [],
+	};
+
+	alldata["129276124"] = {
+		name: "129276124",
+		type: "http",
+		bind_addr: "0.0.0.0",
+		listen_port: "5001",
+		current_conns:  0  ,
+		domains: [  "frphome.tunnel.kisme.org",  ],
+		locations: [  "",  ],
+		stat: "closed",
+		use_encryption: "false",
+		use_gzip: "false",
+		privilege_mode: "false",
+		times: [],
+		ins: [],
+		outs: [],
+		conns: [],
+	};
+
+	alldata["129276125"] = {
+		name: "129276125",
+		type: "tcp",
+		bind_addr: "0.0.0.0",
+		listen_port: "8003",
+		current_conns:  0  ,
+		domains: [  ],
+		locations: [  ],
+		stat: "closed",
+		use_encryption: "false",
+		use_gzip: "false",
+		privilege_mode: "false",
+		times: [],
+		ins: [],
+		outs: [],
+		conns: [],
+	};
+
+	alldata["1297402936"] = {
+		name: "1297402936",
+		type: "tcp",
+		bind_addr: "0.0.0.0",
+		listen_port: "8003",
+		current_conns:  0  ,
+		domains: [  ],
+		locations: [  ],
+		stat: "closed",
+		use_encryption: "false",
+		use_gzip: "false",
+		privilege_mode: "false",
+		times: [],
+		ins: [],
+		outs: [],
+		conns: [],
+	};
+
+	alldata["155510333"] = {
+		name: "155510333",
+		type: "http",
+		bind_addr: "",
+		listen_port: "5001",
+		current_conns:  0  ,
+		domains: [  "www.xxx.com",  ],
+		locations: [  "",  ],
+		stat: "closed",
+		use_encryption: "false",
+		use_gzip: "false",
+		privilege_mode: "false",
+		times: [],
+		ins: [],
+		outs: [],
+		conns: [],
+	};
+
+	alldata["286084803"] = {
+		name: "286084803",
+		type: "http",
+		bind_addr: "0.0.0.0",
+		listen_port: "5001",
+		current_conns:  0  ,
+		domains: [  "286084803.tunnel.kisme.org",  ],
+		locations: [  "",  ],
+		stat: "closed",
+		use_encryption: "false",
+		use_gzip: "false",
+		privilege_mode: "false",
+		times: [],
+		ins: [],
+		outs: [],
+		conns: [],
+	};
+
+	alldata["857809597"] = {
+		name: "857809597",
+		type: "tcp",
+		bind_addr: "0.0.0.0",
+		listen_port: "8009",
+		current_conns:  0  ,
+		domains: [  ],
+		locations: [  ],
+		stat: "idle",
+		use_encryption: "false",
+		use_gzip: "false",
+		privilege_mode: "false",
+		times: [],
+		ins: [],
+		outs: [],
+		conns: [],
+	};
+
+
+	var newproxies = [{"name":"1139513447","type":"tcp","bind_addr":"0.0.0.0","listen_port":8001,"custom_domains":[],"locations":[],"status":"closed","use_encryption":false,"use_gzip":false,"privilege_mode":false,"current_conns":0,"daily":[{"time":"20170321","flow_in":27429,"flow_out":88108,"total_accept_conns":4}]},{"name":"129276123","type":"http","bind_addr":"","listen_port":5001,"custom_domains":["frp.tunnel.kisme.org"],"locations":[""],"status":"closed","use_encryption":false,"use_gzip":false,"privilege_mode":false,"current_conns":0,"daily":[{"time":"20170321","flow_in":3675,"flow_out":492547,"total_accept_conns":6}]},{"name":"129276124","type":"http","bind_addr":"0.0.0.0","listen_port":5001,"custom_domains":["frphome.tunnel.kisme.org"],"locations":[""],"status":"closed","use_encryption":false,"use_gzip":false,"privilege_mode":false,"current_conns":0,"daily":[{"time":"20170321","flow_in":6254,"flow_out":820572,"total_accept_conns":6}]},{"name":"129276125","type":"tcp","bind_addr":"0.0.0.0","listen_port":8003,"custom_domains":[],"locations":[],"status":"closed","use_encryption":false,"use_gzip":false,"privilege_mode":false,"current_conns":0,"daily":[{"time":"20170321","flow_in":12094,"flow_out":14340,"total_accept_conns":16}]},{"name":"1297402936","type":"tcp","bind_addr":"0.0.0.0","listen_port":8003,"custom_domains":[],"locations":[],"status":"closed","use_encryption":false,"use_gzip":false,"privilege_mode":false,"current_conns":0,"daily":[{"time":"20170321","flow_in":1887,"flow_out":2235,"total_accept_conns":2}]},{"name":"155510333","type":"http","bind_addr":"","listen_port":5001,"custom_domains":["www.xxx.com"],"locations":[""],"status":"closed","use_encryption":false,"use_gzip":false,"privilege_mode":false,"current_conns":0,"daily":[]},{"name":"286084803","type":"http","bind_addr":"0.0.0.0","listen_port":5001,"custom_domains":["286084803.tunnel.kisme.org"],"locations":[""],"status":"closed","use_encryption":false,"use_gzip":false,"privilege_mode":false,"current_conns":0,"daily":[{"time":"20170323","flow_in":17111,"flow_out":2032961,"total_accept_conns":21}]},{"name":"857809597","type":"tcp","bind_addr":"0.0.0.0","listen_port":8009,"custom_domains":[],"locations":[],"status":"idle","use_encryption":false,"use_gzip":false,"privilege_mode":false,"current_conns":0,"daily":[]}];
+	var dom1 = document.getElementById("view1");
+	var dom2 = document.getElementById("view2");
+	var myChart1 = echarts.init(dom1);
+	var myChart2 = echarts.init(dom2);
+	var option1 = null;
+	var option2 = null;
+	var maxval = 0;
+	var dw = " B";
+	var step = 1;
+
+	function reloadview() {
+		window.maxval = 0;
+		window.dw = " B";
+		window.step = 1;
+		for (var val1 in alldata[index].ins) {
+			if (maxval < alldata[index].ins[val1]) {
+				window.maxval = alldata[index].outs[val1];
+			}
+		}
+
+		for (var val2 in alldata[index].outs) {
+			if (maxval < alldata[index].outs[val2]) {
+				window.maxval = alldata[index].outs[val2]
+			}
+		}
+
+		if (maxval > 1024 * 1024) {
+			window.dw = " MB";
+			window.step = 1024 * 1024;
+		} else if (maxval > 1024) {
+			window.dw = " KB";
+			window.step = 1024;
+		}
+
+		window.option1 = {
+			title: {
+				text: alldata[index].name
+			},
+			tooltip: {
+				trigger: 'axis'
+			},
+			legend: {
+				data: ['flow_in', 'flow_out']
+			},
+			grid: {
+				left: '3%',
+				right: '6%',
+				bottom: '3%',
+				containLabel: true
+			},
+			toolbox: {
+				feature: {
+					saveAsImage: {}
+				}
+			},
+			xAxis: {
+				type: 'category',
+				data: alldata[index].times
+			},
+			yAxis: {
+				type: 'value',
+				axisLabel: {
+					formatter: function(value) {
+						var data = (value / step).toFixed(2);
+						return data + dw;
+					}
+				}
+			},
+			series: [{
+				name: 'flow_in',
+				type: 'bar',
+				stack: '总量',
+				data: alldata[index].ins
+			}, {
+				name: 'flow_out',
+				type: 'bar',
+				stack: '总量',
+				data: alldata[index].outs
+			}]
+		};
+
+		window.option2 = {
+			title: {
+				text: ""
+			},
+			tooltip: {
+				trigger: 'axis'
+			},
+			legend: {
+				data: ['total_accept_conns']
+			},
+			grid: {
+				left: '3%',
+				right: '6%',
+				bottom: '3%',
+				containLabel: true
+			},
+			toolbox: {
+				feature: {
+					saveAsImage: {}
+				}
+			},
+			xAxis: {
+				type: 'category',
+				data: alldata[index].times
+			},
+			yAxis: {
+				type: 'value'
+			},
+			series: [{
+				name: 'total_accept_conns',
+				type: 'bar',
+				stack: '总量',
+				data: alldata[index].conns
+			}]
+		};
+
+		myChart1.setOption(option1, true);
+		myChart2.setOption(option2, true);
+	};;
+
+	var showdetail = false;
+	var newindex = 0;
+
+	function cleandetail() {
+		$(".info_detail").remove();
+		showdetail = false;
+	};
+
+	function changeit(id) {
+		newindex = id.firstElementChild.innerHTML;
+		if (index == newindex) {
+			if (showdetail) {
+				cleandetail();
+				return;
+			}
+		}
+
+		index = newindex;
+		cleandetail();
+		window.showdetail = true;
+
+		var newrow = "<tr class='info_detail'><th colspan='4'>Key</th><th colspan='4'>Val</th><tr>";
+		for (var domainindex in alldata[index].domains) {
+			newrow += "<tr class='info_detail'><td colspan='4'>Domains</td><td colspan='4'>" +
+					alldata[index].domains[domainindex] + "</td><tr>";
+		}
+		for (var locindex in alldata[index].locations) {
+			newrow += "<tr class='info_detail'><td colspan='4'>Locations</td><td colspan='4'>" +
+					alldata[index].locations[locindex] + "</td><tr>";
+		}
+		newrow += "<tr class='info_detail'><td colspan='4'>Ip</td><td colspan='4'>" + alldata[index].bind_addr + "</td><tr>";
+		newrow += "<tr class='info_detail'><td colspan='4'>Status</td><td colspan='4'>" + alldata[index].stat + "</td><tr>";
+		newrow += "<tr class='info_detail'><td colspan='4'>Encryption</td><td colspan='4'>" + alldata[index].use_encryption + "</td><tr>";
+		newrow += "<tr class='info_detail'><td colspan='4'>Gzip</td><td colspan='4'>" + alldata[index].use_gzip + "</td><tr>";
+		newrow += "<tr class='info_detail'><td colspan='4'>Privilege</td><td colspan='4'>" + alldata[index].privilege_mode + "</td><tr>";
+
+		var hehe = $(id.parentNode.parentNode);
+
+		$(hehe).after(newrow);
+		reloadview();
+	};
+
+
+	{
+		var ttdy = new Date();
+		var today = ttdy.getFullYear() * 10000 + (1 + ttdy.getMonth()) * 100 + ttdy.getDate();
+		for (var inx in newproxies) {
+			if (newproxies[inx].current_conns == undefined) {
+				newproxies[inx].current_conns = 0;
+				alldata[newproxies[inx].name].current_conns = 0;
+			}
+
+			if (newproxies[inx].daily == undefined ) {
+				newproxies[inx].daily = [];
+			}
+
+			newproxies[inx].daily.sort(function (a, b) {
+				return a.time > b.time;
+			});
+
+			for (var iinnx in newproxies[inx].daily) {
+				alldata[newproxies[inx].name].times.push(newproxies[inx].daily[iinnx].time);
+				alldata[newproxies[inx].name].ins.push(newproxies[inx].daily[iinnx].flow_in);
+				alldata[newproxies[inx].name].outs.push(newproxies[inx].daily[iinnx].flow_out);
+				alldata[newproxies[inx].name].conns.push(newproxies[inx].daily[iinnx].total_accept_conns);
+			}
+
+			if (newproxies[inx].daily.length == 0 || newproxies[inx].daily[newproxies[inx].daily.length-1].time != today) {
+				alldata[newproxies[inx].name].times.push(today);
+				alldata[newproxies[inx].name].ins.push(0);
+				alldata[newproxies[inx].name].outs.push(0);
+				alldata[newproxies[inx].name].conns.push(0);
+				newproxies[inx].daily.push({
+					time: today,
+					flow_in: 0,
+					flow_out: 0,
+					total_accept_conns: 0
+				});
+			}
+		}
+	}
+
+	var app = angular.module('myTable', []);
+
+	app.controller('myCtrl', function($scope) {
+		$scope.col = 'name';
+		$scope.desc = 0;
+		$scope.proxies = newproxies;
+	});
+
+	$(".tab_info").hover(
+			function() {
+				$(this).css("color", "orange");
+			},
+			function() {
+				$(this).css("color", "black");
+			});
+
+	for (var inx in alldata) {
+		if (window.index == null || window.index > inx) {
+			window.index = inx;
+		}
+	}
+
+	reloadview();
+</script>
+</body></html>

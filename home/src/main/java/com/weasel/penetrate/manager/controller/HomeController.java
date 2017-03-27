@@ -35,4 +35,10 @@ public class HomeController{
 
         return "course";
     }
+
+    @RequestMapping(value = {"/frp-status"},method = GET)
+    public String frpStatus(){
+
+        return "frp_status";
+    }
 }
