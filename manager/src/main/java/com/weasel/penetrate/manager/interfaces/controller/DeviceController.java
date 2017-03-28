@@ -38,9 +38,6 @@ public class DeviceController{
     private final static Logger logger = LoggerFactory.getLogger(DeviceController.class);
     private final static String customDomainSuffix = "tunnel.kisme.org";
 
-    private int portStart = 8000;
-    private int portEnd = 9999;
-
     @Autowired
     private DeviceService service;
 
