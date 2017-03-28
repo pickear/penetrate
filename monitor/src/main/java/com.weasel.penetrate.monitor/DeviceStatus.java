@@ -1,5 +1,9 @@
 package com.weasel.penetrate.monitor;
 
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.joda.time.DateTime;
+
 import java.util.Date;
 
 /**
@@ -13,7 +17,7 @@ public class DeviceStatus {
     private long flowIn;
     private long flowOut;
     private long totalConnects;
-    private Date time;
+    private String time = DateTime.now().toString("yyyy-MM-dd HH:mm:ss");
 
     public String getNumber() {
         return number;
@@ -63,11 +67,32 @@ public class DeviceStatus {
         this.totalConnects = totalConnects;
     }
 
-    public Date getTime() {
+    public String getTime() {
         return time;
     }
 
-    public void setTime(Date time) {
+    public void setTime(String time) {
         this.time = time;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if(null == o){
+            return false;
+        }
+        if( o == this){
+            return true;
+        }
+        if(!(o instanceof DeviceStatus)){
+            return false;
+        }
+        return new EqualsBuilder().append(this.getNumber(),((DeviceStatus)o).getNumber()).isEquals();
+    }
+
+    @Override
+    public int hashCode() {
+        final int PRIME = 31;
+        int number = Integer.valueOf(getNumber());
+        return new HashCodeBuilder(number%2==0?number+1:number, PRIME).toHashCode();
     }
 }

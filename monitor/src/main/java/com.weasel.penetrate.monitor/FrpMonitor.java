@@ -4,13 +4,11 @@ import com.gargoylesoftware.htmlunit.BrowserVersion;
 import com.gargoylesoftware.htmlunit.WebClient;
 import com.gargoylesoftware.htmlunit.html.DomElement;
 import com.gargoylesoftware.htmlunit.html.HtmlPage;
+import org.apache.commons.lang3.StringUtils;
 
 import java.io.IOException;
 import java.nio.charset.Charset;
-import java.util.ArrayList;
-import java.util.Base64;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by dell on 2017/3/23.
@@ -25,7 +23,7 @@ public class FrpMonitor {
         webClient.addRequestHeader("Authorization","Basic "+authorization);
         HtmlPage htmlPage = webClient.getPage("http://127.0.0.1:7998/frp-status");
         Iterable<DomElement> domElements = htmlPage.getElementById("tab_body").getChildElements();
-        List<DeviceStatus> deviceStatuss = new ArrayList<>();
+        Set<DeviceStatus> deviceStatuss = new HashSet<>();
         domElements.forEach(domElement -> {
             DeviceStatus deviceStatus = new DeviceStatus();
             Iterable<DomElement> domElementss = domElement.getChildElements();
@@ -33,20 +31,31 @@ public class FrpMonitor {
             for(Iterator it = domElementss.iterator();it.hasNext();index++){
                 DomElement aaa = (DomElement)it.next();
                 String content = aaa.getTextContent();
+                content = StringUtils.removeAll(content,"\n*\t*");
                 switch (index){
                     case 0:
                         deviceStatus.setNumber(content);
+                        break;
                     case 1:
-                        deviceStatus.setStatus(content);
+                        break;
                     case 2:
-                        deviceStatus.setConnects(Long.valueOf(content));
+                        break;
                     case 3:
-                        deviceStatus.setFlowOut(Long.valueOf(content));
+                        deviceStatus.setStatus(content);
+                        break;
                     case 4:
-                        deviceStatus.setFlowIn(Long.valueOf(content));
+                        deviceStatus.setConnects(Long.valueOf(content));
+                        break;
                     case 5:
+                        deviceStatus.setFlowOut(Long.valueOf(content));
+                        break;
+                    case 6:
+                        deviceStatus.setFlowIn(Long.valueOf(content));
+                        break;
+                    case 7:
                         deviceStatus.setTotalConnects(Long.valueOf(content));
-                    default:return;
+                        break;
+                    default:break;
                 }
             }
             deviceStatuss.add(deviceStatus);
