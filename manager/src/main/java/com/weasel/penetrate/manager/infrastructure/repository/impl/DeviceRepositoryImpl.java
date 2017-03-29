@@ -26,7 +26,7 @@ public class DeviceRepositoryImpl extends MybatisDaoSupport implements DeviceRep
     @Override
     public Device add(Device device) {
         getSqlSession().insert(namespace().concat(".insert"),device);
-        EventPublisher.publishEvent(new DeviceCreateEvent(device));
+        EventPublisher.publishEvent(new DeviceCreateEvent(this,device));
         return device;
     }
 
@@ -34,7 +34,7 @@ public class DeviceRepositoryImpl extends MybatisDaoSupport implements DeviceRep
     public int update(Device device) {
         int result = delete(device);
         add(device);
-        EventPublisher.publishEvent(new DeviceUpdateEvent(device));
+        EventPublisher.publishEvent(new DeviceUpdateEvent(this,device));
         return result;
     }
 

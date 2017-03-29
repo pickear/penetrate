@@ -7,18 +7,18 @@ import org.springframework.context.ApplicationEvent;
  */
 public abstract class AbstractCommonEvent<T> extends ApplicationEvent {
 
+    private T message;
     /**
      * Create a new ApplicationEvent.
      *
      * @param source the object on which the event initially occurred (never {@code null})
      */
-    public AbstractCommonEvent(T source) {
+    public AbstractCommonEvent(Object source,T message) {
         super(source);
-        this.source = source;
+        this.message = message;
     }
 
-    @Override
-    public T getSource() {
-        return (T)super.getSource();
+    public T getMessage() {
+        return message;
     }
 }

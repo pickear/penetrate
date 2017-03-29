@@ -6,12 +6,8 @@ import com.weasel.penetrate.manager.domain.device.Device;
  * Created by dell on 2017/3/29.
  */
 public class DeviceCreateEvent extends AbstractCommonEvent<Device> {
-    /**
-     * Create a new ApplicationEvent.
-     *
-     * @param source the object on which the event initially occurred (never {@code null})
-     */
-    public DeviceCreateEvent(Device source) {
-        super(source);
+
+    public DeviceCreateEvent(Object source, Device message) {
+        super(source, message);
     }
 }
