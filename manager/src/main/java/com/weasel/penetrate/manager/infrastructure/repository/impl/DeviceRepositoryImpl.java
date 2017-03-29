@@ -2,7 +2,10 @@ package com.weasel.penetrate.manager.infrastructure.repository.impl;
 
 import com.google.common.collect.Lists;
 import com.weasel.penetrate.manager.domain.device.Device;
+import com.weasel.penetrate.manager.infrastructure.EventPublisher;
 import com.weasel.penetrate.manager.infrastructure.exception.DevicePortUsedUpException;
+import com.weasel.penetrate.manager.infrastructure.listener.event.DeviceCreateEvent;
+import com.weasel.penetrate.manager.infrastructure.listener.event.DeviceUpdateEvent;
 import com.weasel.penetrate.manager.infrastructure.repository.DeviceRepository;
 import com.weasel.penetrate.manager.infrastructure.repository.MybatisDaoSupport;
 import org.apache.commons.lang3.StringUtils;
@@ -23,6 +26,7 @@ public class DeviceRepositoryImpl extends MybatisDaoSupport implements DeviceRep
     @Override
     public Device add(Device device) {
         getSqlSession().insert(namespace().concat(".insert"),device);
+        EventPublisher.publishEvent(new DeviceCreateEvent(device));
         return device;
     }
 
@@ -30,6 +34,7 @@ public class DeviceRepositoryImpl extends MybatisDaoSupport implements DeviceRep
     public int update(Device device) {
         int result = delete(device);
         add(device);
+        EventPublisher.publishEvent(new DeviceUpdateEvent(device));
         return result;
     }
 

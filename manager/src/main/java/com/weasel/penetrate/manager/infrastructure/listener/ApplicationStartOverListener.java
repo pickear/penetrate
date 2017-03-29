@@ -1,6 +1,5 @@
 package com.weasel.penetrate.manager.infrastructure.listener;
 
-import com.weasel.penetrate.common.helper.EnvironmentHelper;
 import com.weasel.penetrate.manager.infrastructure.Frp;
 import com.weasel.penetrate.manager.service.FrpConfigService;
 import org.slf4j.Logger;
