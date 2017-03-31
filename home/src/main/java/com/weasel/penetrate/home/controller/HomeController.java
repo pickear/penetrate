@@ -1,4 +1,4 @@
-package com.weasel.penetrate.manager.controller;
+package com.weasel.penetrate.home.controller;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
