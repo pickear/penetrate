@@ -1,14 +1,9 @@
 package com.weasel.penetrate.manager.infrastructure.repository.impl;
 
-import com.google.common.collect.Lists;
 import com.weasel.penetrate.manager.domain.Common;
-import com.weasel.penetrate.manager.domain.device.Device;
 import com.weasel.penetrate.manager.infrastructure.repository.CommonRepository;
-import com.weasel.penetrate.manager.infrastructure.repository.DeviceRepository;
 import com.weasel.penetrate.manager.infrastructure.repository.MybatisDaoSupport;
 import org.springframework.stereotype.Repository;
-
-import java.util.List;
 
 /**
  * @author Dylan

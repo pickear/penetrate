@@ -1,15 +1,10 @@
 package com.weasel.penetrate.manager.service.impl;
 
 import com.weasel.penetrate.manager.domain.Common;
-import com.weasel.penetrate.manager.domain.device.Device;
 import com.weasel.penetrate.manager.infrastructure.repository.CommonRepository;
-import com.weasel.penetrate.manager.infrastructure.repository.DeviceRepository;
 import com.weasel.penetrate.manager.service.CommonService;
-import com.weasel.penetrate.manager.service.DeviceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 /**
  * @author Dylan

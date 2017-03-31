@@ -3,7 +3,6 @@ package com.weasel.penetrate.manager.interfaces.controller;
 import com.weasel.penetrate.common.helper.GsonHelper;
 import com.weasel.penetrate.manager.domain.Page;
 import com.weasel.penetrate.manager.domain.User;
-import com.weasel.penetrate.manager.infrastructure.exception.UserExistException;
 import com.weasel.penetrate.manager.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
-import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 /**
  * @author Dylan
