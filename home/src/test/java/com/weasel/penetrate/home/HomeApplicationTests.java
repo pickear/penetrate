@@ -1,4 +1,4 @@
-package com.weasel.penetrate.manager;
+package com.weasel.penetrate.home;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
