@@ -3,17 +3,23 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<artifactId>manager</artifactId>
-	<packaging>jar</packaging>
-
-	<name>manager</name>
-	<description>内网穿透管理</description>
-
 	<parent>
 		<groupId>com.weasel.penetrate</groupId>
 		<artifactId>penetrate</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
+
+	<artifactId>manager</artifactId>
+	<packaging>jar</packaging>
+
+	<name>manager</name>
+	<description>内网穿透管理</description>
+	<url>http://projects.spring.io/spring-boot/</url>
+	<organization>
+		<name>Pivotal Software, Inc.</name>
+		<url>http://www.spring.io</url>
+	</organization>
+
 
 	<properties>
 		<thymeleaf.version>3.0.2.RELEASE</thymeleaf.version>
@@ -58,11 +64,11 @@
 				</exclusion>
 			</exclusions>
 		</dependency>-->
-		<dependency>
+		<!--<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
-			<optional>true</optional><!-- optional=true,依赖不会传递，该项目依赖devtools；之后依赖myboot项目的项目如果想要使用devtools，需要重新引入 -->
-		</dependency>
+			<optional>true</optional>&lt;!&ndash; optional=true,依赖不会传递，该项目依赖devtools；之后依赖myboot项目的项目如果想要使用devtools，需要重新引入 &ndash;&gt;
+		</dependency>-->
 		<!-- spring boot-->
 		<!-- mybatis -->
 		<dependency>

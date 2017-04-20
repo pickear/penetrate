@@ -1,5 +1,6 @@
 package com.weasel.penetrate.manager;
 
+import com.weasel.penetrate.common.banner.AbstractBanner;
 import com.weasel.penetrate.common.helper.SystemHelper;
 import com.weasel.penetrate.manager.infrastructure.Frp;
 import com.weasel.penetrate.manager.infrastructure.listener.ApplicationStartOverListener;
@@ -8,6 +9,7 @@ import com.weasel.penetrate.manager.infrastructure.listener.DeviceUpdateListener
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.boot.Banner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -23,6 +25,9 @@ public class ApplicationLauncher {
     private final static String DEFAULT_ENV = "dev";
 
     public static void main(String[] args) {
+
+        ManagerBanner managerBanner = new ManagerBanner();
+        managerBanner.printBanner(" :: FRP Manager :: ",managerBanner.getVersion());
 
         String runtimeEnv = System.getProperty("spring.profiles.active");
 
@@ -47,8 +52,33 @@ public class ApplicationLauncher {
         log.info("当前操作系统[{}]", SystemHelper.getOSname());
 
         SpringApplication application = new SpringApplication(ApplicationLauncher.class);
+        application.setBannerMode(Banner.Mode.OFF);
         application.addListeners(new ApplicationStartOverListener(),new DeviceCreateListener(),new DeviceUpdateListener());
         application.run(args);
+    }
+
+    static class ManagerBanner extends AbstractBanner{
+
+        @Override
+        public String[] banner() {
+            return new String[]{"",
+                    " ***    ***    ***    ***",
+                    " ***    ***    ***    ***",
+                    " ***    ***    ***    ***",
+                    "  *      *      *      *",
+                    "  *      *      *      *",
+                    "  *      *      *      *",
+                    "  *      *      *      *",
+                    "  *      *      *      *",
+                    "* * *  * * *  * * *  * * *",
+                    "  *      *      *      *",
+            };
+        }
+
+        public String getVersion(){
+            Package pk = ApplicationLauncher.class.getPackage();
+            return (null != pk ? pk.getImplementationVersion():"");
+        }
     }
 
 }
