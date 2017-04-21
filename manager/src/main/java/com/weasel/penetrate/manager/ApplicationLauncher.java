@@ -1,15 +1,11 @@
 package com.weasel.penetrate.manager;
 
-import com.weasel.penetrate.common.banner.AbstractBanner;
-import com.weasel.penetrate.common.helper.SystemHelper;
-import com.weasel.penetrate.manager.infrastructure.Frp;
 import com.weasel.penetrate.manager.infrastructure.listener.ApplicationStartOverListener;
 import com.weasel.penetrate.manager.infrastructure.listener.DeviceCreateListener;
 import com.weasel.penetrate.manager.infrastructure.listener.DeviceUpdateListener;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.boot.Banner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -26,59 +22,15 @@ public class ApplicationLauncher {
 
     public static void main(String[] args) {
 
-        ManagerBanner managerBanner = new ManagerBanner();
-        managerBanner.printBanner(" :: FRP Manager :: ",managerBanner.getVersion());
-
         String runtimeEnv = System.getProperty("spring.profiles.active");
-
         if(StringUtils.isBlank(runtimeEnv)){
             log.warn("找不到环境参数设置，使用默认环境[{}]，如果需要设置环境参数，在启动脚本加上如:[{}]",DEFAULT_ENV,"-Dspring.profiles.active=test");
-            runtimeEnv = DEFAULT_ENV;
+            System.setProperty("spring.profiles.active",DEFAULT_ENV);
         }
-
-        System.setProperty("spring.profiles.active",runtimeEnv);
-        log.info("当前运行环境是[{}]",runtimeEnv);
-
-        String frpHome = System.getProperty("frp.home");
-
-        if(StringUtils.isEmpty(frpHome)){
-            throw new RuntimeException("请在启动时传入frp.home参数，例如:java -jar frp-manager.jar -Dfrp.home=/usr/local/softwares/frp_0.9.3_windows_amd64");
-        }
-
-        log.info("当前frp目录是:" + frpHome);
-
-        Frp.setHome(frpHome);
-
-        log.info("当前操作系统[{}]", SystemHelper.getOSname());
-
         SpringApplication application = new SpringApplication(ApplicationLauncher.class);
-        application.setBannerMode(Banner.Mode.OFF);
+        //application.setBannerMode(Banner.Mode.OFF);
         application.addListeners(new ApplicationStartOverListener(),new DeviceCreateListener(),new DeviceUpdateListener());
         application.run(args);
-    }
-
-    static class ManagerBanner extends AbstractBanner{
-
-        @Override
-        public String[] banner() {
-            return new String[]{"",
-                    " ***    ***    ***    ***",
-                    " ***    ***    ***    ***",
-                    " ***    ***    ***    ***",
-                    "  *      *      *      *",
-                    "  *      *      *      *",
-                    "  *      *      *      *",
-                    "  *      *      *      *",
-                    "  *      *      *      *",
-                    "* * *  * * *  * * *  * * *",
-                    "  *      *      *      *",
-            };
-        }
-
-        public String getVersion(){
-            Package pk = ApplicationLauncher.class.getPackage();
-            return (null != pk ? pk.getImplementationVersion():"");
-        }
     }
 
 }
