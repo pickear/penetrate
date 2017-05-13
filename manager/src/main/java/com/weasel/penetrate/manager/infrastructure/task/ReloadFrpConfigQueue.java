@@ -1,5 +1,8 @@
 package com.weasel.penetrate.manager.infrastructure.task;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.concurrent.LinkedBlockingQueue;
 
 /**
@@ -7,16 +10,19 @@ import java.util.concurrent.LinkedBlockingQueue;
  */
 public class ReloadFrpConfigQueue<T> {
 
+    private final static Logger logger = LoggerFactory.getLogger(ReloadFrpConfigQueue.class);
+
     private final LinkedBlockingQueue<T> queue = new LinkedBlockingQueue();
 
     public synchronized void addIfEmpty(T obj){
         if(null == queue.peek()){
-            queue.add(obj);
+            logger.info("更新配置文件任务为空,往队列添加任务。");
+            queue.offer(obj);
         }
     }
 
     public T get() throws InterruptedException {
-        return queue.take();
+        return queue.poll();
     }
 
     public static class ReloadFrpConfigTask{

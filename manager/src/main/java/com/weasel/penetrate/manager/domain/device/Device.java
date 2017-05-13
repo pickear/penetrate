@@ -114,6 +114,13 @@ public class Device  implements Serializable {
         this.customDomains = customDomains;
     }
 
+    public boolean isHttpProtocol(){
+        return StringUtils.equalsIgnoreCase("http",getProtocolType().getValue());
+    }
+    public boolean isHttpsProtocol(){
+        return StringUtils.equalsIgnoreCase("https",getProtocolType().getValue());
+    }
+
     public String name(){
         return StringUtils.lowerCase(this.getClass().getSimpleName());
     }

@@ -1,9 +1,12 @@
 package com.weasel.penetrate.manager.service.impl;
 
 import com.weasel.penetrate.manager.domain.device.Device;
+import com.weasel.penetrate.manager.infrastructure.EventPublisher;
 import com.weasel.penetrate.manager.infrastructure.exception.DevicePortBindedException;
 import com.weasel.penetrate.manager.infrastructure.exception.DevicePortUsedUpException;
 import com.weasel.penetrate.manager.infrastructure.exception.DeviceSubDomainUsedException;
+import com.weasel.penetrate.manager.infrastructure.listener.event.DeviceCreateEvent;
+import com.weasel.penetrate.manager.infrastructure.listener.event.DeviceUpdateEvent;
 import com.weasel.penetrate.manager.infrastructure.repository.DeviceRepository;
 import com.weasel.penetrate.manager.service.DeviceService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +37,7 @@ public class DeviceServiceImpl implements DeviceService {
 
         if (device.getId() != -1){
             repository.update(device);
+            EventPublisher.publishEvent(new DeviceUpdateEvent(this,device));
             return device;
         }
         if(portBinded(device)){
@@ -43,6 +47,7 @@ public class DeviceServiceImpl implements DeviceService {
             throw new DeviceSubDomainUsedException("子域["+device.getCustomDomains()+"]已被使用");
         }
         device = repository.add(device);
+        EventPublisher.publishEvent(new DeviceCreateEvent(this,device));
         return device;
     }
 

@@ -5,6 +5,7 @@ import com.weasel.penetrate.manager.infrastructure.helper.SpringBeanHolder;
 import com.weasel.penetrate.manager.service.FrpConfigService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.util.concurrent.Executors;
@@ -14,9 +15,10 @@ import java.util.concurrent.TimeUnit;
 /**
  * Created by dylan on 17-3-19.
  */
+@Component
 public class ReloadFrpConfigScheduled {
 
-    private final static Logger log = LoggerFactory.getLogger(ReloadFrpConfigScheduled.class);
+    private final static Logger logger = LoggerFactory.getLogger(ReloadFrpConfigScheduled.class);
 
     private final static ReloadFrpConfigQueue<ReloadFrpConfigQueue.ReloadFrpConfigTask> queue = new ReloadFrpConfigQueue<>();
     private final static ScheduledExecutorService service = Executors.newSingleThreadScheduledExecutor();
@@ -26,9 +28,11 @@ public class ReloadFrpConfigScheduled {
             @Override
             public void run() {
                 try {
+                    if(logger.isDebugEnabled()){
+                        logger.debug("重新加载FRP配置文件任务执行...");
+                    }
                     ReloadFrpConfigQueue.ReloadFrpConfigTask _task = queue.get();
                     if(null != _task){
-                        log.info("重新加载FRP配置文件任务执行...");
                         FrpConfigService frpConfigService = SpringBeanHolder.getBean(FrpConfigService.class);
                         frpConfigService.reloadConfig(Frp.getHome());
                     }
@@ -38,7 +42,7 @@ public class ReloadFrpConfigScheduled {
                     e.printStackTrace();
                 }
             }
-        }, 0, 5, TimeUnit.MINUTES);
+        }, 0, 30, TimeUnit.SECONDS);
     }
     public synchronized static void submitTask(ReloadFrpConfigQueue.ReloadFrpConfigTask task){
         queue.addIfEmpty(task);

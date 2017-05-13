@@ -1,6 +1,7 @@
 package com.weasel.penetrate.manager.interfaces.controller;
 
 import com.google.gson.Gson;
+import com.weasel.penetrate.manager.domain.Common;
 import com.weasel.penetrate.manager.domain.User;
 import com.weasel.penetrate.manager.domain.device.Device;
 import com.weasel.penetrate.manager.infrastructure.exception.DevicePortBindedException;
@@ -10,6 +11,7 @@ import com.weasel.penetrate.manager.infrastructure.helper.SecurityHelper;
 import com.weasel.penetrate.manager.infrastructure.task.ReloadFrpConfigQueue;
 import com.weasel.penetrate.manager.infrastructure.task.ReloadFrpConfigScheduled;
 import com.weasel.penetrate.manager.interfaces.vo.ResponseMessage;
+import com.weasel.penetrate.manager.service.CommonService;
 import com.weasel.penetrate.manager.service.DeviceService;
 import com.weasel.penetrate.manager.service.UserService;
 import org.apache.commons.lang3.RandomUtils;
@@ -21,7 +23,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
@@ -38,6 +42,9 @@ public class DeviceController{
 
     @Autowired
     private DeviceService service;
+
+    @Autowired
+    private CommonService commonService;
 
     @Autowired
     private UserService userService;
@@ -58,6 +65,21 @@ public class DeviceController{
             device.setUsername(currentUser.getName());
         }
         List<Device> devices = service.query(device);
+
+        if(null != devices && !devices.isEmpty()){
+            Common common = commonService.get();
+            devices = devices.stream()
+                             .map(_device -> {
+                                if(_device.isHttpProtocol()){
+                                    _device.setListenPort(common.getVhostHttpPort());
+                                }
+                                if(_device.isHttpsProtocol()){
+                                    _device.setListenPort(common.getVhostHttpsPort());
+                                }
+                                return _device;
+                             })
+                             .collect(Collectors.toList());
+        }
 
         return new Gson().toJson(devices);
     }
@@ -84,7 +106,6 @@ public class DeviceController{
                 service.save(device);
                 user.setDevice(user.getDevice()+1);
                 userService.save(user);
-                ReloadFrpConfigScheduled.submitTask(new ReloadFrpConfigQueue.ReloadFrpConfigTask());
                 return ResponseMessage.success();
             } catch (DevicePortBindedException e) {
                 logger.error(e.getMessage());
