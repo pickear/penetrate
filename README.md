@@ -10,7 +10,8 @@
   
 **二 penetrate线上运行的产品**
 
-  http://home.tunnel.kisme.org是penetrate的一个线上运行的例子，并提供免费的穿透服务。
+  http://home.tunnel.kisme.org  是penetrate的一个线上运行的例子，并提供免费的穿透服务。
+  
  ![enter image description here](https://github.com/pickear/penetrate/blob/master/manager/src/main/resources/static/images/home.png?raw=true)
   
   ![enter image description here](https://github.com/pickear/penetrate/blob/master/manager/src/main/resources/static/images/manager.png?raw=true)
