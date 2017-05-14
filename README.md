@@ -25,8 +25,20 @@
 
 如果你觉得对你有帮助，可以请作者喝杯咖啡。
 
-![enter image description here](http://home.tunnel.kisme.org/images/alipay.jpg)
 
-![enter image description here](http://home.tunnel.kisme.org/images/wxpay.png)
+<div class="inner">
+		<div class="flex flex-2">
+			<article>
+				<div class="image round">
+					<img th:src="http://home.tunnel.kisme.org/images/alipay.jpg" width="200" height="200" alt="支付宝二维码" />
+          </div>
+			</article>
+			<article>
+				<div class="image round">
+					<img th:src="http://home.tunnel.kisme.org/images/wxpay.png" width="200" height="200" alt="微信二维码" />
+				</div>
+			</article>
+		</div>
+	</div>
 
 
