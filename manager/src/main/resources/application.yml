@@ -32,3 +32,6 @@ mybatis:
   #  type-aliases-package: com.weasel.frp.domain.device
     mapper-locations: classpath:mybatis/mappers/*.xml
     config-location: classpath:mybatis/mybatis-config.xml
+
+penetrate:
+    domain: tunnel.kisme.org

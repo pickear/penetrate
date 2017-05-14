@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.weasel.penetrate.manager.domain.Common;
 import com.weasel.penetrate.manager.domain.User;
 import com.weasel.penetrate.manager.domain.device.Device;
+import com.weasel.penetrate.manager.infrastructure.config.PenetrateConfiguration;
 import com.weasel.penetrate.manager.infrastructure.exception.DevicePortBindedException;
 import com.weasel.penetrate.manager.infrastructure.exception.DevicePortUsedUpException;
 import com.weasel.penetrate.manager.infrastructure.exception.DeviceSubDomainUsedException;
@@ -38,14 +39,12 @@ import static org.springframework.web.bind.annotation.RequestMethod.GET;
 public class DeviceController{
 
     private final static Logger logger = LoggerFactory.getLogger(DeviceController.class);
-    private final static String customDomainSuffix = "tunnel.kisme.org";
-
+    @Autowired
+    private PenetrateConfiguration configuration;
     @Autowired
     private DeviceService service;
-
     @Autowired
     private CommonService commonService;
-
     @Autowired
     private UserService userService;
 
@@ -100,7 +99,7 @@ public class DeviceController{
                         &&(StringUtils.equalsIgnoreCase("http",device.getProtocolType().getValue())
                         || StringUtils.equalsIgnoreCase("https",device.getProtocolType().getValue()))){
 
-                    device.setCustomDomains(device.getNumber()+"."+customDomainSuffix);
+                    device.setCustomDomains(device.getNumber() + "." + configuration.getDomain());
                 }
 
                 service.save(device);
