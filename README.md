@@ -17,6 +17,7 @@
 
   1 penetrate模块
     主要有两个模块。home模块是一个对产品前端展示的模块，manager模块是一个对frp管理的模块。
+    
   2 使用
      首先下载源代码并编译成jar，执行jar manager.jar -Dfrp.home=xxxx,其中xxxx为你的frp安装目录。
 
