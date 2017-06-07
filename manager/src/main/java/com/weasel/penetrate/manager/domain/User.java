@@ -2,6 +2,7 @@ package com.weasel.penetrate.manager.domain;
 
 import com.google.common.collect.Sets;
 import com.weasel.penetrate.manager.infrastructure.helper.PasswordHelper;
+import com.weasel.penetrate.manager.infrastructure.helper.SpringBeanHolder;
 import com.weasel.penetrate.manager.infrastructure.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowire;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +34,7 @@ public class User implements Serializable{
     private Set<Role> roles = Sets.newHashSet();
 
     @Autowired
-    private transient UserRepository repository;
+    private transient UserRepository repository = SpringBeanHolder.getBean(UserRepository.class);
 
     public Long getId() {
         return id;
@@ -143,6 +144,7 @@ public class User implements Serializable{
     public User save(){
         if(null != getId() && -1 != getId()){
             repository.update(this);
+            return this;
         }
         repository.insert(this);
         return this;
