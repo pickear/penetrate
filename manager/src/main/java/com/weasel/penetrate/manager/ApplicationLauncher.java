@@ -8,17 +8,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.AdviceMode;
-import org.springframework.context.annotation.aspectj.EnableSpringConfigured;
-import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 /**
  * @author Dylan
  * @date 2016/7/20.
  */
 @SpringBootApplication
-@EnableSpringConfigured
-@EnableTransactionManagement(mode = AdviceMode.ASPECTJ)
 public class ApplicationLauncher {
 
     private final static Logger log = LoggerFactory.getLogger(ApplicationLauncher.class);
