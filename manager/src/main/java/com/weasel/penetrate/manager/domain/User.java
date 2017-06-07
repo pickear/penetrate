@@ -1,7 +1,6 @@
 package com.weasel.penetrate.manager.domain;
 
 import com.google.common.collect.Sets;
-import com.weasel.penetrate.manager.infrastructure.exception.UserExistException;
 import com.weasel.penetrate.manager.infrastructure.helper.PasswordHelper;
 import com.weasel.penetrate.manager.infrastructure.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowire;
