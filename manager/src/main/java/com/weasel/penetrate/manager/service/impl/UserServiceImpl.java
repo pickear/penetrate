@@ -24,36 +24,15 @@ public class UserServiceImpl implements UserService {
     private UserRepository repository;
 
     @Override
-    public int save(User user) {
+    public User save(User user) {
 
         Preconditions.checkNotNull(user,"user can not be null");
-        if(null != user.getId() && -1 != user.getId()){
-            if(logger.isDebugEnabled()){
-                logger.debug("执行更新用户操作......");
-            }
-            return repository.update(user);
-        }
-        if(logger.isDebugEnabled()){
-            logger.debug("执行添加用户操作......");
-        }
-        return repository.insert(user);
+        return user.save();
     }
 
     @Override
     public boolean notExist(User user) throws UserExistException {
-
-        User u = repository.getUserByName(user.getName());
-        if(null != u){
-            throw new UserExistException("用户["+user.getName()+"]已存在");
-        }
-
-        u = repository.getUserByEmail(user.getEmail());
-
-        if(null != u){
-            throw new UserExistException("邮箱["+user.getEmail()+"]已存在");
-        }
-
-        return true;
+        return user.notExist();
     }
 
     @Override

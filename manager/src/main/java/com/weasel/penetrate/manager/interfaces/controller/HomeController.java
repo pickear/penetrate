@@ -99,7 +99,7 @@ public class HomeController {
             if(userService.notExist(user)){
                 user = user.createSalt().encodePassword();
                 user.setCreateTime(new DateTime().toString("yyyy-MM-dd HH:mm:ss"));
-                int result = userService.save(user);
+                userService.save(user);
                 return "redirect:/login";
             }
             return "redirect:/register?code=0";

@@ -16,7 +16,7 @@ public interface UserService {
      * @param user
      * @return
      */
-    int save(User user);
+    User save(User user);
 
     /**
      *
