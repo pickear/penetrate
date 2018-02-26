@@ -39,4 +39,10 @@ public class UserServiceImpl implements UserService {
     public Page<User> queryPage(Page<User> page) {
         return repository.queryPage(page);
     }
+
+
+    @Override
+    public int delete(long id) {
+        return repository.delete(id);
+    }
 }

@@ -19,6 +19,13 @@ public interface UserRepository {
 
     /**
      *
+     * @param id
+     * @return
+     */
+    User getUserById(long id);
+
+    /**
+     *
      * @param email
      * @return
      */
@@ -44,4 +51,11 @@ public interface UserRepository {
      * @return
      */
     int insert(User user);
+
+    /**
+     *
+     * @param id
+     * @return
+     */
+    int delete(long id);
 }

@@ -147,10 +147,42 @@
                 edit: true,
                 add: true,
                 del: true,
-                search: true
+                search: false
             }, {
+                editCaption: "编辑",
                 height: 200,
+                recreateForm: true,
+                beforeSubmit : function( postdata, form , oper) {
+                    if( confirm('你确定要更新吗?') ) {
+                        // do something
+                        return [true,''];
+                    } else {
+                        return [false, '更新失败!'];
+                    }
+                },
+                reloadAfterSubmit: true,
+                closeAfterEdit: true,
+                errorTextFormat: function (data) {
+                    return 'Error: ' + data.responseText
+                }
+            },{
+                closeAfterAdd: true,
+                recreateForm: true,
                 reloadAfterSubmit: true
+            },{
+                url: ctx+"/device/delete",
+                reloadAfterSubmit: true,
+                beforeSubmit : function( postdata, form , oper) {
+                    if( confirm('你确定要删除吗?') ) {
+                        // do something
+                        return [true,''];
+                    } else {
+                        return [false, '删除失败!'];
+                    }
+                },
+                errorTextFormat: function (data) {
+                    return 'Error: ' + data.responseText
+                }
             });
 
             // Add responsive to jqGrid

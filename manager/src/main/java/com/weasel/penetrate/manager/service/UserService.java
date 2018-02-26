@@ -32,4 +32,11 @@ public interface UserService {
      * @return
      */
     Page<User> queryPage(Page<User> page);
+
+    /**
+     *
+     * @param id
+     * @return
+     */
+    int delete(long id);
 }

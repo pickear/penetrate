@@ -27,11 +27,18 @@ public interface DeviceService {
      * @param device
      * @return
      */
-    Device save(Device device) throws DevicePortBindedException, DeviceSubDomainUsedException;
+    Device save(Device device) throws DevicePortBindedException, DeviceSubDomainUsedException, DevicePortUsedUpException;
 
     /**
      *
      * @return
      */
     int distributePort() throws DevicePortUsedUpException;
+
+    /**
+     *
+     * @param id
+     * @return
+     */
+    int delete(long id);
 }

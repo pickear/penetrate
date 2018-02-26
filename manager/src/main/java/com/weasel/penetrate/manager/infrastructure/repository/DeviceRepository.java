@@ -59,4 +59,10 @@ public interface DeviceRepository {
      */
     int getMaxDistributedPort() throws DevicePortUsedUpException;
 
+    /**
+     *
+     * @param name
+     * @return
+     */
+    int deleteByUsername(String name);
 }

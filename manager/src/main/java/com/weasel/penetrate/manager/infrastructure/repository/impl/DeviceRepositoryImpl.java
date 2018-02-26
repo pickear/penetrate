@@ -2,10 +2,7 @@ package com.weasel.penetrate.manager.infrastructure.repository.impl;
 
 import com.google.common.collect.Lists;
 import com.weasel.penetrate.manager.domain.device.Device;
-import com.weasel.penetrate.manager.infrastructure.EventPublisher;
 import com.weasel.penetrate.manager.infrastructure.exception.DevicePortUsedUpException;
-import com.weasel.penetrate.manager.infrastructure.listener.event.DeviceCreateEvent;
-import com.weasel.penetrate.manager.infrastructure.listener.event.DeviceUpdateEvent;
 import com.weasel.penetrate.manager.infrastructure.repository.DeviceRepository;
 import com.weasel.penetrate.manager.infrastructure.repository.MybatisDaoSupport;
 import org.apache.commons.lang3.StringUtils;
@@ -31,9 +28,7 @@ public class DeviceRepositoryImpl extends MybatisDaoSupport implements DeviceRep
 
     @Override
     public int update(Device device) {
-        int result = delete(device);
-        add(device);
-        return result;
+        return getSqlSession().update(namespace().concat(".update"),device);
     }
 
     @Override
@@ -45,7 +40,7 @@ public class DeviceRepositoryImpl extends MybatisDaoSupport implements DeviceRep
 
     @Override
     public int delete(Device device) {
-        return getSqlSession().delete(namespace().concat(".deleteById"),device.getId());
+        return getSqlSession().delete(namespace().concat(".deleteById"),device);
     }
 
     @Override
@@ -71,6 +66,11 @@ public class DeviceRepositoryImpl extends MybatisDaoSupport implements DeviceRep
             throw new DevicePortUsedUpException("["+minPort+"]-["+maxPort+"]之间的端口已被用完");
         }
         return (null != port &&port >=minPort) ? port : minPort;
+    }
+
+    @Override
+    public int deleteByUsername(String name) {
+        return getSqlSession().delete(namespace().concat(".deleteByUsername"),name);
     }
 
     @Override

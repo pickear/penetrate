@@ -57,6 +57,10 @@
                 height: 450,
                 autowidth: true,
                 shrinkToFit: true,
+                caption: "用户列表",
+                editurl: ctx+"/user/save",
+                addtext: 'Add',
+                edittext: 'Edit',
                 rowNum: 20,
                 rowList: [10, 20, 30],
                 colNames: ['序号', '名称', '昵称', '密码', '邮箱', '登录次数', '注册时间', '最近登录时间'],
@@ -64,7 +68,7 @@
                     {
                         name: 'id',
                         index: 'id',
-                        editable: true,
+                        editable: false,
                         width: 40,
                         sorttype: "int",
                         search: true
@@ -78,13 +82,13 @@
                     {
                         name: 'nickName',
                         index: 'nickName',
-                        editable: false,
+                        editable: true,
                         width: 80
                     },
                     {
                         name: 'password',
                         index: 'password',
-                        editable: false,
+                        editable: true,
                         width: 80
                     },
                     {
@@ -96,7 +100,7 @@
                     {
                         name: 'loginCount',
                         index: 'loginCount',
-                        editable: true,
+                        editable: false,
                         width: 50,
                         align: "left",
                         sorttype: "int"
@@ -133,12 +137,44 @@
             // Setup buttons
             $("#table").jqGrid('navGrid', '#pager', {
                 edit: true,
-                add: true,
+                add: false,
                 del: true,
-                search: true
+                search: false
             }, {
-                height: 200,
+                editCaption: "编辑",
+                height: 300,
+                recreateForm: true,
+                beforeSubmit : function( postdata, form , oper) {
+                    if( confirm('你确定要更新吗?') ) {
+                        // do something
+                        return [true,''];
+                    } else {
+                        return [false, '更新失败!'];
+                    }
+                },
+                reloadAfterSubmit: true,
+                closeAfterEdit: true,
+                errorTextFormat: function (data) {
+                    return 'Error: ' + data.responseText
+                }
+            },{
+                closeAfterAdd: true,
+                recreateForm: true,
                 reloadAfterSubmit: true
+            },{
+                url: ctx+"/user/delete",
+                reloadAfterSubmit: true,
+                beforeSubmit : function( postdata, form , oper) {
+                    if( confirm('你确定要删除吗?') ) {
+                        // do something
+                        return [true,''];
+                    } else {
+                        return [false, '删除失败!'];
+                    }
+                },
+                errorTextFormat: function (data) {
+                    return 'Error: ' + data.responseText
+                }
             });
 
             // Add responsive to jqGrid

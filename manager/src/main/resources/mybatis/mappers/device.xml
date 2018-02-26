@@ -71,7 +71,13 @@
     </select>
 
     <delete id="deleteById">
-        DELETE FROM device WHERE id=#{id}
+        DELETE FROM device
+        <where>
+            id=#{id}
+            <if test="username != null and username != ''">
+                username=#{username}
+            </if>
+        </where>
     </delete>
 
     <select id="getMaxDistributedPort" resultType="int">
@@ -79,4 +85,9 @@
         ORDER BY listen_port DESC
         limit 0,1
     </select>
+
+    <delete id="deleteByUsername" >
+        DELETE FROM device
+        WHERE username=#{username}
+    </delete>
 </mapper>

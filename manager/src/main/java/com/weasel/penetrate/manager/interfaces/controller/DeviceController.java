@@ -9,8 +9,6 @@ import com.weasel.penetrate.manager.infrastructure.exception.DevicePortBindedExc
 import com.weasel.penetrate.manager.infrastructure.exception.DevicePortUsedUpException;
 import com.weasel.penetrate.manager.infrastructure.exception.DeviceSubDomainUsedException;
 import com.weasel.penetrate.manager.infrastructure.helper.SecurityHelper;
-import com.weasel.penetrate.manager.infrastructure.task.ReloadFrpConfigQueue;
-import com.weasel.penetrate.manager.infrastructure.task.ReloadFrpConfigScheduled;
 import com.weasel.penetrate.manager.interfaces.vo.ResponseMessage;
 import com.weasel.penetrate.manager.service.CommonService;
 import com.weasel.penetrate.manager.service.DeviceService;
@@ -22,13 +20,13 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static org.springframework.web.bind.annotation.RequestMethod.GET;
+import static org.springframework.web.bind.annotation.RequestMethod.*;
 
 /**
  * @author Dylan
@@ -90,18 +88,6 @@ public class DeviceController{
         User user = SecurityHelper.getCurrentUser();
         if(user.getDevice() < user.getTotalDevice()){
             try {
-                int port = service.distributePort();
-                device.setListenPort(String.valueOf(port));
-                String number = String.valueOf(RandomUtils.nextInt());
-                device.setUsername(user.getName());
-                device.setNumber(number);
-                if(StringUtils.isBlank(device.getCustomDomains())
-                        &&(StringUtils.equalsIgnoreCase("http",device.getProtocolType().getValue())
-                        || StringUtils.equalsIgnoreCase("https",device.getProtocolType().getValue()))){
-
-                    device.setCustomDomains(device.getNumber() + "." + configuration.getDomain());
-                }
-
                 service.save(device);
                 user.setDevice(user.getDevice()+1);
                 userService.save(user);
@@ -114,6 +100,17 @@ public class DeviceController{
                 logger.error(e.getMessage());
             }
             return ResponseMessage.error();
+        }
+        return ResponseMessage.error();
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/delete",method = {POST,DELETE})
+    public ResponseMessage delete(@RequestParam("id") long id){
+
+        int result = service.delete(id);
+        if(result == 1){
+            return ResponseMessage.success();
         }
         return ResponseMessage.error();
     }

@@ -42,6 +42,12 @@
         </where>
     </select>
 
+    <select id="getUserById" resultMap="userResult" parameterType="string">
+        <include refid="commonSelect"/>
+        <where>
+            u.id=#{id}
+        </where>
+    </select>
 
     <select id="getUserByEmail" resultMap="userResult" parameterType="string">
         <include refid="commonSelect"/>
@@ -102,5 +108,15 @@
         </where>
         limit 0,10
     </select>
+
+    <delete id="deleteByName">
+        DELETE FROM user
+        WHERE name=#{name}
+    </delete>
+
+    <delete id="deleteById">
+        DELETE FROM user
+        WHERE id=#{id}
+    </delete>
 
 </mapper>
