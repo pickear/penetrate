@@ -24,7 +24,7 @@ public class ApplicationLauncher {
 
         String runtimeEnv = System.getProperty("spring.profiles.active");
         if(StringUtils.isBlank(runtimeEnv)){
-            log.warn("找不到环境参数设置，使用默认环境[{}]，如果需要设置环境参数，在启动脚本加上如:[{}]",DEFAULT_ENV,"-Dspring.profiles.active=test");
+            log.warn("找不到环境参数设置，使用默认环境[{}]，如果需要设置环境参数，在启动脚本加上如:[{}],如:{}",DEFAULT_ENV,"-Dspring.profiles.active=dev|test|prod","java -Dspring.profiles.active=test -jar xxx.jar");
             System.setProperty("spring.profiles.active",DEFAULT_ENV);
         }
         SpringApplication application = new SpringApplication(ApplicationLauncher.class);

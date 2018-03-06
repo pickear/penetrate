@@ -25,7 +25,7 @@ public class ApplicationStartOverListener implements ApplicationListener<Context
         logger.info("当前运行环境是[{}]",runtimeEnv);
         String frpHome = System.getProperty("frp.home");
         if(StringUtils.isEmpty(frpHome)){
-            throw new RuntimeException("请在启动时传入frp.home参数，例如:java -jar frp-manager.jar -Dfrp.home=/usr/local/softwares/frp_0.9.3_windows_amd64");
+            throw new RuntimeException("请在启动时传入frp.home参数，例如:java -Dfrp.home=/usr/local/softwares/frp_0.9.3_windows_amd64 -jar xxx.jar");
         }
         logger.info("当前frp目录是:" + frpHome);
         Frp.setHome(frpHome);
