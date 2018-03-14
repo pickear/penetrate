@@ -34,4 +34,4 @@ mybatis:
     config-location: classpath:mybatis/mybatis-config.xml
 
 penetrate:
-    domain: tunnel.kisme.org
+    domain: tun.gogl.top/manager

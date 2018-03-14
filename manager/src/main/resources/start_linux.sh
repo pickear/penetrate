@@ -1,0 +1,1 @@
+java -jar penetrate-manager.jar -Dspring.profiles.active=prd &

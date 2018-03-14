@@ -1,5 +1,5 @@
 penetrate:
    home:
-      domain: http://home.tunnel.kisme.org
+      domain: http://tun.gogl.top/home
    manager:
-      domain: https://manager.tunnel.kisme.org
+      domain: https://tun.gogl.top/manager
