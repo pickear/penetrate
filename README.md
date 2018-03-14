@@ -10,7 +10,7 @@
   
 **二 penetrate线上运行的产品**
 
-  http://home.tunnel.kisme.org  是penetrate的一个线上运行的例子，并提供免费的穿透服务。
+  http://tun.gogl.top/home  是penetrate的一个线上运行的例子，并提供免费的穿透服务。
   
  ![enter image description here](https://github.com/pickear/penetrate/blob/master/manager/src/main/resources/static/images/home.png?raw=true)
   
@@ -36,12 +36,12 @@
 		<div class="flex flex-2">
 			<article>
 				<div class="image round">
-					<img src="http://home.tunnel.kisme.org/images/alipay.jpg" width="200" height="200" alt="支付宝二维码" />
+					<img src="http://tun.gogl.top/home/images/alipay.jpg" width="200" height="200" alt="支付宝二维码" />
           </div>
 			</article>
 			<article>
 				<div class="image round">
-					<img src="http://home.tunnel.kisme.org/images/wxpay.png" width="200" height="200" alt="微信二维码" />
+					<img src="http://tun.gogl.top/home/images/wxpay.png" width="200" height="200" alt="微信二维码" />
 				</div>
 			</article>
 		</div>
