@@ -36,12 +36,12 @@
 		<div class="flex flex-2">
 			<article>
 				<div class="image round">
-					<img src="http://tun.gogl.top/home/images/alipay.jpg" width="200" height="200" alt="支付宝二维码" />
+					<img src="https://github.com/pickear/penetrate/blob/master/home/images/alipay.jpg" width="200" height="200" alt="支付宝二维码" />
           </div>
 			</article>
 			<article>
 				<div class="image round">
-					<img src="http://tun.gogl.top/home/images/wxpay.png" width="200" height="200" alt="微信二维码" />
+					<img src="https://github.com/pickear/penetrate/blob/master/home/images/wxpay.png" width="200" height="200" alt="微信二维码" />
 				</div>
 			</article>
 		</div>
