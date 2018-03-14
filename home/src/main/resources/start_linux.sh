@@ -1,1 +1,1 @@
-java -jar penetrate-home.jar -Dspring.profiles.active=prd &
+java -jar penetrate-home.jar -Dspring.profiles.active=prod &
