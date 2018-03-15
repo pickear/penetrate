@@ -75,7 +75,7 @@
         <where>
             id=#{id}
             <if test="username != null and username != ''">
-                username=#{username}
+                and username=#{username}
             </if>
         </where>
     </delete>

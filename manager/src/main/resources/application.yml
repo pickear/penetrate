@@ -1,7 +1,7 @@
 ###jetty
 server:
    port: 7999
-   contextPath: /
+   contextPath: /manager
 ##   ssl:
 ##     key-store: classpath:www-kisme-org.jks
 ##     key-password: ENC(+r7LBLwX7duNyPs4wSgkhTOHbyaWD8Ii)
@@ -34,4 +34,4 @@ mybatis:
     config-location: classpath:mybatis/mybatis-config.xml
 
 penetrate:
-    domain: tun.gogl.top/manager
+    domain: tun.gogl.top

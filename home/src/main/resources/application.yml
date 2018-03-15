@@ -1,7 +1,7 @@
 ###jetty
 server:
    port: 7998
-   contextPath: /
+   contextPath: /home
 
 spring:
    thymeleaf:

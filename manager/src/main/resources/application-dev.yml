@@ -21,3 +21,15 @@ spring:
      testOnReturn: false
      poolPreparedStatements: true
      maxOpenPreparedStatements: 20
+
+logging:
+  level:
+     root: info
+     org:
+       springframework: warn
+       hibernate: warn
+       eclipse: warn
+       apache: warn
+     com:
+       weasel: info
+  file: "logs/application.log"
