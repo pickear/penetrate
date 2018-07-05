@@ -13,6 +13,7 @@
         <result property="bindAddr" column="d_bind_addr"/>
         <result property="listenPort" column="d_listen_port"/>
         <result property="customDomains" column="d_custom_domains"/>
+        <result property="locations" column="d_locations"/>
     </resultMap>
 
     <sql id="commonSelect">
@@ -23,7 +24,8 @@
                 d.auth_token as d_auth_token,
                 d.bind_addr as d_bind_addr,
                 d.listen_port as d_listen_port,
-                d.custom_domains as d_custom_domains
+                d.custom_domains as d_custom_domains,
+                d.locations as d_locations
         FROM device d
     </sql>
 
@@ -37,8 +39,8 @@
     </select>
 
     <insert id="insert" parameterType="device" >
-        INSERT INTO device(number,username,protocol_type,auth_token,bind_addr,listen_port,custom_domains)
-        VALUE (#{number},#{username},#{protocolType},#{authToken},#{bindAddr},#{listenPort},#{customDomains})
+        INSERT INTO device(number,username,protocol_type,auth_token,bind_addr,listen_port,custom_domains,locations)
+        VALUE (#{number},#{username},#{protocolType},#{authToken},#{bindAddr},#{listenPort},#{customDomains},#{locations})
         <selectKey resultType="long" keyProperty="id">
             SELECT LAST_INSERT_ID() AS ID
         </selectKey>
@@ -55,6 +57,9 @@
             </if>
             <if test="customDomains != null and customDomains != ''">
                 custom_domains = #{customDomains}
+            </if>
+            <if test="locations != null and locations != ''">
+                locations = #{locations}
             </if>
         </set>
         <where>

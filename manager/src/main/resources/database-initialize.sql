@@ -106,3 +106,5 @@ INSERT INTO user(id,name,nick_name,password,salt,email,device,total_device,login
 INSERT INTO `role` VALUES ('1', 'ADMIN', '管理员');
 
 INSERT INTO `user_role` VALUES ('1', '1', '1');
+
+ALTER TABLE device ADD locations VARCHAR(255) COMMENT '域名的path部分，比如www.xxx.com/manager，那么locations就是/manager,多个可以用逗号隔开';

@@ -47,6 +47,7 @@ public class IniWriter extends IniHandler{
             write(device.getNumber(),"bind_addr",device.getBindAddr());
             write(device.getNumber(),"listen_port",device.getListenPort());
             write(device.getNumber(),"custom_domains",device.getCustomDomains());
+            write(device.getNumber(),"locations",device.getLocations());
         });
 
         return this;

@@ -40,8 +40,14 @@ public class Device  implements Serializable {
      * 监听的端口
      */
     protected String listenPort;
-
+    /**
+     * 域名
+     */
     private String customDomains;
+    /**
+     * path,
+     */
+    private String locations;
 
     public Device() {
     }
@@ -112,6 +118,14 @@ public class Device  implements Serializable {
 
     public void setCustomDomains(String customDomains) {
         this.customDomains = customDomains;
+    }
+
+    public String getLocations() {
+        return locations;
+    }
+
+    public void setLocations(String locations) {
+        this.locations = locations;
     }
 
     public boolean isHttpProtocol(){
