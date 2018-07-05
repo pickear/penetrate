@@ -56,7 +56,7 @@
                 auth_token = #{authToken},
             </if>
             <if test="customDomains != null and customDomains != ''">
-                custom_domains = #{customDomains}
+                custom_domains = #{customDomains},
             </if>
             <if test="locations != null and locations != ''">
                 locations = #{locations}
