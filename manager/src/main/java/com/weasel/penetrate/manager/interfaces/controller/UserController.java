@@ -18,7 +18,7 @@ import static org.springframework.web.bind.annotation.RequestMethod.*;
  * @date 2017/1/22.
  */
 @Controller
-@RequestMapping(value = "/user")
+@RequestMapping(value = "/manager/user")
 public class UserController{
 
     @Autowired
@@ -38,7 +38,7 @@ public class UserController{
     @RequestMapping(value = "/list_view",method = GET)
     public String listView(){
 
-        return "user";
+        return "manager/user";
     }
 
     @ResponseBody

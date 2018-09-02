@@ -20,7 +20,7 @@
                 <h1 class="logo-name">FRP</h1>
             </div>
             <h3>欢迎注册 FRP</h3>
-            <form th:action="@{/register}" method="post" class="m-t" role="form" action="login.html">
+            <form th:action="@{/manager/register}" method="post" class="m-t" role="form" action="login.html">
                 <div class="form-group">
                     <input name="name" type="text" class="form-control" placeholder="请输入用户名" required="">
                 </div>
@@ -37,7 +37,7 @@
                     </div>
                 </div>
                 <button id="submit-form" type="submit" class="btn btn-primary block full-width m-b">注 册</button>
-                <p class="text-muted text-center"><small>已经有账户了？</small><a href="@{/login}">点此登录</a>
+                <p class="text-muted text-center"><small>已经有账户了？</small><a href="@{/manager/login}">点此登录</a>
                 </p>
             </form>
         </div>

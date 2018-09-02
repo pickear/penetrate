@@ -1,7 +1,7 @@
 ###jetty
 server:
    port: 7999
-   contextPath: /manager
+   contextPath: /penetrate
 ##   ssl:
 ##     key-store: classpath:www-kisme-org.jks
 ##     key-password: ENC(+r7LBLwX7duNyPs4wSgkhTOHbyaWD8Ii)
