@@ -53,9 +53,9 @@ public class DeviceServiceImpl implements DeviceService {
         if(portBinded(device)){
             throw new DevicePortBindedException("端口["+device.getListenPort()+"]已被占用!");
         }
-        if(subDomainUsed(device)){
+       /* if(subDomainUsed(device)){
             throw new DeviceSubDomainUsedException("子域["+device.getCustomDomains()+"]已被使用");
-        }
+        }*/
 
         User user = SecurityHelper.getCurrentUser();
         int port = distributePort();
