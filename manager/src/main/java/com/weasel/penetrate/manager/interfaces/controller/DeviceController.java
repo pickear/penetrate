@@ -33,7 +33,7 @@ import static org.springframework.web.bind.annotation.RequestMethod.*;
  * @date 2017/1/22.
  */
 @Controller
-@RequestMapping(value = "/device")
+@RequestMapping(value = "/manager/device")
 public class DeviceController{
 
     private final static Logger logger = LoggerFactory.getLogger(DeviceController.class);
@@ -49,7 +49,7 @@ public class DeviceController{
     @RequestMapping(value = {"/list_view"},method = GET)
     public String listView(){
 
-        return "device";
+        return "manager/device";
     }
 
     @ResponseBody

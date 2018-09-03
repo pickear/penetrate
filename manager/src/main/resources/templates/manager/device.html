@@ -21,7 +21,7 @@
     </style>
 </head>
 <body class="gray-bg">
-<span th:replace="common::common_html"></span>
+<span th:replace="manager/common::common_html"></span>
 <div class="wrapper wrapper-content  animated fadeInRight">
         <div class="row">
             <div class="col-sm-12">
@@ -36,12 +36,12 @@
             </div>
         </div>
     </div>
+
     <!-- 全局js -->
     <script th:src="@{/js/jquery.min.js(v=2.1.4)}"></script>
     <script th:src="@{/js/bootstrap.min.js(v=3.3.6)}"></script>
     <!-- Peity -->
     <script th:src="@{/js/plugins/peity/jquery.peity.min.js}"></script>
-    <!-- jqGrid -->
     <script th:src="@{/js/plugins/jqgrid/i18n/grid.locale-cn.js}"></script>
     <script th:src="@{/js/plugins/jqgrid/jquery.jqGrid.min.js}"></script>
     <!-- 自定义js -->
@@ -50,99 +50,114 @@
     <script>
         $(document).ready(function () {
             $.jgrid.defaults.styleUI = 'Bootstrap';
+            // Examle data for jqGrid
             var ctx = $("#ctx").val();
             $("#table").jqGrid({
-                url: ctx+"/user/list",
+                url: ctx+"/manager/device/list",
                 datatype: "json",
-                height: 450,
+                height: 400,
                 autowidth: true,
                 shrinkToFit: true,
-                caption: "用户列表",
-                editurl: ctx+"/user/save",
+                rowNum: 20,
+                pager: "#pager",
+                viewrecords: true,
+                caption: "设备列表",
+                editurl: ctx+"/manager/device/save",
                 addtext: 'Add',
                 edittext: 'Edit',
-                rowNum: 20,
+                hidegrid: false,
                 rowList: [10, 20, 30],
-                colNames: ['序号', '名称', '昵称', '密码', '邮箱', '登录次数', '注册时间', '最近登录时间'],
+                clearAfterAdd: true,
+                closeAfterAdd: true,
+                cellsubmit:"clientArray",
+                colNames: ['序号','设备号', '协议', '令牌', '绑定地址', '映射端口', '域名','路径','所属用户'],
                 colModel: [
                     {
                         name: 'id',
                         index: 'id',
                         editable: false,
                         width: 40,
-                        sorttype: "int",
-                        search: true
+                        sorttype: "string"
                     },
                     {
-                        name: 'name',
-                        index: 'name',
+                        name: 'number',
+                        index: 'number',
                         editable: false,
-                        width: 70
+                        sorttype: "string",
+                        width: 100
                     },
                     {
-                        name: 'nickName',
-                        index: 'nickName',
+                        name: 'protocolType',
+                        index: 'protocolType',
                         editable: true,
-                        width: 80
+                        width: 50
                     },
                     {
-                        name: 'password',
-                        index: 'password',
+                        name: 'authToken',
+                        index: 'authToken',
                         editable: true,
-                        width: 80
+                        width: 100
                     },
                     {
-                        name: 'email',
-                        index: 'email',
-                        editable: true,
-                        width: 120
-                    },
-                    {
-                        name: 'loginCount',
-                        index: 'loginCount',
+                        name: 'bindAddr',
+                        index: 'bindAddr',
                         editable: false,
-                        width: 50,
+                        width: 150,
                         align: "left",
-                        sorttype: "int"
+                        sorttype: "string"
                     },
                     {
-                        name: 'createTime',
-                        index: 'createTime',
-                        editable: true,
-                        width: 100,
+                        name: 'listenPort',
+                        index: 'listenPort',
+                        editable: false,
+                        width: 60,
                         sorttype: "string",
                     },
                     {
-                        name: 'loginTime',
-                        index: 'loginTime',
+                        name: 'customDomains',
+                        index: 'customDomains',
                         editable: true,
-                        width: 100,
+                        width: 150,
+                        sorttype: "string",
+                    },
+                    {
+                        name: 'locations',
+                        index: 'locations',
+                        editable: true,
+                        width: 150,
+                        sorttype: "string",
+                    },
+                    {
+                        name: 'username',
+                        index: 'username',
+                        editable: false,
+                        width: 80,
                         sorttype: "string",
                     }
                 ],
-                pager: "#pager",
-                viewrecords: true,
-                caption: "用户列表",
-                add: true,
-                edit: true,
-                addtext: 'Add',
-                edittext: 'Edit',
-                hidegrid: false
+                gridComplete: function () {
+                    var rowNum = parseInt($(this).getGridParam("records"), 10);
+                },
+                onSelectRow: function (acctId) {
+                },
+                loadComplete: function (a) {
+                },
+                loadError: function (e) {
+                }
             });
 
             // Add selection
             $("#table").setSelection(4, true);
 
-
             // Setup buttons
             $("#table").jqGrid('navGrid', '#pager', {
                 edit: true,
-                add: false,
+                add: true,
                 del: true,
                 search: false
             }, {
                 editCaption: "编辑",
-                height: 300,
+                height: 250,
                 recreateForm: true,
                 beforeSubmit : function( postdata, form , oper) {
                     if( confirm('你确定要更新吗?') ) {
@@ -162,7 +177,7 @@
                 recreateForm: true,
                 reloadAfterSubmit: true
             },{
-                url: ctx+"/user/delete",
+                url: ctx+"/manager/device/delete",
                 reloadAfterSubmit: true,
                 beforeSubmit : function( postdata, form , oper) {
                     if( confirm('你确定要删除吗?') ) {
@@ -186,4 +201,5 @@
         });
     </script>
 </body>
+
 </html>

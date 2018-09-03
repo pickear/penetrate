@@ -19,7 +19,7 @@ import static org.springframework.web.bind.annotation.RequestMethod.GET;
  * @date 2017/1/22.
  */
 @Controller
-@RequestMapping(value = "/admin")
+@RequestMapping(value = "/manager/admin")
 public class AdminController{
 
     private final static Logger logger = LoggerFactory.getLogger(AdminController.class);

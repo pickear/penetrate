@@ -23,7 +23,7 @@
                 <h1 class="logo-name">FRP</h1>
             </div>
             <h3>欢迎使用 FRP内网穿透</h3>
-            <form class="m-t" role="form" th:action="@{/login}" method="post">
+            <form class="m-t" role="form" th:action="@{/manager/login}" method="post">
                 <div class="form-group">
                     <input type="text" name="name" class="form-control" placeholder="用户名" required="">
                 </div>
@@ -31,7 +31,7 @@
                     <input type="password" name="password" class="form-control" placeholder="密码" required="">
                 </div>
                 <button type="submit" class="btn btn-primary block full-width m-b">登 录</button>
-                <p class="text-muted text-center"> <a th:href="@{/login}"><small>忘记密码了？</small></a> | <a th:href="@{/register}">注册一个新账号</a>
+                <p class="text-muted text-center"> <a href="javascript:alert('暂不支持找回密码')";><small>忘记密码了？</small></a> | <a th:href="@{/manager/register}">注册一个新账号</a>
                 </p>
             </form>
         </div>
